@@ -1,0 +1,98 @@
+import { useState, useEffect } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { HiMiniSpeakerWave } from "react-icons/hi2";
+import image1 from "@/assets/banner/1.jpg";
+import image2 from "@/assets/banner/2.jpg";
+import image3 from "@/assets/banner/3.jpg";
+import image4 from "@/assets/banner/4.jpg";
+import image5 from "@/assets/banner/5.jpg";
+import Container from "@/components/shared/Container";
+import Marquee from "react-fast-marquee";
+
+export function BannerSlider() {
+  const bannerImages = [
+    { id: 1, image: image1 },
+    { id: 2, image: image2 },
+    { id: 3, image: image3 },
+    { id: 4, image: image4 },
+    { id: 5, image: image5 },
+  ];
+
+  const [api, setApi] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  // Listen for the selected slide change
+  useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  // Scroll to the next slide every 2 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (api) {
+        const nextIndex = (selectedIndex + 1) % bannerImages.length;
+        api.scrollTo(nextIndex);
+      }
+    }, 3000); // 2 seconds
+
+    return () => clearInterval(interval);
+  }, [api, selectedIndex, bannerImages.length]);
+
+  const scrollTo = (index) => {
+    api?.scrollTo(index);
+  };
+
+  return (
+    <Carousel className="w-full" setApi={setApi}>
+      <CarouselContent>
+        {bannerImages.map((image, index) => (
+          <CarouselItem key={image.id}>
+            <div className="">
+              <img src={image.image} alt={`Slide ${index + 1}`} />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+      {/* Slide Select Buttons */}
+      <div className="absolute bottom-8 md:bottom-16 right-4 md:right-[5.5rem] flex space-x-2">
+        {bannerImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollTo(index)}
+            className={`size-[10px] md:size-4 rounded-full hover:bg-white transition-colors ease-in-out duration-300 ${
+              selectedIndex === index ? "bg-white" : "bg-[#12664b]"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+      <div className="bg-[#0D543E] opacity-90 text-white absolute bottom-0 w-full py-1">
+        <Container>
+          <div className="flex items-center gap-4">
+            <HiMiniSpeakerWave className="text-xl md:text-3xl" />
+            <Marquee className="text-xs md:text-sm">
+              প্রিয় গ্রাহক, আপনার bajilive.net এ ভিসিট করতে সমস্যা হলে, অনুগ্রহ
+              করে 112233bj.com,2211133bj.com ব্যবহার করুন, এটি আমাদের ব্যাকআপ
+              ওয়েবসাইট লিংক।
+            </Marquee>
+          </div>
+        </Container>
+      </div>
+    </Carousel>
+  );
+}
