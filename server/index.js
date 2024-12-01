@@ -72,9 +72,9 @@ run().catch(console.dir);
 
 // basic setup
 app.get("/", (req, res) => {
-  res.send("Theme store server is Running.");
+  res.send("Baji server is Running.");
 });
 
 app.listen(port, () => {
-  console.log(`Theme store server is Running on PORT:🆗 ${port}`);
+  console.log(`Baji server is Running on PORT:🆗 ${port}`);
 });
