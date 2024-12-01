@@ -7,6 +7,9 @@ import PromotionalOffer from "@/pages/home/PromotionalOffer/PromotionalOffer";
 import Vip from "@/pages/home/Vip/Vip";
 import Referral from "@/pages/home/Referral/Referral";
 import Login from "@/pages/home/Login/Login";
+import Profile from "@/pages/home/Profile/Profile";
+import Deposit from "@/pages/home/Deposit/Deposit";
+import ProfileHome from "@/pages/home/ProfileHome/ProfileHome";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +37,23 @@ const router = createBrowserRouter([
         path: "/referral",
         element: <Referral />,
       },
+      {
+        path: "/profile",
+        element: <Profile />,
+        children: [
+          {
+            path: "",
+            element: <ProfileHome />,
+          },
+          {
+            path: "deposit",
+            element: <Deposit />,
+          },
+        ],
+      },
     ],
   },
+
   {
     path: "/login",
     element: <Login />,
