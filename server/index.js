@@ -10,6 +10,7 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 
 const admissionApi = require("./apis/admissionApi/admissionApi");
 
+
 const corsConfig = {
   origin: [
     "http://localhost:5173",
