@@ -4,16 +4,45 @@ import { FaChevronLeft, FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useDispatch } from "react-redux";
+import {
+  useLazyGetAuthenticatedUserQuery,
+  useLoginUserMutation,
+} from "@/redux/features/allApis/usersApi/usersApi";
+import { setCredentials } from "@/redux/slices/authSlice";
+import SpinLoader from "@/components/shared/loaders/Spinloader";
+import { useToasts } from "react-toast-notifications";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState(""); // State to store email input value
-  const [password, setPassword] = useState(""); // State to store password input value
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const [loginUser, { isLoading }] = useLoginUserMutation();
+  const [getUser] = useLazyGetAuthenticatedUserQuery();
+  const { addToast } = useToasts();
 
-  // Function to go back to the previous route
   const handleGoBack = () => {
-    navigate(-1); // This takes the user to the previous route in history
+    navigate(-1);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data: loginData } = await loginUser({ username, password });
+      if (loginData.token) {
+        const { data: userData } = await getUser(loginData.token);
+        dispatch(setCredentials({ token: loginData.token, user: userData }));
+        addToast("Login successful", {
+          appearance: "success",
+          autoDismiss: true,
+        });
+        navigate("/");
+      }
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
   };
 
   return (
@@ -30,26 +59,26 @@ const Login = () => {
         alt=""
       />
       <div className="w-full p-3 text-[#fdfdfd]">
-        <form action="">
-          {/* Email Input */}
+        <form onSubmit={handleSubmit} action="">
+          {/* username Input */}
           <div className="relative flex w-full items-center gap-1.5 px-4 py-2 rounded bg-[#292929] mb-4">
-            <Label className="text-base w-1/3" htmlFor="email">
+            <Label className="text-base w-1/3" htmlFor="username">
               ব্যবহারকারীর নাম
             </Label>
             <div className="w-2/3 h-full relative">
               <Input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update the state when input changes
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)} // Update the state when input changes
                 placeholder="ব্যবহারকারীর নাম"
                 className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
               />
               {/* Cross (clear) button */}
-              {email && (
+              {username && (
                 <div
                   className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
-                  onClick={() => setEmail("")}
+                  onClick={() => setUsername("")}
                 >
                   <FaTimes />
                 </div>
@@ -96,7 +125,7 @@ const Login = () => {
             </p>
           </div>
           <Button type="submit" className="bg-[#14805e] w-full text-base py-6">
-            লগ ইন
+            {isLoading ? <SpinLoader /> : "লগ ইন"}
           </Button>
           <p className="px-3 py-1.5 text-[#fff] text-center">
             একাউন্ট নেই?{" "}
