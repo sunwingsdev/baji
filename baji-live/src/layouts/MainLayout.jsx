@@ -29,7 +29,7 @@ const MainLayout = () => {
             className="w-1/2 bg-[#14805e] py-4 text-center text-white"
             to="/login"
           >
-            <button className="">লগ ইন</button>
+            <button className="">লগ ইন</button> 
           </Link>
           <Link className="w-1/2 bg-[#ffdf1a] py-4 text-center" to="/register">
             <button className="">সাইন আপ</button>
