@@ -17,6 +17,9 @@ import { RxReload } from "react-icons/rx";
 import { ImCheckmark } from "react-icons/im";
 import { Link, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
+import { useToasts } from "react-toast-notifications";
+import { useAddUserMutation } from "@/redux/features/allApis/usersApi/usersApi";
+import SpinLoader from "@/components/shared/loaders/Spinloader";
 
 const generateRandomCode = () => {
   return Math.floor(1000 + Math.random() * 9000).toString(); // 4-digit code
@@ -31,6 +34,7 @@ const currencyToCountryCode = {
 };
 
 const Register = () => {
+  const [addUser] = useAddUserMutation();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     username: "",
@@ -44,18 +48,34 @@ const Register = () => {
     phone: "",
     refer: "",
   });
+  const [loading, setLoading] = useState(false);
   const [generatedCode, setGeneratedCode] = useState(generateRandomCode());
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State to toggle password visibility
+  const { addToast } = useToasts();
 
-  const handleNext = () => {
+  const handleNext = (e) => {
+    e.preventDefault();
     if (
       formData.username &&
       formData.password &&
       formData.confirmPassword &&
       formData.currency
     ) {
-      setStep(2);
+      if (formData.password === formData.confirmPassword) {
+        setStep(2);
+      } else {
+        addToast("Please match the password and confirm password", {
+          appearance: "error",
+          autoDismiss: true,
+        });
+      }
     } else {
-      alert("Please fill in all the fields.");
+      addToast("Please fill in all the fields.", {
+        appearance: "error",
+        autoDismiss: true,
+      });
     }
   };
 
@@ -79,18 +99,37 @@ const Register = () => {
     setGeneratedCode(generateRandomCode());
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (formData.verificationCode === generatedCode) {
-      alert("Registration successful!");
+      // eslint-disable-next-line no-unused-vars
+      const { confirmPassword, verificationCode, ...userInfo } = formData;
+      try {
+        setLoading(true);
+        const result = await addUser(userInfo);
+        if (result.data.insertedId) {
+          addToast("Registration successful", {
+            appearance: "success",
+            autoDismiss: true,
+          });
+          setLoading(false);
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error.message);
+        addToast(error.message, {
+          appearance: "error",
+          autoDismiss: true,
+        });
+        setLoading(false);
+      }
     } else {
-      alert("Verification code does not match.");
+      addToast("Verification code does not match.", {
+        appearance: "error",
+        autoDismiss: true,
+      });
     }
   };
-
-  const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State to toggle password visibility
 
   // Function to go back to the previous route
   const handleGoBack = () => {
@@ -306,7 +345,11 @@ const Register = () => {
                       type="submit"
                       className="rounded-full size-12 bg-[#14815f] hover:bg-[#14815f] p-0"
                     >
-                      <ImCheckmark className="text-3xl font-bold" />
+                      {loading ? (
+                        <SpinLoader />
+                      ) : (
+                        <ImCheckmark className="text-3xl font-bold" />
+                      )}
                     </Button>
                   </div>
                 </form>
@@ -337,10 +380,10 @@ const Register = () => {
           alt=""
         />
         <div className="w-full p-3 text-[#fdfdfd]">
-          <form action="">
+          <form onSubmit={handleFormSubmit}>
             {/* username Input */}
             <div className="relative flex w-full items-center gap-1.5 px-4 py-2 rounded-t bg-[#292929] ">
-              <Label className="text-sm w-1/3" htmlFor="email">
+              <Label className="text-sm w-1/3" htmlFor="username">
                 ব্যবহারকারীর নাম
               </Label>
               <div className="w-2/3 h-full relative">
@@ -398,7 +441,7 @@ const Register = () => {
             </div>
             {/* Confirm Password Input */}
             <div className="relative flex w-full items-center gap-1.5 px-4 py-2 bg-[#292929] ">
-              <Label className="text-sm w-1/3" htmlFor="password">
+              <Label className="text-sm w-1/3" htmlFor="confirmPassword">
                 পাসওয়ার্ড নিশ্চিত করুন
               </Label>
               <div className="w-2/3 h-full relative">
@@ -433,7 +476,7 @@ const Register = () => {
 
             {/* currency Input */}
             <div className="relative flex w-full items-center gap-1.5 px-4 py-2 rounded-b bg-[#292929] mb-3">
-              <Label className="text-sm w-1/3" htmlFor="email">
+              <Label className="text-sm w-1/3" htmlFor="currency">
                 কারেন্সি
               </Label>
               <div className="w-2/3 h-full relative text-[#14805e] ">
@@ -442,7 +485,7 @@ const Register = () => {
                   value={formData.currency}
                 >
                   <SelectTrigger className="w-full bg-transparent border-none">
-                    <SelectValue placeholder="BDT" />
+                    <SelectValue placeholder="Select a currency" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -457,7 +500,7 @@ const Register = () => {
             </div>
             {/* full name Input */}
             <div className="relative flex w-full items-center gap-1.5 px-4 py-2 rounded-t bg-[#292929] ">
-              <Label className="text-sm w-1/3" htmlFor="email">
+              <Label className="text-sm w-1/3" htmlFor="fullName">
                 সম্পূর্ণ নাম
               </Label>
               <div className="w-2/3 h-full relative">
@@ -482,14 +525,32 @@ const Register = () => {
             </div>
             {/* number  Input */}
             <div className="relative flex w-full items-center gap-1.5 px-4 py-2 bg-[#292929] ">
-              <Label className="text-sm w-1/3" htmlFor="email">
+              <Label className="text-sm w-1/3" htmlFor="phone">
                 ফোন নাম্বার
               </Label>
-              <p className="w-1/4 text-[#14805e]">+880</p>
+              {/* <p className="w-1/4 text-[#14805e]">+880</p> */}
+              <div className="w-1/4">
+                <Select
+                  value={formData.countryCode}
+                  className="text-[#14805e] bg-[#292929]"
+                >
+                  <SelectTrigger className="bg-[#292929] border-none ring-0 text-[#14805e]">
+                    <SelectValue placeholder="Country Code" />
+                  </SelectTrigger>
+                  <SelectContent className="text-[#14805e]">
+                    <SelectGroup>
+                      <SelectItem value="+880">BD (+880)</SelectItem>
+                      <SelectItem value="+91">IN (+91)</SelectItem>
+                      <SelectItem value="+977">NP (+977)</SelectItem>
+                      <SelectItem value="+92">PK (+92)</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
               <div className="w-1/2 h-full relative">
                 <Input
                   type="text"
-                  id="refer"
+                  id="phone"
                   value={formData.phone}
                   onChange={handleChange} // Update the state when input changes
                   placeholder="ফোন নাম্বার"
@@ -533,7 +594,7 @@ const Register = () => {
             </div>
             {/* refer code  Input */}
             <div className="relative flex w-full items-center gap-1.5 px-4 py-2 rounded-b bg-[#292929] ">
-              <Label className="text-sm w-1/3" htmlFor="email">
+              <Label className="text-sm w-1/3" htmlFor="refer">
                 রেফার কোড
               </Label>
               <div className="w-2/3 h-full relative">
@@ -541,11 +602,10 @@ const Register = () => {
                   type="text"
                   id="refer"
                   value={formData.refer}
-                  onChange={handleChange} // Update the state when input changes
+                  onChange={handleChange}
                   placeholder=" রেফার কোড"
                   className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
                 />
-                {/* Cross (clear) button */}
                 {formData.refer && (
                   <div
                     className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
@@ -558,7 +618,7 @@ const Register = () => {
             </div>
             {/* verification code  Input */}
             <div className="relative flex w-full items-center gap-1.5 px-4 py-2 rounded bg-[#292929] mt-3">
-              <Label className="text-sm w-1/3" htmlFor="email">
+              <Label className="text-sm w-1/3" htmlFor="verificationCode">
                 ভেরিফিকেশন কোড
               </Label>
               <div className="w-2/3 h-full relative">
@@ -591,7 +651,7 @@ const Register = () => {
               type="submit"
               className="bg-[#14805e] w-full text-base py-6 mt-3"
             >
-              নিশ্চিত করুন
+              {loading ? <SpinLoader /> : "নিশ্চিত করুন"}
             </Button>
             <p className="text-white text-center py-1.5 text-sm">
               আমি 18 বছর বয়সী এবং শর্তাদি শর্তে সম্মত।

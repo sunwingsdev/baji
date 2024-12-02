@@ -10,6 +10,7 @@ import Login from "@/pages/home/Login/Login";
 import Profile from "@/pages/home/Profile/Profile";
 import Deposit from "@/pages/home/Deposit/Deposit";
 import ProfileHome from "@/pages/home/ProfileHome/ProfileHome";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <ProfileHome />,
+            element: (
+              <PrivateRoute>
+                <ProfileHome />
+              </PrivateRoute>
+            ),
           },
           {
             path: "deposit",

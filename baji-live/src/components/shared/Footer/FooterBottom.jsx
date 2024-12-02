@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../../../assets/logo.png"
 
 const FooterBottom = () => {
   const routes = [
@@ -23,8 +24,8 @@ const FooterBottom = () => {
       <hr />
       <div className="flex items-center justify-between py-4">
         <img
-          className="w-10 md:w-16"
-          src="https://www.baji.live/images/web/logo.png"
+          className="w-20 md:w-28"
+          src={logo}
           alt=""
         />
         <div className="flex flex-col items-end justify-center">
