@@ -3,14 +3,22 @@ import Modal from "../Modal";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import Container from "../Container";
 import { RiMenu2Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineExitToApp, MdOutlineHelpCenter } from "react-icons/md";
 import LoginForm from "../auth/LoginForm";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import logo from "../../../assets/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/redux/slices/authSlice";
+import { useToasts } from "react-toast-notifications";
 
 const NavMiddle = ({ navItems }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const { token, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { addToast } = useToasts();
 
   const sponsors = [
     {
@@ -48,6 +56,16 @@ const NavMiddle = ({ navItems }) => {
     setIsSheetOpen(false);
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("token");
+    addToast("Logout successful", {
+      appearance: "success",
+      autoDismiss: true,
+    });
+    navigate("/");
+  };
+
   return (
     <div className="bg-black md:bg-gradient-to-b from-[#1aaa7c] to-[#14815f] py-3">
       <Container>
@@ -64,11 +82,9 @@ const NavMiddle = ({ navItems }) => {
               <SheetContent side="left" className="p-4 bg-black text-white">
                 <div className="">
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <img
-                      className="w-12"
-                      src="https://img.b112j.com/bj/h5/assets/images/logo.png?v=1727170388190&source=mcdsrc"
-                      alt=""
-                    />
+                    <Link to="/">
+                      <img className="w-28" src={logo} alt="" />
+                    </Link>
                     <h2 className=""> ফ্রন্ট অফ শার্ট পার্টনার </h2>
                     <img
                       className="w-16"
@@ -113,11 +129,9 @@ const NavMiddle = ({ navItems }) => {
 
           {/* Logo and sponsors */}
           <div className="flex items-center gap-5">
-            <img
-              className="w-10 md:w-16"
-              src="https://www.baji.live/images/web/logo.png"
-              alt="Logo"
-            />
+            <Link to="/">
+              <img className="w-20 md:w-28" src={logo} alt="Logo" />
+            </Link>
             <div className="flex gap-1 md:gap-2">
               {sponsors.map((sponsor) => (
                 <img
@@ -131,17 +145,38 @@ const NavMiddle = ({ navItems }) => {
           </div>
 
           {/* Desktop navigation and buttons */}
-          <div className="md:flex items-center gap-8 text-white hidden">
-            <p
-              className="px-7 py-1 hover:border-[#ffb405] hover:border rounded cursor-pointer"
-              onClick={handleModalOpen}
-            >
-              লগ ইন
-            </p>
-            <Link to="/register">
-              <PrimaryButton>সাইন আপ</PrimaryButton>
-            </Link>
-          </div>
+          {token && user ? (
+            <div className="md:flex items-center gap-3 text-white hidden">
+              <p className="px-3 py-1 rounded cursor-pointer">মেইন ওয়ালেট</p>
+              <p className="px-3 py-1 rounded cursor-pointer">৳ 0</p>
+              <Link to="/profile/deposit">
+                <PrimaryButton>ডিপোজিট</PrimaryButton>
+              </Link>
+              <Link to="/profile">
+                <p className="px-3 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer">
+                  সদস্য কেন্দ্র
+                </p>
+              </Link>
+              <p
+                onClick={handleLogout}
+                className="px-3 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer"
+              >
+                লগ আউট
+              </p>
+            </div>
+          ) : (
+            <div className="md:flex items-center gap-8 text-white hidden">
+              <p
+                className="px-7 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer"
+                onClick={handleModalOpen}
+              >
+                লগ ইন
+              </p>
+              <Link to="/register">
+                <PrimaryButton>সাইন আপ</PrimaryButton>
+              </Link>
+            </div>
+          )}
 
           {/* Icons for app and help in mobile */}
           <div className="flex items-center gap-4 sm:gap-8 md:hidden text-xl sm:text-3xl">
@@ -165,7 +200,7 @@ const NavMiddle = ({ navItems }) => {
         onSave={handleSaveChanges}
       >
         {/* Modal form content */}
-        <LoginForm />
+        <LoginForm closeModal={handleModalClose} />
       </Modal>
     </div>
   );

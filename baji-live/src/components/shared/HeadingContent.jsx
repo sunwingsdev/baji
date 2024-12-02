@@ -12,7 +12,7 @@ const HeadingContent = ({ heading, contents, contentWidth, wrap }) => {
         {contents?.map((content) => (
           <>
             {content.route ? (
-              <Link to={content.route} target="_blank">
+              <Link key={content.id} to={content.route} target="_blank">
                 <img
                   style={{
                     width: `${contentWidth}px`,

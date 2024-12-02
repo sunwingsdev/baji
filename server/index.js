@@ -8,8 +8,7 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 
 // import api modules
 
-const admissionApi = require("./apis/admissionApi/admissionApi");
-
+const usersApi = require("./apis/usersApi/usersApi");
 
 const corsConfig = {
   origin: [
@@ -51,12 +50,10 @@ async function run() {
     await client.connect();
 
     //  collection starts here-----
-    const admissionCollection = client
-      .db("training-admission")
-      .collection("admission");
+    const usersCollection = client.db("baji").collection("users");
 
     // api start here-------
-    app.use("/admission", admissionApi(admissionCollection));
+    app.use("/users", usersApi(usersCollection));
 
     // api ends here--------
 
@@ -72,9 +69,9 @@ run().catch(console.dir);
 
 // basic setup
 app.get("/", (req, res) => {
-  res.send("Theme store server is Running.");
+  res.send("Server is Running.");
 });
 
 app.listen(port, () => {
-  console.log(`Theme store server is Running on PORT:🆗 ${port}`);
+  console.log(`Server is Running on PORT:🆗 ${port}`);
 });

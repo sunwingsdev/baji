@@ -12,7 +12,7 @@ const FooterTop = () => {
   return (
     <div className="text-[#999] py-6">
       <h2 className="text-[#dedede] text-xl py-2">
-        Baji বাংলাদেশ - বাংলাদেশের শীর্ষস্থানীয় অনলাইন গেমিং এবং বেটিং
+        Chomok বাংলাদেশ - বাংলাদেশের শীর্ষস্থানীয় অনলাইন গেমিং এবং বেটিং
         প্ল্যাটফর্ম
       </h2>
 

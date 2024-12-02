@@ -86,9 +86,8 @@ export function BannerSlider() {
           <div className="flex items-center gap-4">
             <HiMiniSpeakerWave className="text-xl md:text-3xl" />
             <Marquee className="text-xs md:text-sm">
-              প্রিয় গ্রাহক, আপনার bajilive.net এ ভিসিট করতে সমস্যা হলে, অনুগ্রহ
-              করে 112233bj.com,2211133bj.com ব্যবহার করুন, এটি আমাদের ব্যাকআপ
-              ওয়েবসাইট লিংক।
+              প্রিয় গ্রাহক, আপনার comokbaji.com এ ভিসিট করতে সমস্যা হলে,
+              অনুগ্রহ করে ---- ব্যবহার করুন, এটি আমাদের ব্যাকআপ ওয়েবসাইট লিংক।
             </Marquee>
           </div>
         </Container>
