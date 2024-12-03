@@ -51,8 +51,8 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [generatedCode, setGeneratedCode] = useState(generateRandomCode());
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { addToast } = useToasts();
 
   const handleNext = (e) => {
@@ -84,14 +84,32 @@ const Register = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    const { id, value } = e.target;
+
+    if (id === "username") {
+      // Regular expression to allow only letters and numbers
+      if (/^[a-zA-Z0-9]*$/.test(value)) {
+        setFormData({ ...formData, [id]: value });
+      } else {
+        addToast(
+          "Only letters and numbers are allowed. No spaces or special characters.",
+          {
+            appearance: "error",
+            autoDismiss: true,
+          }
+        );
+      }
+    } else {
+      // For other fields, update the state normally
+      setFormData({ ...formData, [id]: value });
+    }
   };
 
   const handleCurrencyChange = (value) => {
     setFormData({
       ...formData,
       currency: value,
-      countryCode: currencyToCountryCode[value] || "", // Update country code based on currency
+      countryCode: currencyToCountryCode[value] || "",
     });
   };
 
@@ -133,7 +151,7 @@ const Register = () => {
 
   // Function to go back to the previous route
   const handleGoBack = () => {
-    navigate(-1); // This takes the user to the previous route in history
+    navigate(-1);
   };
 
   return (
@@ -528,7 +546,6 @@ const Register = () => {
               <Label className="text-sm w-1/3" htmlFor="phone">
                 ফোন নাম্বার
               </Label>
-              {/* <p className="w-1/4 text-[#14805e]">+880</p> */}
               <div className="w-1/4">
                 <Select
                   value={formData.countryCode}
@@ -603,7 +620,7 @@ const Register = () => {
                   id="refer"
                   value={formData.refer}
                   onChange={handleChange}
-                  placeholder=" রেফার কোড"
+                  placeholder="রেফার কোড"
                   className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
                 />
                 {formData.refer && (
