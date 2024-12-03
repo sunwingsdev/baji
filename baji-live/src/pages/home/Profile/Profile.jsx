@@ -7,10 +7,10 @@ const Profile = () => {
     <div className="bg-[#4e4e4e] py-6">
       <Container>
         <div className="flex gap-2">
-          <div className="w-[20%] bg-[#313131] rounded">
+          <div className="w-[24%] rounded">
             <Sidebar />
           </div>
-          <div className="w-[80%] bg-[#313131] rounded">
+          <div className="w-[76%] bg-[#313131] rounded">
             <Outlet />
           </div>
         </div>
