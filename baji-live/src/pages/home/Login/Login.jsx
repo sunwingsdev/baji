@@ -27,6 +27,12 @@ const Login = () => {
     navigate(-1);
   };
 
+  const handleInputChange = (value) => {
+    if (/^[a-zA-Z0-9]*$/.test(value)) {
+      setUsername(value);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -70,7 +76,7 @@ const Login = () => {
                 type="text"
                 id="username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)} // Update the state when input changes
+                onChange={(e) => handleInputChange(e.target.value)}
                 placeholder="ব্যবহারকারীর নাম"
                 className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
               />
@@ -93,10 +99,10 @@ const Login = () => {
             </Label>
             <div className="w-2/3 h-full relative">
               <Input
-                type={showPassword ? "text" : "password"} // Toggle password visibility
+                type={showPassword ? "text" : "password"}
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} // Update the state when input changes
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="পাসওয়ার্ড"
                 className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
               />

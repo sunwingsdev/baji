@@ -25,7 +25,11 @@ const LoginForm = ({ closeModal }) => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
+  const handleInputChange = (value) => {
+    if (/^[a-zA-Z0-9]*$/.test(value)) {
+      setUsername(value);
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -60,7 +64,7 @@ const LoginForm = ({ closeModal }) => {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => handleInputChange(e.target.value)}
             placeholder="ব্যবহারকারীর নাম"
             className="pl-14 rounded border-[#adacb1] focus:outline-none"
           />
