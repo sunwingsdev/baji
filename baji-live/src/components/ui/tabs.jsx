@@ -18,16 +18,32 @@ const TabsList = React.forwardRef(({ className, ...props }, ref) => (
 
 TabsList.displayName = TabsPrimitive.List.displayName;
 
-const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "flex-1 flex items-center justify-center whitespace-nowrap rounded-sm min-w-[74px] py-3 text-sm font-medium text-center ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-[#2b2b2b] data-[state=active]:text-white data-[state=active]:shadow-sm",
-      className
-    )}
-    {...props}
-  />
-));
+const TabsTrigger = React.forwardRef(
+  (
+    {
+      className,
+      activeBgColor = "bg-[#2b2b2b]",
+      activeTextColor = "text-white",
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <TabsPrimitive.Trigger
+        ref={ref}
+        className={cn(
+          `flex-1 flex items-center justify-center whitespace-nowrap rounded-sm min-w-[74px] py-3 text-sm font-medium text-center ring-offset-background transition-all 
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50
+          data-[state=active]:shadow-sm`,
+          `data-[state=active]:${activeBgColor}`,
+          `data-[state=active]:${activeTextColor}`,
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
 const TabsContent = React.forwardRef(({ className, ...props }, ref) => (

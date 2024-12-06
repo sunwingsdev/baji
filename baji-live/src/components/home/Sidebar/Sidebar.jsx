@@ -1,7 +1,10 @@
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <div className="">
       <div className="bg-[#313131]">
@@ -12,7 +15,7 @@ const Sidebar = () => {
             alt=""
           />
           <h2 className="text-sm font-semibold text-white text-center">
-            abirhassan31
+            {user?.user.fullName}
           </h2>
           <p className="flex justify-center items-center gap-1 text-white">
             <FaStar className="text-teal-300" size={12} />0

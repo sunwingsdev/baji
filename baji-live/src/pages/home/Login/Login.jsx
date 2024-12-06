@@ -37,6 +37,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data: loginData } = await loginUser({ username, password });
+
       if (loginData.token) {
         const { data: userData } = await getUser(loginData.token);
         dispatch(setCredentials({ token: loginData.token, user: userData }));
@@ -46,8 +47,12 @@ const Login = () => {
         });
         navigate("/");
       }
-    } catch (err) {
-      console.error("Login failed:", err);
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      addToast("Provide valid username and password", {
+        appearance: "error",
+        autoDismiss: true,
+      });
     }
   };
 
