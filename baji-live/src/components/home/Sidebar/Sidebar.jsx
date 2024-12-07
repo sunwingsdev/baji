@@ -1,5 +1,5 @@
 import { FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Sidebar = () => {
@@ -28,7 +28,12 @@ const Sidebar = () => {
         </div>
         <div className="bg-[#464646] w-[80%] h-0.5 m-auto mt-4"></div>
         <div className="flex justify-around items-center text-sm py-4">
-          <Link className="text-white hover:text-teal-300">
+          <NavLink
+            to="/profile/deposit"
+            className={({ isActive }) =>
+              isActive ? "text-teal-300" : "text-white hover:text-teal-300"
+            }
+          >
             <div className="bg-[#5a5a5a] w-9 h-9 m-auto rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/player/sidenav/deposit.svg"
@@ -36,7 +41,7 @@ const Sidebar = () => {
               />
             </div>
             <p className="mt-1">ডিপোজিট</p>
-          </Link>
+          </NavLink>
           <Link className="text-white hover:text-teal-300 text-sm">
             <div className="bg-[#5a5a5a] w-9 h-9 m-auto rounded-full flex justify-center items-center">
               <img
