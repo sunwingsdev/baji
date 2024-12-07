@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { IoMailOutline } from "react-icons/io5";
 import { MdSmartphone } from "react-icons/md";
+import DepositTab from "@/components/home/DepositTab/DepositTab";
+import WithdrawTab from "@/components/home/WithdrawTab/WithdrawTab";
 
 const Deposit = () => {
-  const [activeTab, setActiveTab] = useState("deposit"); // State to track the active tab
+  const [activeTab, setActiveTab] = useState("deposit");
 
   return (
     <div className="space-y-3">
@@ -27,106 +29,59 @@ const Deposit = () => {
         </div>
       </div>
 
-      {/* Tabs Section */}
-      <div className="bg-[#313131] px-3 py-4 rounded space-y-4">
-        <div className="flex items-center justify-between">
-          <p className="px-6 border-s-8 border-[#26ffbc] text-[#26ffbc] w-1/2 hidden md:block">
-            ফান্ডস
+      <div className="flex justify-center gap-3 items-start">
+        {/* Tabs Section */}
+        <div className="bg-[#313131] px-3 py-4 rounded space-y-4 w-full md:w-4/5">
+          <div className="flex items-center justify-between">
+            <p className="px-6 border-s-8 border-[#26ffbc] text-[#26ffbc] w-1/2 hidden md:block">
+              ফান্ডস
+            </p>
+            <div className="grid grid-cols-2 w-full md:w-1/2 text-sm text-white bg-[#464646] rounded">
+              <button
+                className={`py-2 text-center font-medium w-full rounded ${
+                  activeTab === "deposit"
+                    ? "bg-gradient-to-r from-[#f79604] to-[#fbc103] scale-110"
+                    : "bg-[#464646]"
+                }`}
+                onClick={() => setActiveTab("deposit")}
+              >
+                ডিপোজিট
+              </button>
+              <button
+                className={`py-2 text-center font-medium w-full rounded ${
+                  activeTab === "withdraw"
+                    ? "bg-gradient-to-r from-[#f79604] to-[#fbc103] scale-110"
+                    : "bg-[#464646]"
+                }`}
+                onClick={() => setActiveTab("withdraw")}
+              >
+                উইথড্র
+              </button>
+            </div>
+          </div>
+          <div className="border-t border-dashed border-[#26ffbc]"></div>
+
+          {/* Tab Content */}
+          {activeTab === "deposit" && <DepositTab />}
+
+          {activeTab === "withdraw" && <WithdrawTab />}
+        </div>
+
+        <div className="bg-[#313131] px-3 py-4 rounded space-y-4 w-1/5 text-xs hidden md:block">
+          <p className=" text-[#7293E1]">
+            {activeTab === "deposit"
+              ? "আমানত রেকর্ড"
+              : "রেকর্ড প্রত্যাহার করুন"}
           </p>
-          <div className="grid grid-cols-2 w-full md:w-1/2 text-sm text-white bg-[#464646]">
-            <button
-              className={`py-2 text-center font-medium w-full ${
-                activeTab === "deposit"
-                  ? "bg-gradient-to-r from-[#f79604] to-[#fbc103] rounded scale-110"
-                  : "bg-[#464646]"
-              }`}
-              onClick={() => setActiveTab("deposit")}
-            >
-              ডিপোজিট
-            </button>
-            <button
-              className={`py-2 text-center font-medium w-full ${
-                activeTab === "withdraw"
-                  ? "bg-gradient-to-r from-[#f79604] to-[#fbc103] rounded scale-110"
-                  : "bg-[#464646]"
-              }`}
-              onClick={() => setActiveTab("withdraw")}
-            >
-              উইথড্র
-            </button>
+          <div className="flex flex-col items-center justify-center gap-3 py-5">
+            <img
+              className="w-24"
+              src="https://www.baji.live/images/web/player/table/no-value.svg"
+              alt=""
+            />
+            <p className="text-white opacity-50">কোনও ডেটা নেই</p>
           </div>
         </div>
-        <div className="border-t border-dashed border-[#26ffbc]"></div>
-
-        {/* Tab Content */}
-        {activeTab === "deposit" && (
-          <div className="text-white space-y-4">
-            <div className="space-y-2">
-              {" "}
-              <p className="text-sm">পেমেন্ট পদ্ধতি</p>
-              <div className="flex gap-3">
-                <div className="group flex flex-col items-center justify-center gap-2 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] px-10 py-2">
-                  <img
-                    className="w-7"
-                    src="https://www.baji.live/images/web/thirdparty/bkash.png"
-                    alt=""
-                  />
-                  <p className=" text-sm opacity-50 group-hover:opacity-100">
-                    bKash
-                  </p>
-                </div>
-                <div className="group flex flex-col items-center justify-center gap-2 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] px-10 py-2">
-                  <img
-                    className="w-7"
-                    src="https://www.baji.live/images/web/thirdparty/bkash.png"
-                    alt=""
-                  />
-                  <p className=" text-sm opacity-50 group-hover:opacity-100">
-                    bKash
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <p className="text-sm">ডিপোজিট চ্যানেল</p>
-              <div className="flex gap-3">
-                <div className="flex flex-col items-center justify-center gap-2">
-                  <p className="text-sm opacity-50 px-10 py-2 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] hover:opacity-100">
-                    CashOut
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <p className="text-sm">এমাউন্ট</p>
-              <div className="flex gap-3">
-                <div className="flex items-center justify-start flex-wrap gap-2">
-                  <p className="text-center text-sm opacity-50 py-1.5 md:py-3 w-20 md:w-28 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] hover:opacity-100">
-                    200
-                  </p>
-                  <p className="text-center text-sm opacity-50 py-1.5 md:py-3 w-20 md:w-28 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] hover:opacity-100">
-                    500
-                  </p>
-                  <p className="text-center text-sm opacity-50 py-1.5 md:py-3 w-20 md:w-28 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] hover:opacity-100">
-                    1000
-                  </p>
-                  <p className="text-center text-sm opacity-50 py-1.5 md:py-3 w-20 md:w-28 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] hover:opacity-100">
-                    3000
-                  </p>
-                  <p className="text-center text-sm opacity-50 py-1.5 md:py-3 w-20 md:w-28 border border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c] hover:opacity-100">
-                    5000
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "withdraw" && (
-          <div>
-            <p>উইথড্র</p>
-          </div>
-        )}
       </div>
     </div>
   );
