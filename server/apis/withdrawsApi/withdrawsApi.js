@@ -13,8 +13,39 @@ const withdrawsApi = (withdrawsCollection) => {
   });
 
   router.get("/", async (req, res) => {
-    const result = await withdrawsCollection.find().toArray();
-    res.send(result);
+    try {
+      const result = await withdrawsCollection
+        .aggregate([
+          {
+            $addFields: {
+              userId: { $toObjectId: "$userId" },
+            },
+          },
+          {
+            $lookup: {
+              from: "users",
+              localField: "userId",
+              foreignField: "_id",
+              as: "userInfo",
+            },
+          },
+          {
+            $unwind: {
+              path: "$userInfo",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $project: {
+              "userInfo.password": 0,
+            },
+          },
+        ])
+        .toArray();
+    } catch (error) {
+      console.error("Error fetching withdraws:", error);
+      res.status(500).send({ error: "Failed to fetch withdraws" });
+    }
   });
 
   return router;
