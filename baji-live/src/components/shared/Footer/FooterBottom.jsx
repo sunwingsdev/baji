@@ -39,7 +39,7 @@ const FooterBottom = () => {
             ))}
           </div>
           <p className="text-xs text-[#999]">
-            © 2024 Baji কপিরাইট। সমস্ত অধিকার সংরক্ষিত
+            © 2024 Oracle Technology LLC কপিরাইট। সমস্ত অধিকার সংরক্ষিত
           </p>
         </div>
       </div>

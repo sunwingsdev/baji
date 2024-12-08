@@ -9,6 +9,8 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 // import api modules
 
 const usersApi = require("./apis/usersApi/usersApi");
+const depositsApi = require("./apis/depositsApi/depositsApi");
+const withdrawsApi = require("./apis/withdrawsApi/withdrawsApi");
 
 const corsConfig = {
   origin: [
@@ -18,6 +20,10 @@ const corsConfig = {
     "http://comokbaji.com",
     "www.comokbaji.com",
     "comokbaji.com",
+    "https://moneyeran365.com",
+    "http://moneyeran365.com",
+    "www.moneyeran365.com",
+    "moneyeran365.com",
     "*",
   ],
   credentials: true,
@@ -51,9 +57,12 @@ async function run() {
 
     //  collection starts here-----
     const usersCollection = client.db("baji").collection("users");
-
+    const depositsCollection = client.db("baji").collection("deposits");
+    const withdrawsCollection = client.db("baji").collection("withdraws");
     // api start here-------
     app.use("/users", usersApi(usersCollection));
+    app.use("/deposits", depositsApi(depositsCollection));
+    app.use("/withdraws", withdrawsApi(withdrawsCollection));
 
     // api ends here--------
 

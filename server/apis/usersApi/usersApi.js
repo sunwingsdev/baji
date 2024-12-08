@@ -46,6 +46,7 @@ const usersApi = (usersCollection) => {
         return res.status(400).json({ error: "User already exists" });
       const hashedPassword = await bcrypt.hash(userInfo?.password, 10);
       const newUser = { ...userInfo, password: hashedPassword };
+      newUser.createdAt = new Date();
       const result = await usersCollection.insertOne(newUser);
       res.status(201).send(result);
     } catch (error) {
@@ -76,6 +77,12 @@ const usersApi = (usersCollection) => {
         { userId: user._id, username: user.username },
         jwtSecret,
         { expiresIn: "7d" }
+      );
+
+      await usersCollection.updateOne(
+        { username },
+        { $set: { lastLoginAt: new Date() } },
+        { upsert: true }
       );
 
       res.status(200).json({ token });

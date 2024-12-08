@@ -7,7 +7,7 @@ const Sidebar = () => {
 
   return (
     <div className="">
-      <div className="bg-[#313131]">
+      <div className="bg-[#313131] rounded">
         <div className="pt-6 pb-5">
           <img
             className="w-12 m-auto"
@@ -167,7 +167,7 @@ const Sidebar = () => {
       </h2>
       <div className="grid grid-cols-2 gap-2">
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/socialicons/facebook.svg"
@@ -178,7 +178,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/socialicons/instagram.svg"
@@ -189,7 +189,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/socialicons/twitter.svg"
@@ -200,7 +200,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/socialicons/pinterest.svg"
@@ -211,7 +211,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/socialicons/youtube.svg"
@@ -222,7 +222,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/socialicons/telegram-channel.svg"
@@ -236,7 +236,7 @@ const Sidebar = () => {
       <h2 className="text-sm font-semibold text-teal-600 py-2">কমিউনিটি cs</h2>
       <div className="grid grid-cols-2 gap-2">
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/csicons/whatsapp.svg"
@@ -247,7 +247,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/csicons/email.svg"
@@ -258,7 +258,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <Link>
-          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300">
+          <div className="flex items-center gap-2 text-white hover:text-teal-300 bg-[#272727] hover:bg-[#3e3e3e] py-2 px-4 duration-300 rounded">
             <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/socialicons/facebook.svg"
