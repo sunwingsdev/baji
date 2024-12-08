@@ -11,6 +11,7 @@ import Profile from "@/pages/home/Profile/Profile";
 import Deposit from "@/pages/home/Deposit/Deposit";
 import ProfileHome from "@/pages/home/ProfileHome/ProfileHome";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "@/layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
     ],
   },
 
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+  },
   {
     path: "/login",
     element: <Login />,
