@@ -157,6 +157,11 @@ const NavMiddle = ({ navItems }) => {
                   সদস্য কেন্দ্র
                 </p>
               </Link>
+              <Link to="/dashboard">
+                <p className="px-3 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer">
+                  Admin
+                </p>
+              </Link>
               <p
                 onClick={handleLogout}
                 className="px-3 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer"

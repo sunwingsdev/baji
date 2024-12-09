@@ -106,8 +106,6 @@ const usersApi = (usersCollection) => {
   });
 
   router.get("/", async (req, res) => {
-    console.log(req.headers);
-    console.log("object");
     try {
       const result = await usersCollection
         .find({}, { projection: { password: 0 } })
