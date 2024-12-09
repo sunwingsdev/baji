@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LuUserCircle2 } from "react-icons/lu";
+import { LuUser } from "react-icons/lu";
 import { PiWallet } from "react-icons/pi";
 import { RiIdCardLine } from "react-icons/ri";
 import { IoMdHome } from "react-icons/io";
@@ -27,7 +27,7 @@ const MenuMobile = () => {
     { icon: RiIdCardLine, title: "প্রমোশন", route: "" },
     { icon: PiWallet, title: "ডিপোজিট", route: "/profile/deposit" },
     {
-      icon: LuUserCircle2,
+      icon: LuUser,
       title: "মাই একাউন্ট",
       route: "",
       onClick: () => setDrawerOpen(true),
