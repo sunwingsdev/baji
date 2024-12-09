@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .custom-gradient-text {
   background: -webkit-linear-gradient(#ffffbe, #d1a129);
   -webkit-background-clip: text;
@@ -84,4 +83,14 @@
 .scrollbar-hidden {
   -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Custom scrollbar hide */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }

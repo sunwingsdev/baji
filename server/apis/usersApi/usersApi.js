@@ -105,6 +105,19 @@ const usersApi = (usersCollection) => {
     }
   });
 
+  router.get("/", async (req, res) => {
+    console.log(req.headers);
+    console.log("object");
+    try {
+      const result = await usersCollection
+        .find({}, { projection: { password: 0 } })
+        .toArray();
+      res.send(result);
+    } catch (error) {
+      res.status(500).send({ error: "Failed to fetch users" });
+    }
+  });
+
   return router;
 };
 

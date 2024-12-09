@@ -1,9 +1,10 @@
 const express = require("express");
+const { ObjectId } = require("mongodb");
 
 const withdrawsApi = (withdrawsCollection) => {
   const router = express.Router();
 
-  // add a deposit request
+  // Add a withdraw request
   router.post("/", async (req, res) => {
     const withdrawInfo = req.body;
     withdrawInfo.status = "pending";
@@ -12,6 +13,7 @@ const withdrawsApi = (withdrawsCollection) => {
     res.send(result);
   });
 
+  // Get all withdraws with user information
   router.get("/", async (req, res) => {
     try {
       const result = await withdrawsCollection
@@ -42,6 +44,8 @@ const withdrawsApi = (withdrawsCollection) => {
           },
         ])
         .toArray();
+
+      res.send(result);
     } catch (error) {
       console.error("Error fetching withdraws:", error);
       res.status(500).send({ error: "Failed to fetch withdraws" });
