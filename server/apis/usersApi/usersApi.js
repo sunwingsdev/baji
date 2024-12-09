@@ -46,6 +46,7 @@ const usersApi = (usersCollection) => {
         return res.status(400).json({ error: "User already exists" });
       const hashedPassword = await bcrypt.hash(userInfo?.password, 10);
       const newUser = { ...userInfo, password: hashedPassword };
+      newUser.createdAt = new Date();
       const result = await usersCollection.insertOne(newUser);
       res.status(201).send(result);
     } catch (error) {
@@ -78,6 +79,12 @@ const usersApi = (usersCollection) => {
         { expiresIn: "7d" }
       );
 
+      await usersCollection.updateOne(
+        { username },
+        { $set: { lastLoginAt: new Date() } },
+        { upsert: true }
+      );
+
       res.status(200).json({ token });
     } catch (error) {
       res.status(500).json({ error: "Login failed" });
@@ -95,6 +102,19 @@ const usersApi = (usersCollection) => {
       res.status(200).json({ user: userInfo });
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch profile" });
+    }
+  });
+
+  router.get("/", async (req, res) => {
+    console.log(req.headers);
+    console.log("object");
+    try {
+      const result = await usersCollection
+        .find({}, { projection: { password: 0 } })
+        .toArray();
+      res.send(result);
+    } catch (error) {
+      res.status(500).send({ error: "Failed to fetch users" });
     }
   });
 

@@ -1,22 +1,9 @@
-// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-// const baseApi = createApi({
-//   reducerPath: "api",
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: import.meta.env.VITE_BASE_API_URL,
-//   }),
-//   tagTypes: ["users"],
-//   endpoints: () => ({}),
-// });
-
-// export default baseApi;
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_API_URL, // Adjust to match your backend URL
+    baseUrl: import.meta.env.VITE_BASE_API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth?.token;
       if (token) {
@@ -25,7 +12,7 @@ const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["users"],
+  tagTypes: ["users", "deposits", "withdraws"],
   endpoints: () => ({}),
 });
 

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { FaAffiliatetheme, FaAngleDown } from "react-icons/fa";
 import { IoIosArrowBack, IoMdHome } from "react-icons/io";
-import { PiFlagBannerFoldDuotone, PiHandDepositThin } from "react-icons/pi";
+import { PiFlagBannerFoldDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { TbAffiliate } from "react-icons/tb";
+import { FaUsers } from "react-icons/fa";
+import { PiHandWithdrawDuotone, PiHandDepositDuotone } from "react-icons/pi";
 import {
   MdConnectWithoutContact,
   MdHistory,
@@ -16,6 +18,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
   // State to track submenu visibility for each menu item
   const [submenuOpen, setSubmenuOpen] = useState({
     Deposit: false,
+    withdraw: false,
     HomePage: false,
   });
 
@@ -71,6 +74,16 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Home</p>
           </div>
         </Link>
+        <Link to="/dashboard/users">
+          <div
+            className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
+              !open && "justify-center"
+            }`}
+          >
+            <FaUsers size={22} className="text-yellow-300" />
+            <p className={`${!open && "hidden"}`}>Users</p>
+          </div>
+        </Link>
         <Link>
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
@@ -81,85 +94,110 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Affiliate</p>
           </div>
         </Link>
-        <Link>
-          {/* Deposit Menu */}
+        {/* Deposit Menu */}
+        <div
+          className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
+          onClick={() => toggleSubmenu("Deposit")}
+        >
           <div
-            className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
-            onClick={() => toggleSubmenu("Deposit")}
+            className={`px-4 py-3 flex items-center gap-2 duration-300 ${
+              !open ? "justify-center" : "justify-between"
+            }`}
           >
-            <div
-              className={`px-4 py-3 flex items-center gap-2 duration-300 ${
-                !open ? "justify-center" : "justify-between"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <PiHandDepositThin size={22} className="text-yellow-300" />
-                <p className={`${!open && "hidden"}`}> Deposit </p>
-              </div>
-              <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <div className="flex items-center gap-2">
+              <PiHandDepositDuotone size={22} className="text-yellow-300" />
+              <p className={`${!open && "hidden"}`}> Deposit </p>
             </div>
-            {submenuOpen.Deposit && open && (
-              <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-                <Link to="" className="py-2.5 flex gap-2">
-                  <MdHistory size={22} className="text-yellow-300" />
-                  Deposit History
-                </Link>
-                <Link to="" className="py-2.5 flex gap-2">
-                  <VscSymbolMethod size={22} className="text-yellow-300" />
-                  Deposit Method
-                </Link>
-              </div>
-            )}
+            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
           </div>
-        </Link>
-        <Link>
-          {/* HomePage Menu */}
+          {submenuOpen.Deposit && open && (
+            <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
+              <Link to="/dashboard/deposits" className="py-2.5 flex gap-2">
+                <MdHistory size={22} className="text-yellow-300" />
+                Deposit History
+              </Link>
+              <Link to="" className="py-2.5 flex gap-2">
+                <VscSymbolMethod size={22} className="text-yellow-300" />
+                Deposit Method
+              </Link>
+            </div>
+          )}
+        </div>
+        {/* withdraw Menu */}
+        <div
+          className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
+          onClick={() => toggleSubmenu("withdraw")}
+        >
           <div
-            className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
-            onClick={() => toggleSubmenu("HomePage")}
+            className={`px-4 py-3 flex items-center gap-2 duration-300 ${
+              !open ? "justify-center" : "justify-between"
+            }`}
           >
-            <div
-              className={`px-4 py-3 flex items-center gap-2 duration-300 ${
-                !open ? "justify-center" : "justify-between"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <FaAffiliatetheme size={22} className="text-yellow-300" />
-                <p className={`${!open && "hidden"}`}> Home Page </p>
-              </div>
-              <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <div className="flex items-center gap-2">
+              <PiHandWithdrawDuotone size={22} className="text-yellow-300" />
+              <p className={`${!open && "hidden"}`}> Withdraw </p>
             </div>
-            {submenuOpen.HomePage && open && (
-              <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-                <Link to="" className="py-2.5 flex gap-2">
-                  <PiFlagBannerFoldDuotone
-                    size={20}
-                    className="text-yellow-300"
-                  />
-                  Banner
-                </Link>
-                <Link to="" className="py-2.5 flex gap-2">
-                  <CiSliderHorizontal size={20} className="text-yellow-300" />
-                  Slider
-                </Link>
-                <Link to="" className="py-2.5 flex gap-2">
-                  <MdOutlineRemoveFromQueue
-                    size={20}
-                    className="text-yellow-300"
-                  />
-                  From
-                </Link>
-                <Link to="" className="py-2.5 flex gap-2">
-                  <MdConnectWithoutContact
-                    size={20}
-                    className="text-yellow-300"
-                  />
-                  Contact
-                </Link>
-              </div>
-            )}
+            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
           </div>
-        </Link>
+          {submenuOpen.withdraw && open && (
+            <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
+              <Link to="/dashboard/withdraws" className="py-2.5 flex gap-2">
+                <MdHistory size={22} className="text-yellow-300" />
+                Withdraws History
+              </Link>
+              <Link to="" className="py-2.5 flex gap-2">
+                <VscSymbolMethod size={22} className="text-yellow-300" />
+                Withdraw Method
+              </Link>
+            </div>
+          )}
+        </div>
+        {/* HomePage Menu */}
+        <div
+          className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
+          onClick={() => toggleSubmenu("HomePage")}
+        >
+          <div
+            className={`px-4 py-3 flex items-center gap-2 duration-300 ${
+              !open ? "justify-center" : "justify-between"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <FaAffiliatetheme size={22} className="text-yellow-300" />
+              <p className={`${!open && "hidden"}`}> Home Page </p>
+            </div>
+            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+          </div>
+          {submenuOpen.HomePage && open && (
+            <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
+              <Link to="" className="py-2.5 flex gap-2">
+                <PiFlagBannerFoldDuotone
+                  size={20}
+                  className="text-yellow-300"
+                />
+                Banner
+              </Link>
+              <Link to="" className="py-2.5 flex gap-2">
+                <CiSliderHorizontal size={20} className="text-yellow-300" />
+                Slider
+              </Link>
+              <Link to="" className="py-2.5 flex gap-2">
+                <MdOutlineRemoveFromQueue
+                  size={20}
+                  className="text-yellow-300"
+                />
+                From
+              </Link>
+              <Link to="" className="py-2.5 flex gap-2">
+                <MdConnectWithoutContact
+                  size={20}
+                  className="text-yellow-300"
+                />
+                Contact
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
       {/* End Menu bar */}
     </div>
