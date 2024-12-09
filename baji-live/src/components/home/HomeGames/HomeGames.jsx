@@ -141,7 +141,10 @@ const HomeGames = () => {
       </h2>
       <div className="flex overflow-x-auto gap-4">
         {games.map((game) => (
-          <div className="flex flex-col items-center gap-2 min-w-44" key={game}>
+          <div
+            className="flex flex-col items-center gap-2 min-w-44"
+            key={game.id}
+          >
             <img className="w-full rounded-lg" src={game.image} alt="" />
             <p className="text-base">{game.title}</p>
           </div>

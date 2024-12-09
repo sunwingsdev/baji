@@ -15,6 +15,7 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import Users from "@/pages/dashboard/users/Users";
 import DashboardDeposits from "@/pages/dashboard/DashboardDeposits/DashboardDeposits";
 import WithdrawsHistory from "@/pages/dashboard/WithdrawsHistory/WithdrawsHistory";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +66,11 @@ const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <AdminRoute>
+        <DashboardLayout />
+      </AdminRoute>
+    ),
     children: [
       {
         path: "users",
