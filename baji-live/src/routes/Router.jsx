@@ -11,6 +11,10 @@ import Profile from "@/pages/home/Profile/Profile";
 import Deposit from "@/pages/home/Deposit/Deposit";
 import ProfileHome from "@/pages/home/ProfileHome/ProfileHome";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "@/layouts/DashboardLayout";
+import Users from "@/pages/dashboard/users/Users";
+import DashboardDeposits from "@/pages/dashboard/DashboardDeposits/DashboardDeposits";
+import WithdrawsHistory from "@/pages/dashboard/WithdrawsHistory/WithdrawsHistory";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +63,24 @@ const router = createBrowserRouter([
     ],
   },
 
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "users",
+        element: <Users />,
+      },
+      {
+        path: "deposits",
+        element: <DashboardDeposits />,
+      },
+      {
+        path: "withdraws",
+        element: <WithdrawsHistory />,
+      },
+    ],
+  },
   {
     path: "/login",
     element: <Login />,
