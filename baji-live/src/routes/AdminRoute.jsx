@@ -1,13 +1,18 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
 
 const AdminRoute = ({ children }) => {
   const { token, user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const { addToast } = useToasts();
 
-  console.log("Auth State:", { token, user });
-
-  if (!token || !user || user?.user?.role !== "admin") {
-    return <Navigate to="/" />;
+  if (!token || !user || user?.user.role !== "admin") {
+    addToast("Please login as a admin", {
+      appearance: "error",
+      autoDismiss: true,
+    });
+    navigate("/");
   }
 
   return children;

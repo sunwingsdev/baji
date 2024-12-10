@@ -197,14 +197,12 @@ const NavMiddle = ({ navItems }) => {
         </div>
       </Container>
 
-      {/* Reusable modal instance */}
       <Modal
         isOpen={isModalOpen}
         onOpenChange={handleModalClose}
         title="Baji এ আপনাকে স্বাগতম"
         onSave={handleSaveChanges}
       >
-        {/* Modal form content */}
         <LoginForm closeModal={handleModalClose} />
       </Modal>
     </div>

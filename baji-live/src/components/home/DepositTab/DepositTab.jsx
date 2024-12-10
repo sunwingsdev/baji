@@ -110,7 +110,7 @@ const DepositTab = () => {
       {/* Payment Method */}
       <div className="space-y-2">
         <p className="text-sm">পেমেন্ট পদ্ধতি</p>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           {depositMethods.map((method) => (
             <div
               key={method.paymentMethod}

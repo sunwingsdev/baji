@@ -136,7 +136,7 @@ const DashboardHome = () => {
   ];
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="space-y-4">
       {/* Top Statistics */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {stats.map((stat, index) => (
