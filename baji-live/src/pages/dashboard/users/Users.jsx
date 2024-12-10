@@ -30,8 +30,8 @@ const Users = () => {
   ];
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">All users</h1>
+    <div className="">
+      <h1 className="text-lg md:text-2xl font-bold mb-4">All users</h1>
       <DynamicTable columns={columns} data={data} />
     </div>
   );
