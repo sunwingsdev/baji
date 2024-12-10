@@ -16,6 +16,7 @@ import Users from "@/pages/dashboard/users/Users";
 import DashboardDeposits from "@/pages/dashboard/DashboardDeposits/DashboardDeposits";
 import WithdrawsHistory from "@/pages/dashboard/WithdrawsHistory/WithdrawsHistory";
 import AdminRoute from "./AdminRoute";
+import DashboardHome from "@/components/dashboard/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       </AdminRoute>
     ),
     children: [
+      {
+        path: "",
+        element: <DashboardHome />,
+      },
       {
         path: "users",
         element: <Users />,
