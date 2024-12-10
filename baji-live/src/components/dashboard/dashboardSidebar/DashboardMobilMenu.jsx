@@ -1,16 +1,42 @@
-import { IoIosContact, IoMdMenu } from "react-icons/io";
+import {
+  IoIosContact,
+  IoMdMenu,
+  IoIosArrowDown,
+  IoIosArrowForward,
+} from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { IoClose } from "react-icons/io5";
+import { IoClose } from "react-icons/io5"; // Close icon
+
 const DashboardMobilMenu = ({ open }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState({
+    Deposit: false,
+    withdraw: false,
+    HomePage: false,
+    Bonuses: false,
+    Stats: false,
+    Activity_Log: false,
+    Pages: false,
+    Settings: false,
+  });
 
+  // Toggle the sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  // Close the sidebar
   const closeSidebar = () => {
     setIsSidebarOpen(false);
+  };
+
+  // Toggle the submenu (for each menu item)
+  const toggleSubmenu = (menu) => {
+    setIsSubmenuOpen((prevState) => ({
+      ...prevState,
+      [menu]: !prevState[menu],
+    }));
   };
 
   return (
@@ -58,6 +84,350 @@ const DashboardMobilMenu = ({ open }) => {
           >
             <IoClose size={36} />
           </div>
+        </div>
+
+        {/* Menu Items with Submenu */}
+        <div className="text-white">
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/shops" className="block">
+              Home
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Users
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Agent Tree
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Shops
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Tournaments
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Categories
+            </Link>
+          </div>
+
+          {/* Bonuses Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("Bonuses")}
+          >
+            <div className="">
+              <p>Bonuses</p>
+            </div>
+            {isSubmenuOpen.Bonuses ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.Bonuses && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                Happy Hour
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Progress Bonuses
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Invite Friends
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Welcome Bonuses
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                SMS Bonuses
+              </Link>
+            </div>
+          )}
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Jackpot
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Pincodes
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Games
+            </Link>
+          </div>
+
+          {/* Stats Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("Stats")}
+          >
+            <div className="">
+              <p>Stats</p>
+            </div>
+            {isSubmenuOpen.Stats ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.Stats && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                Pay Stats
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Game Stats
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Shift Stats
+              </Link>
+            </div>
+          )}
+
+          {/* Activity Log Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("Activity_Log")}
+          >
+            <div className="">
+              <p>Activity_Log</p>
+            </div>
+            {isSubmenuOpen.Activity_Log ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.Activity_Log && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                All
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                System Data
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                User Data
+              </Link>
+            </div>
+          )}
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Permissions
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Api Keys
+            </Link>
+          </div>
+
+          {/* Pages Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("Pages")}
+          >
+            <div className="">
+              <p>Pages</p>
+            </div>
+            {isSubmenuOpen.Pages ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.Pages && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                Helper
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Articles
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Rules
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                FAQ
+              </Link>
+            </div>
+          )}
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              SMS Mailing
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Affiliate
+            </Link>
+          </div>
+
+          {/* Deposit Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("Deposit")}
+          >
+            <div className="">
+              <p>Deposit</p>
+            </div>
+            {isSubmenuOpen.Deposit ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.Deposit && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                Deposit History
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Deposit Method
+              </Link>
+            </div>
+          )}
+
+          {/* withdraw Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("withdraw")}
+          >
+            <div className="">
+              <p>Withdraw</p>
+            </div>
+            {isSubmenuOpen.withdraw ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.withdraw && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                Withdraw History
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Withdraw Method
+              </Link>
+            </div>
+          )}
+
+          {/* Homepage Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("Homepage")}
+          >
+            <div className="">
+              <p>Homepage</p>
+            </div>
+            {isSubmenuOpen.Homepage ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.Homepage && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                Banner
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Slider
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Form
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Contact
+              </Link>
+            </div>
+          )}
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Support
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Bank
+            </Link>
+          </div>
+
+          <div className="py-2.5 px-4">
+            <Link to="/dashboard/users" className="block">
+              Security
+            </Link>
+          </div>
+
+          {/* Settings Menu */}
+          <div
+            className="py-2.5 px-4  flex items-center justify-between"
+            onClick={() => toggleSubmenu("Settings")}
+          >
+            <div className="">
+              <p>Settings</p>
+            </div>
+            {isSubmenuOpen.Settings ? (
+              <IoIosArrowDown size={24} />
+            ) : (
+              <IoIosArrowForward size={24} />
+            )}
+          </div>
+          {isSubmenuOpen.Settings && (
+            <div className="pl-4 py-2">
+              <Link to="/dashboard" className="block py-2.5 px-4 ">
+                General
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Securities
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                SMS
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Payment
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Banks
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Categories
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Games
+              </Link>
+              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+                Auth
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
