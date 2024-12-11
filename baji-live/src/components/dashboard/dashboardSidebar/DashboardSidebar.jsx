@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   FaAffiliatetheme,
   FaAngleDown,
-  FaChartBar,
   FaChartLine,
   FaGamepad,
   FaHeartbeat,
@@ -124,7 +123,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Users</p>
           </div>
         </Link>
-        <Link to="/dashboard/agent-tree">
+        <Link onClick={handleModalOpen} to="/dashboard/users">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -134,7 +133,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Agent Tree</p>
           </div>
         </Link>
-        <Link to="/dashboard/shops">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -144,7 +143,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Shops</p>
           </div>
         </Link>
-        <Link to="/dashboard/tournaments">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -154,7 +153,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Tournaments</p>
           </div>
         </Link>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -205,7 +204,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             </div>
           )}
         </div>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -215,7 +214,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Jackpot</p>
           </div>
         </Link>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -225,7 +224,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Pincodes</p>
           </div>
         </Link>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -253,55 +252,35 @@ const DashboardSidebar = ({ open, setOpen }) => {
           </div>
           {submenuOpen.Stats && open && (
             <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-              <Link to="/dashboard/happyhour" className="py-2.5 flex gap-2">
+              <Link
+                onClick={handleModalOpen}
+                to="/dashboard"
+                className="py-2.5 flex gap-2"
+              >
                 <FaRegCircle size={22} className="text-yellow-300" />
                 Pay Stats
               </Link>
-              <Link to="/dashboard/happyhour" className="py-2.5 flex gap-2">
+              <Link
+                onClick={handleModalOpen}
+                to="/dashboard"
+                className="py-2.5 flex gap-2"
+              >
                 <FaRegCircle size={22} className="text-yellow-300" />
                 Game Stats
               </Link>
-              <Link to="/dashboard/happyhour" className="py-2.5 flex gap-2">
+              <Link
+                onClick={handleModalOpen}
+                to="/dashboard"
+                className="py-2.5 flex gap-2"
+              >
                 <FaRegCircle size={22} className="text-yellow-300" />
                 Shift Stats
               </Link>
             </div>
           )}
         </div>
-        {/* Activity Log Menu */}
-        <div
-          className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
-          onClick={() => toggleSubmenu("Activity_Log")}
-        >
-          <div
-            className={`px-4 py-3 flex items-center gap-2 duration-300 ${
-              !open ? "justify-center" : "justify-between"
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <FaChartBar size={22} className="text-yellow-300" />
-              <p className={`${!open && "hidden"}`}> Activity Log </p>
-            </div>
-            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
-          </div>
-          {submenuOpen.Activity_Log && open && (
-            <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-              <Link to="/dashboard/happyhour" className="py-2.5 flex gap-2">
-                <FaRegCircle size={22} className="text-yellow-300" />
-                All
-              </Link>
-              <Link to="/dashboard/happyhour" className="py-2.5 flex gap-2">
-                <FaRegCircle size={22} className="text-yellow-300" />
-                System Data
-              </Link>
-              <Link to="/dashboard/happyhour" className="py-2.5 flex gap-2">
-                <FaRegCircle size={22} className="text-yellow-300" />
-                User Data
-              </Link>
-            </div>
-          )}
-        </div>
-        <Link to="/dashboard/categories">
+
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -311,7 +290,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Permissions</p>
           </div>
         </Link>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -358,7 +337,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             </div>
           )}
         </div>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -368,124 +347,122 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>SMS Mailing</p>
           </div>
         </Link>
-        <Link>
+        <div
+          onClick={handleModalOpen}
+          className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
+            !open && "justify-center"
+          }`}
+        >
+          <TbAffiliate size={22} className="text-yellow-300" />
+          <p className={`${!open && "hidden"}`}>Affiliate</p>
+        </div>
+        {/* </Link> */}
+        {/* Deposit Menu */}
+        <div
+          className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
+          onClick={() => toggleSubmenu("Deposit")}
+        >
           <div
-            onClick={handleModalOpen}
-            className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
-              !open && "justify-center"
+            className={`px-4 py-3 flex items-center gap-2 duration-300 ${
+              !open ? "justify-center" : "justify-between"
             }`}
           >
-            <TbAffiliate size={22} className="text-yellow-300" />
-            <p className={`${!open && "hidden"}`}>Affiliate</p>
-          </div>
-          {/* </Link> */}
-          {/* Deposit Menu */}
-          <div
-            className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
-            onClick={() => toggleSubmenu("Deposit")}
-          >
-            <div
-              className={`px-4 py-3 flex items-center gap-2 duration-300 ${
-                !open ? "justify-center" : "justify-between"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <PiHandDepositDuotone size={22} className="text-yellow-300" />
-                <p className={`${!open && "hidden"}`}> Deposit </p>
-              </div>
-              <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <div className="flex items-center gap-2">
+              <PiHandDepositDuotone size={22} className="text-yellow-300" />
+              <p className={`${!open && "hidden"}`}> Deposit </p>
             </div>
-            {submenuOpen.Deposit && open && (
-              <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-                <Link to="/dashboard/deposits" className="py-2.5 flex gap-2">
-                  <MdHistory size={22} className="text-yellow-300" />
-                  Deposit History
-                </Link>
+            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+          </div>
+          {submenuOpen.Deposit && open && (
+            <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
+              <Link to="/dashboard/deposits" className="py-2.5 flex gap-2">
+                <MdHistory size={22} className="text-yellow-300" />
+                Deposit History
+              </Link>
 
-                <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
-                  <VscSymbolMethod size={22} className="text-yellow-300" />
-                  Deposit Method
-                </div>
+              <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
+                <VscSymbolMethod size={22} className="text-yellow-300" />
+                Deposit Method
               </div>
-            )}
-          </div>
-          {/* withdraw Menu */}
-          <div
-            className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
-            onClick={() => toggleSubmenu("withdraw")}
-          >
-            <div
-              className={`px-4 py-3 flex items-center gap-2 duration-300 ${
-                !open ? "justify-center" : "justify-between"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <PiHandWithdrawDuotone size={22} className="text-yellow-300" />
-                <p className={`${!open && "hidden"}`}> Withdraw </p>
-              </div>
-              <FaAngleDown className={`text-white ${!open && "hidden"}`} />
             </div>
-            {submenuOpen.withdraw && open && (
-              <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-                <Link to="/dashboard/withdraws" className="py-2.5 flex gap-2">
-                  <MdHistory size={22} className="text-yellow-300" />
-                  Withdraws History
-                </Link>
-                <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
-                  <VscSymbolMethod size={22} className="text-yellow-300" />
-                  Withdraw Method
-                </div>
-              </div>
-            )}
-          </div>
-          {/* HomePage Menu */}
+          )}
+        </div>
+        {/* withdraw Menu */}
+        <div
+          className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
+          onClick={() => toggleSubmenu("withdraw")}
+        >
           <div
-            className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
-            onClick={() => toggleSubmenu("HomePage")}
+            className={`px-4 py-3 flex items-center gap-2 duration-300 ${
+              !open ? "justify-center" : "justify-between"
+            }`}
           >
-            <div
-              className={`px-4 py-3 flex items-center gap-2 duration-300 ${
-                !open ? "justify-center" : "justify-between"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <FaAffiliatetheme size={22} className="text-yellow-300" />
-                <p className={`${!open && "hidden"}`}> Home Page </p>
-              </div>
-              <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <div className="flex items-center gap-2">
+              <PiHandWithdrawDuotone size={22} className="text-yellow-300" />
+              <p className={`${!open && "hidden"}`}> Withdraw </p>
             </div>
-            {submenuOpen.HomePage && open && (
-              <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-                <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
-                  <PiFlagBannerFoldDuotone
-                    size={20}
-                    className="text-yellow-300"
-                  />
-                  Banner
-                </div>
-                <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
-                  <CiSliderHorizontal size={20} className="text-yellow-300" />
-                  Slider
-                </div>
-                <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
-                  <MdOutlineRemoveFromQueue
-                    size={20}
-                    className="text-yellow-300"
-                  />
-                  From
-                </div>
-                <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
-                  <MdConnectWithoutContact
-                    size={20}
-                    className="text-yellow-300"
-                  />
-                  Contact
-                </div>
-              </div>
-            )}
+            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
           </div>
-        </Link>
-        <Link to="/dashboard/categories">
+          {submenuOpen.withdraw && open && (
+            <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
+              <Link to="/dashboard/withdraws" className="py-2.5 flex gap-2">
+                <MdHistory size={22} className="text-yellow-300" />
+                Withdraws History
+              </Link>
+              <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
+                <VscSymbolMethod size={22} className="text-yellow-300" />
+                Withdraw Method
+              </div>
+            </div>
+          )}
+        </div>
+        {/* HomePage Menu */}
+        <div
+          className="menu-item border-b border-gray-700 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 duration-300"
+          onClick={() => toggleSubmenu("HomePage")}
+        >
+          <div
+            className={`px-4 py-3 flex items-center gap-2 duration-300 ${
+              !open ? "justify-center" : "justify-between"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <FaAffiliatetheme size={22} className="text-yellow-300" />
+              <p className={`${!open && "hidden"}`}> Home Page </p>
+            </div>
+            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+          </div>
+          {submenuOpen.HomePage && open && (
+            <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
+              <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
+                <PiFlagBannerFoldDuotone
+                  size={20}
+                  className="text-yellow-300"
+                />
+                Banner
+              </div>
+              <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
+                <CiSliderHorizontal size={20} className="text-yellow-300" />
+                Slider
+              </div>
+              <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
+                <MdOutlineRemoveFromQueue
+                  size={20}
+                  className="text-yellow-300"
+                />
+                From
+              </div>
+              <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
+                <MdConnectWithoutContact
+                  size={20}
+                  className="text-yellow-300"
+                />
+                Contact
+              </div>
+            </div>
+          )}
+        </div>
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -495,7 +472,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Support</p>
           </div>
         </Link>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"
@@ -505,7 +482,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             <p className={`${!open && "hidden"}`}>Banks</p>
           </div>
         </Link>
-        <Link to="/dashboard/categories">
+        <Link onClick={handleModalOpen} to="/dashboard">
           <div
             className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
               !open && "justify-center"

@@ -22,9 +22,9 @@ const DynamicTable = ({ columns, data }) => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="table-auto border-collapse border border-gray-300 w-full">
-        <thead className="text-sm md:text-base">
-          <tr className="bg-gray-200">
+      <table className="table-auto border-collapse border border-gray-300 w-full text-nowrap">
+        <thead className="text-sm md:text-base bg-[#14815f]">
+          <tr className=" text-white">
             {columns.map((col, index) => (
               <th
                 key={index}
