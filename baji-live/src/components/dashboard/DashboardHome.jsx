@@ -3,12 +3,14 @@ import { FaUser, FaUsers, FaLock, FaGamepad } from "react-icons/fa";
 import { BsDiagram3Fill } from "react-icons/bs";
 import { FaChartArea } from "react-icons/fa6";
 import CustomTable from "./CustomTable";
+import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
 
 const DashboardHome = () => {
+  const { data: users } = useGetUsersQuery();
   const stats = [
     {
       title: "Total Users",
-      count: 6,
+      count: users?.length,
       Icon: FaUser,
       bgColor: "bg-[#3c8dbc]",
     },
@@ -136,7 +138,7 @@ const DashboardHome = () => {
   ];
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="space-y-4">
       {/* Top Statistics */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {stats.map((stat, index) => (

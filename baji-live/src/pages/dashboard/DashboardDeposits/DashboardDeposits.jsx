@@ -86,7 +86,7 @@ const DashboardDeposits = () => {
         </div>
       </div>
 
-      {/* Table Rendering */}
+      {/* Table Rendering */
       {isLoading ? (
         <p>Loading...</p>
       ) : data.length === 0 ? (

@@ -10,12 +10,12 @@ const DashboardLayout = () => {
       {/* DashboardSidebar */}
       <DashboardSidebar open={open} setOpen={setOpen} />
       <div
-        className={`flex-1 h-screen overflow-y-auto duration-300 ${
-          !open ? "md:pl-16" : "md:pl-64"
+        className={`flex-1 h-screen overflow-y-auto flex flex-col duration-300 ${
+          !open ? "md:pl-20" : "md:pl-72"
         }`}
       >
         <DashboardMobilMenu open={open} />
-        <div className="mt-[62px] md:mt-16 p-2">
+        <div className="mt-[62px] md:mt-20 p-3">
           <Outlet />
         </div>
       </div>

@@ -15,7 +15,6 @@ const DynamicTable = ({ columns, data }) => {
     setModalData(row); // Set the selected row data to show in the modal
     setIsModalOpen(true); // Open the modal
   };
-
   const closeModal = () => {
     setIsModalOpen(false); // Close the modal
     setModalData(null); // Reset modal data
@@ -24,19 +23,19 @@ const DynamicTable = ({ columns, data }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table-auto border-collapse border border-gray-300 w-full">
-        <thead>
+        <thead className="text-sm md:text-base">
           <tr className="bg-gray-200">
             {columns.map((col, index) => (
               <th
                 key={index}
-                className="border border-gray-300 px-4 py-2 text-left"
+                className="border border-gray-300  px-2 md:px-4 py-1 md:py-2 text-left"
               >
                 {col.headerName}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-sm md:text-base">
           {data?.map((row, rowIndex) => (
             <tr
               key={rowIndex}

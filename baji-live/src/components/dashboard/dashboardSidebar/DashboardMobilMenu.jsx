@@ -4,9 +4,10 @@ import {
   IoIosArrowDown,
   IoIosArrowForward,
 } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5"; // Close icon
+import Modal from "@/components/shared/Modal";
 
 const DashboardMobilMenu = ({ open }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -15,12 +16,26 @@ const DashboardMobilMenu = ({ open }) => {
     Deposit: false,
     withdraw: false,
     HomePage: false,
-    Bonuses: false,
+    deposit: false,
     Stats: false,
     Activity_Log: false,
     Pages: false,
     Settings: false,
   });
+
+  const location = useLocation();
+
+  useEffect(() => {
+    closeSidebar();
+  }, [location]);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   // Toggle the sidebar
   const toggleSidebar = () => {
@@ -46,16 +61,21 @@ const DashboardMobilMenu = ({ open }) => {
   };
 
   return (
-    <div>
-      <div
-        className={`bg-[#14815f] p-4 fixed left-0 right-0 z-20 duration-300 ${
-          !open ? "md:ml-16" : "md:ml-64"
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          <div className="">
-            <div className="md:hidden text-yellow-300" onClick={toggleSidebar}>
-              <IoMdMenu className="text-3xl sm:text-3xl" />
+    <>
+      <div>
+        <div
+          className={`bg-[#14815f] p-4 fixed left-0 right-0 z-20 duration-300 ${
+            !open ? "md:ml-16" : "md:ml-64"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="">
+              <div
+                className="md:hidden text-yellow-300"
+                onClick={toggleSidebar}
+              >
+                <IoMdMenu className="text-3xl sm:text-3xl" />
+              </div>
             </div>
           </div>
           {/* DropdownMenu */}
@@ -89,377 +109,416 @@ const DashboardMobilMenu = ({ open }) => {
           </div>
           {/* DropdownMenu end */}
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 w-full h-screen overflow-y-auto backdrop-blur bg-black/40 z-30 md:hidden transform transition-transform duration-500 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="flex justify-between">
-          <div className="m-2 mb-6 mt-6 w-3/5">
-            <div className="border-2 border-[#2a2a2a] rounded-lg">
-              <div className="flex items-center bg-[#242424] rounded-tl-lg rounded-tr-lg">
-                <p className="text-sm font-semibold text-yellow-300">
-                  হাই স্বাগতম
-                </p>
+        {/* Mobile Menu */}
+        <div
+          className={`fixed inset-0 w-full h-screen overflow-y-auto backdrop-blur bg-[#14815f] z-30 md:hidden transform transition-transform duration-500 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <div className="flex justify-between">
+            <div className="m-2 mb-6 mt-6 w-3/5">
+              <div className="border-2 border-[#2a2a2a] rounded-lg">
+                <div className="flex items-center bg-[#242424] rounded-tl-lg rounded-tr-lg">
+                  <p className="text-sm font-semibold text-yellow-300">
+                    হাই স্বাগতম
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className="text-white cursor-pointer mt-1"
-            onClick={closeSidebar}
-          >
-            <IoClose size={36} />
-          </div>
-        </div>
-
-        {/* Menu Items with Submenu */}
-        <div className="text-white">
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/shops" className="block">
-              Home
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Users
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Agent Tree
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Shops
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Tournaments
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Categories
-            </Link>
-          </div>
-
-          {/* Bonuses Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("Bonuses")}
-          >
-            <div className="">
-              <p>Bonuses</p>
+            <div
+              className="text-white cursor-pointer mt-1"
+              onClick={closeSidebar}
+            >
+              <IoClose size={36} />
             </div>
-            {isSubmenuOpen.Bonuses ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
           </div>
-          {isSubmenuOpen.Bonuses && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                Happy Hour
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Progress Bonuses
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Invite Friends
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Welcome Bonuses
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                SMS Bonuses
+
+          {/* Menu Items with Submenu */}
+          <div className="text-white">
+            <div className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400">
+              <Link to="/dashboard" className="block">
+                Home
               </Link>
             </div>
-          )}
 
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Jackpot
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Pincodes
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Games
-            </Link>
-          </div>
-
-          {/* Stats Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("Stats")}
-          >
-            <div className="">
-              <p>Stats</p>
-            </div>
-            {isSubmenuOpen.Stats ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
-          </div>
-          {isSubmenuOpen.Stats && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                Pay Stats
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Game Stats
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Shift Stats
+            <div className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400">
+              <Link to="/dashboard/users" className="block">
+                Users
               </Link>
             </div>
-          )}
 
-          {/* Activity Log Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("Activity_Log")}
-          >
-            <div className="">
-              <p>Activity_Log</p>
-            </div>
-            {isSubmenuOpen.Activity_Log ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
-          </div>
-          {isSubmenuOpen.Activity_Log && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                All
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                System Data
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                User Data
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Agent Tree
               </Link>
             </div>
-          )}
 
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Permissions
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Api Keys
-            </Link>
-          </div>
-
-          {/* Pages Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("Pages")}
-          >
-            <div className="">
-              <p>Pages</p>
-            </div>
-            {isSubmenuOpen.Pages ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
-          </div>
-          {isSubmenuOpen.Pages && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                Helper
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Articles
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Rules
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                FAQ
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Shops
               </Link>
             </div>
-          )}
 
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              SMS Mailing
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Affiliate
-            </Link>
-          </div>
-
-          {/* Deposit Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("Deposit")}
-          >
-            <div className="">
-              <p>Deposit</p>
-            </div>
-            {isSubmenuOpen.Deposit ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
-          </div>
-          {isSubmenuOpen.Deposit && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                Deposit History
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Deposit Method
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Tournaments
               </Link>
             </div>
-          )}
 
-          {/* withdraw Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("withdraw")}
-          >
-            <div className="">
-              <p>Withdraw</p>
-            </div>
-            {isSubmenuOpen.withdraw ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
-          </div>
-          {isSubmenuOpen.withdraw && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                Withdraw History
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Withdraw Method
-              </Link>
-            </div>
-          )}
-
-          {/* Homepage Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("Homepage")}
-          >
-            <div className="">
-              <p>Homepage</p>
-            </div>
-            {isSubmenuOpen.Homepage ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
-          </div>
-          {isSubmenuOpen.Homepage && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                Banner
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Slider
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Form
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Contact
-              </Link>
-            </div>
-          )}
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Support
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Bank
-            </Link>
-          </div>
-
-          <div className="py-2.5 px-4">
-            <Link to="/dashboard/users" className="block">
-              Security
-            </Link>
-          </div>
-
-          {/* Settings Menu */}
-          <div
-            className="py-2.5 px-4  flex items-center justify-between"
-            onClick={() => toggleSubmenu("Settings")}
-          >
-            <div className="">
-              <p>Settings</p>
-            </div>
-            {isSubmenuOpen.Settings ? (
-              <IoIosArrowDown size={24} />
-            ) : (
-              <IoIosArrowForward size={24} />
-            )}
-          </div>
-          {isSubmenuOpen.Settings && (
-            <div className="pl-4 py-2">
-              <Link to="/dashboard" className="block py-2.5 px-4 ">
-                General
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Securities
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                SMS
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Payment
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Banks
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
                 Categories
               </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Games
-              </Link>
-              <Link to="/dashboard/users" className="block py-2.5 px-4 ">
-                Auth
+            </div>
+
+            {/* deposits Menu */}
+            <div
+              className="py-2.5 ps-8 pe-3 flex items-center justify-between border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+              onClick={() => toggleSubmenu("deposit")}
+            >
+              <div className="">
+                <p>Deposits</p>
+              </div>
+              {isSubmenuOpen.deposit ? (
+                <IoIosArrowDown size={24} />
+              ) : (
+                <IoIosArrowForward size={24} />
+              )}
+            </div>
+            {isSubmenuOpen.deposit && (
+              <div className="pl-4 py-2">
+                <Link
+                  to="/dashboard/deposits"
+                  className="block py-2.5 ps-8 pe-3 "
+                >
+                  Deposit History
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Deposit Method
+                </Link>
+                {/* <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Invite Friends
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Welcome Bonuses
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  SMS Bonuses
+                </Link> */}
+              </div>
+            )}
+            {/* withdraw Menu */}
+            <div
+              className="py-2.5 ps-8 pe-3 flex items-center justify-between border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+              onClick={() => toggleSubmenu("withdraw")}
+            >
+              <div className="">
+                <p>Withdraws</p>
+              </div>
+              {isSubmenuOpen.withdraw ? (
+                <IoIosArrowDown size={24} />
+              ) : (
+                <IoIosArrowForward size={24} />
+              )}
+            </div>
+            {isSubmenuOpen.withdraw && (
+              <div className="pl-4 py-2">
+                <Link
+                  to="/dashboard/withdraws"
+                  className="block py-2.5 ps-8 pe-3 "
+                >
+                  Withdraw History
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Deposit Method
+                </Link>
+                {/* <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Invite Friends
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Welcome Bonuses
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  SMS Bonuses
+                </Link> */}
+              </div>
+            )}
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Jackpot
               </Link>
             </div>
-          )}
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Pincodes
+              </Link>
+            </div>
+
+            <div className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400">
+              <Link to="/dashboard/users" className="block">
+                Games
+              </Link>
+            </div>
+
+            {/* Stats Menu */}
+            <div
+              className="py-2.5 ps-8 pe-3  flex items-center justify-between border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+              onClick={() => toggleSubmenu("Stats")}
+            >
+              <div className="">
+                <p>Stats</p>
+              </div>
+              {isSubmenuOpen.Stats ? (
+                <IoIosArrowDown size={24} />
+              ) : (
+                <IoIosArrowForward size={24} />
+              )}
+            </div>
+            {isSubmenuOpen.Stats && (
+              <div className="pl-4 py-2">
+                <Link to="/dashboard" className="block py-2.5 ps-8 pe-3 ">
+                  Pay Stats
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Game Stats
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Shift Stats
+                </Link>
+              </div>
+            )}
+
+            {/* Activity Log Menu */}
+            <div
+              className="py-2.5 ps-8 pe-3  flex items-center justify-between border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+              onClick={() => toggleSubmenu("Activity_Log")}
+            >
+              <div className="">
+                <p>Activity_Log</p>
+              </div>
+              {isSubmenuOpen.Activity_Log ? (
+                <IoIosArrowDown size={24} />
+              ) : (
+                <IoIosArrowForward size={24} />
+              )}
+            </div>
+            {isSubmenuOpen.Activity_Log && (
+              <div className="pl-4 py-2">
+                <Link to="/dashboard" className="block py-2.5 ps-8 pe-3 ">
+                  All
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  System Data
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  User Data
+                </Link>
+              </div>
+            )}
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Permissions
+              </Link>
+            </div>
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Api Keys
+              </Link>
+            </div>
+
+            {/* Pages Menu */}
+            <div
+              className="py-2.5 ps-8 pe-3  flex items-center justify-between border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+              onClick={() => toggleSubmenu("Pages")}
+            >
+              <div className="">
+                <p>Pages</p>
+              </div>
+              {isSubmenuOpen.Pages ? (
+                <IoIosArrowDown size={24} />
+              ) : (
+                <IoIosArrowForward size={24} />
+              )}
+            </div>
+            {isSubmenuOpen.Pages && (
+              <div className="pl-4 py-2">
+                <Link to="/dashboard" className="block py-2.5 ps-8 pe-3 ">
+                  Helper
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Articles
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Rules
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  FAQ
+                </Link>
+              </div>
+            )}
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                SMS Mailing
+              </Link>
+            </div>
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Affiliate
+              </Link>
+            </div>
+
+            {/* Homepage Menu */}
+            <div
+              className="py-2.5 ps-8 pe-3  flex items-center justify-between border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+              onClick={() => toggleSubmenu("Homepage")}
+            >
+              <div className="">
+                <p>Homepage</p>
+              </div>
+              {isSubmenuOpen.Homepage ? (
+                <IoIosArrowDown size={24} />
+              ) : (
+                <IoIosArrowForward size={24} />
+              )}
+            </div>
+            {isSubmenuOpen.Homepage && (
+              <div className="pl-4 py-2">
+                <Link to="/dashboard" className="block py-2.5 ps-8 pe-3 ">
+                  Banner
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Slider
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Form
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Contact
+                </Link>
+              </div>
+            )}
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Support
+              </Link>
+            </div>
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Bank
+              </Link>
+            </div>
+
+            <div
+              onClick={handleModalOpen}
+              className="py-2.5 ps-8 pe-3 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+            >
+              <Link to="/dashboard/users" className="block">
+                Security
+              </Link>
+            </div>
+
+            {/* Settings Menu */}
+            <div
+              className="py-2.5 ps-8 pe-3  flex items-center justify-between border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400"
+              onClick={() => toggleSubmenu("Settings")}
+            >
+              <div className="">
+                <p>Settings</p>
+              </div>
+              {isSubmenuOpen.Settings ? (
+                <IoIosArrowDown size={24} />
+              ) : (
+                <IoIosArrowForward size={24} />
+              )}
+            </div>
+            {isSubmenuOpen.Settings && (
+              <div className="pl-4 py-2">
+                <Link to="/dashboard" className="block py-2.5 ps-8 pe-3 ">
+                  General
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Securities
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  SMS
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Payment
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Banks
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Categories
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Games
+                </Link>
+                <Link to="/dashboard/users" className="block py-2.5 ps-8 pe-3 ">
+                  Auth
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onOpenChange={handleModalClose}
+        title="Oops!!!"
+        // onSave={handleSaveChanges}
+      >
+        <p className="text-center text-red-600">
+          Please contact the API Connect us Oracle Technology developers team...
+        </p>
+      </Modal>
+    </>
   );
 };
 
