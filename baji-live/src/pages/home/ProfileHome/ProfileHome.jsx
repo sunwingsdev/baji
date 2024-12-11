@@ -34,12 +34,12 @@ const ProfileHome = () => {
           <p className="text-base">2024/12/07 17:18:57</p>
         </div>
       </div>
-      <div className="text-white flex items-center justify-center gap-3">
-        <div className="w-1/4 flex items-center gap-2 px-4 py-4 bg-[#414141] rounded">
+      <div className="text-white flex flex-col md:flex-row items-center justify-center gap-3">
+        <div className="w-full md:w-1/4 flex items-center gap-2 px-4 py-4 bg-[#414141] rounded">
           <FaUser className="text-[#a0a0a0] text-lg" />
           <p>{user?.user.fullName}</p>
         </div>
-        <div className="w-1/4 flex justify-between bg-[#414141] rounded">
+        <div className="w-full md:w-1/4 flex justify-between bg-[#414141] rounded">
           <div className="flex items-center gap-2 px-4 py-4">
             <FaPhoneAlt className="text-[#a0a0a0] text-lg" />
             <p>{user?.user.phone}</p>
@@ -48,11 +48,11 @@ const ProfileHome = () => {
             +
           </div>
         </div>
-        <div className="w-1/4 flex items-center gap-2 px-4 py-4 bg-[#414141] rounded">
+        <div className="w-full md:w-1/4 flex items-center gap-2 px-4 py-4 bg-[#414141] rounded">
           <IoMdMail className="text-[#a0a0a0] text-lg" />
           <p>{user?.user.email}</p>
         </div>
-        <div className="w-1/4 flex items-center gap-2 px-4 py-4 bg-[#414141] rounded">
+        <div className="w-full md:w-1/4 flex items-center gap-2 px-4 py-4 bg-[#414141] rounded">
           <MdCake className="text-[#a0a0a0] text-lg" />
           <p>{user?.user.birthday ? user?.user.birthday : "No data found"}</p>
         </div>

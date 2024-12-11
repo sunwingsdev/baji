@@ -17,7 +17,20 @@ const depositsApi = baseApi.injectEndpoints({
       query: () => "/deposits",
       providesTags: ["deposits"],
     }),
+
+    // update status
+    updateDepositStatus: builder.mutation({
+      query: (id) => ({
+        url: `/deposits/status/${id}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["deposits"],
+    }),
   }),
 });
 
-export const { useAddDepositMutation, useGetDepositsQuery } = depositsApi;
+export const {
+  useAddDepositMutation,
+  useGetDepositsQuery,
+  useUpdateDepositStatusMutation,
+} = depositsApi;
