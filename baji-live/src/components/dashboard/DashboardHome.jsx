@@ -19,7 +19,7 @@ const DashboardHome = () => {
       bgColor: "bg-[#00a65a]",
     },
     { title: "Banned Users", count: 0, Icon: FaLock, bgColor: "bg-[#f39c12]" },
-    { title: "Games", count: 1092, Icon: FaGamepad, bgColor: "bg-[#dd4b39]" },
+    { title: "Games", count: 0, Icon: FaGamepad, bgColor: "bg-[#dd4b39]" },
     {
       title: "Credit Agents",
       count: 0,
@@ -118,7 +118,7 @@ const DashboardHome = () => {
     {
       Shift: "10",
       User: "TestCash",
-      Start: "2022-10-15 07:39:59",
+      Start: "2024-10-15 07:39:59",
       End: "0",
       Credit: "0",
       In: "0",

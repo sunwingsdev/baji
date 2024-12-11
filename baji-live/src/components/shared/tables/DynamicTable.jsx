@@ -1,12 +1,26 @@
-import React from "react";
 import clsx from "clsx";
+import { useState } from "react";
+import ViewModal from "../sharedModal/ViewModal"; // নতুন মডাল কম্পোনেন্ট ইমপোর্ট করা
 
 // Helper function to access nested properties
 const getNestedValue = (obj, path) => {
-  return path.split('.').reduce((acc, key) => acc && acc[key], obj);
+  return path.split(".").reduce((acc, key) => acc && acc[key], obj);
 };
 
 const DynamicTable = ({ columns, data }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
+
+  const handleViewClick = (row) => {
+    setModalData(row); // Set the selected row data to show in the modal
+    setIsModalOpen(true); // Open the modal
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
+    setModalData(null); // Reset modal data
+  };
+
   return (
     <div className="overflow-x-auto">
       <table className="table-auto border-collapse border border-gray-300 w-full">
@@ -30,9 +44,11 @@ const DynamicTable = ({ columns, data }) => {
             >
               {columns.map((col, colIndex) => (
                 <td key={colIndex} className="border border-gray-300 px-4 py-2">
-                  {col.buttonConfig ? (
+                  {col.customRender ? (
+                    col.customRender(row)
+                  ) : col.buttonConfig ? (
                     <button
-                      onClick={() => col.buttonConfig.onClick(row)}
+                      onClick={() => handleViewClick(row)} // Open modal on "View" button click
                       className={clsx(
                         "px-4 py-1 rounded text-white",
                         col.buttonConfig.bgColor || "bg-blue-500",
@@ -50,6 +66,13 @@ const DynamicTable = ({ columns, data }) => {
           ))}
         </tbody>
       </table>
+
+      {/* Show modal with dynamic data if modalData exists */}
+      <ViewModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        modalData={modalData}
+      />
     </div>
   );
 };

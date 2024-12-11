@@ -9,6 +9,7 @@ import { useState } from "react";
 import { IoClose } from "react-icons/io5"; // Close icon
 
 const DashboardMobilMenu = ({ open }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState({
     Deposit: false,
@@ -39,6 +40,11 @@ const DashboardMobilMenu = ({ open }) => {
     }));
   };
 
+  // Toggle the dropdown
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <div>
       <div
@@ -52,13 +58,36 @@ const DashboardMobilMenu = ({ open }) => {
               <IoMdMenu className="text-3xl sm:text-3xl" />
             </div>
           </div>
-          <div className="flex items-center">
-            <div className="w-6 md:w-7 text-white hover:text-yellow-200 duration-300">
-              <Link>
+          {/* DropdownMenu */}
+          <div className="relative">
+            <div className="flex items-center">
+              <div
+                className="w-6 md:w-7 text-white hover:text-yellow-200 duration-300 cursor-pointer"
+                onClick={toggleDropdown}
+              >
                 <IoIosContact size={36} />
-              </Link>
+              </div>
             </div>
+            {isDropdownOpen && (
+              <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-sm">
+                <ul className="py-2">
+                  <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
+                    <Link to="/admin">Admin</Link>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
+                    <Link to="/profile">Profile</Link>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
+                    <Link to="/settings">Settings</Link>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
+                    <Link to="/logout">Logout</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
+          {/* DropdownMenu end */}
         </div>
       </div>
 
