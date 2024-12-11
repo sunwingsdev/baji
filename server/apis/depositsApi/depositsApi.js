@@ -51,6 +51,15 @@ const depositsApi = (depositsCollection) => {
     }
   });
 
+  router.patch("/:id", async (req, res) => {
+    const { id } = req.params;
+    const query = { _id: ObjectId(id) };
+    const { status } = req.body;
+    const updatedDoc = { $set: { status } };
+    const result = await depositsCollection.updateOne(query, updatedDoc);
+    res.send(result);
+  });
+
   return router;
 };
 
