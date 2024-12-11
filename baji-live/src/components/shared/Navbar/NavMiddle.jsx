@@ -157,11 +157,13 @@ const NavMiddle = ({ navItems }) => {
                   সদস্য কেন্দ্র
                 </p>
               </Link>
-              <Link to="/dashboard">
-                <p className="px-3 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer">
-                  Admin
-                </p>
-              </Link>
+              {user?.user?.role === "admin" && (
+                <Link to="/dashboard">
+                  <p className="px-3 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer">
+                    Admin
+                  </p>
+                </Link>
+              )}
               <p
                 onClick={handleLogout}
                 className="px-3 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer"
@@ -200,7 +202,7 @@ const NavMiddle = ({ navItems }) => {
       <Modal
         isOpen={isModalOpen}
         onOpenChange={handleModalClose}
-        title="Baji এ আপনাকে স্বাগতম"
+        title="1xKhela এ আপনাকে স্বাগতম"
         onSave={handleSaveChanges}
       >
         <LoginForm closeModal={handleModalClose} />

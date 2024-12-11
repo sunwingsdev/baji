@@ -8,6 +8,7 @@ import { useToasts } from "react-toast-notifications";
 
 const WithdrawTab = () => {
   const [addWithdraw] = useAddWithdrawMutation();
+  const [isAmountDeatilsOpen, setIsAmountDeatilsOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const { addToast } = useToasts();
 
@@ -131,67 +132,79 @@ const WithdrawTab = () => {
           ))}
         </div>
       </div>
-
-      {/* Amount */}
-      <div className="space-y-2">
-        <div className="flex justify-between">
-          <p className="text-sm">এমাউন্ট</p>
-          <p className="text-sm">৳ ৫০০ - ৳ ২৫,০০০</p>
-        </div>
-        <div className="flex gap-3">
-          {["100", "500", "1000", "2000", "3000"].map((amount) => (
-            <div
-              key={amount}
-              className={`text-center text-sm py-1.5 md:py-3 w-20 md:w-28 border ${
-                formData.amount.includes(parseInt(amount))
-                  ? "border-[#ffe43c] text-[#ffe43c]"
-                  : "border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c]"
-              }`}
-              onClick={() => handleAmountClick(parseInt(amount))}
-            >
-              {amount}
+      <div
+        onClick={() => setIsAmountDeatilsOpen(true)}
+        className="px-3 py-2 inline-flex items-center gap-2 bg-gradient-to-br from-[#f269b0] to-[#5d1b90] rounded-lg"
+      >
+        {isAmountDeatilsOpen && <FcOk className="text-2xl" />}
+        <p>
+          {user?.user.countryCode} {user?.user.phone}
+        </p>
+      </div>
+      {isAmountDeatilsOpen && (
+        <>
+          {/* Amount */}
+          <div className="space-y-2">
+            <div className="flex justify-between">
+              <p className="text-sm">এমাউন্ট</p>
+              <p className="text-sm">৳ ৫০০ - ৳ ২৫,০০০</p>
             </div>
-          ))}
-        </div>
-      </div>
-      {/* Instruction */}
-      <div className="border border-[#7293e1] bg-[#455271] px-7 py-3 rounded-md text-sm space-y-1">
-        <p className="pb-2">অনুস্মারক:</p>
-        <p>
-          1. এগিয়ে যাওয়ার আগে অনুগ্রহ করে প্রাপকের অ্যাকাউন্টের বিশদ দুইবার
-          চেক করুন।
-        </p>
-        <p>
-          2. তহবিল বা অর্থ হারানো এড়াতে আপনার অ্যাকাউন্ট কারো সাথে শেয়ার করবেন
-          না।
-        </p>
-        <p>
-          3.উইথড্র রিজেকশন প্রতিরোধ করতে আপনার ব্যাংক অ্যাকাউন্ট হোল্ডার নেম এবং
-          Baji রেজিস্টার্ড নেমের সাথে মিল আছে তা নিশ্চিত করুন।
-        </p>
-      </div>
+            <div className="flex gap-3">
+              {["100", "500", "1000", "2000", "3000"].map((amount) => (
+                <div
+                  key={amount}
+                  className={`text-center text-sm py-1.5 md:py-3 w-20 md:w-28 border ${
+                    formData.amount.includes(parseInt(amount))
+                      ? "border-[#ffe43c] text-[#ffe43c]"
+                      : "border-[#989898] hover:border-[#ffe43c] hover:text-[#ffe43c]"
+                  }`}
+                  onClick={() => handleAmountClick(parseInt(amount))}
+                >
+                  {amount}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Instruction */}
+          <div className="border border-[#7293e1] bg-[#455271] px-7 py-3 rounded-md text-sm space-y-1">
+            <p className="pb-2">অনুস্মারক:</p>
+            <p>
+              1. এগিয়ে যাওয়ার আগে অনুগ্রহ করে প্রাপকের অ্যাকাউন্টের বিশদ
+              দুইবার চেক করুন।
+            </p>
+            <p>
+              2. তহবিল বা অর্থ হারানো এড়াতে আপনার অ্যাকাউন্ট কারো সাথে শেয়ার
+              করবেন না।
+            </p>
+            <p>
+              3.উইথড্র রিজেকশন প্রতিরোধ করতে আপনার ব্যাংক অ্যাকাউন্ট হোল্ডার নেম
+              এবং Baji রেজিস্টার্ড নেমের সাথে মিল আছে তা নিশ্চিত করুন।
+            </p>
+          </div>
 
-      {/* Selected Data */}
-      <div className="flex gap-4">
-        <div className="border-2 border-[#929292] px-3 pe-8 inline-flex items-center justify-between w-56 text-base text-[#f2dc9c]">
-          ৳{" "}
-          <p className="text-[#999] inline-flex items-center gap-3">
-            {formData.amount.reduce((acc, amt) => acc + amt, 0)}
-            {formData.amount.length > 0 && (
-              <span onClick={() => handleSelect("amount", [])}>
-                <RxCrossCircled className="bg-red-600 text-white rounded-full" />
-              </span>
-            )}
-          </p>
-        </div>
-        <PrimaryButton
-          disabled={formData.amount.length === 0}
-          type="button"
-          onClick={handleWithdraw}
-        >
-          উইথড্র
-        </PrimaryButton>
-      </div>
+          {/* Selected Data */}
+          <div className="flex gap-4">
+            <div className="border-2 border-[#929292] px-3 pe-8 inline-flex items-center justify-between w-56 text-base text-[#f2dc9c]">
+              ৳{" "}
+              <p className="text-[#999] inline-flex items-center gap-3">
+                {formData.amount.reduce((acc, amt) => acc + amt, 0)}
+                {formData.amount.length > 0 && (
+                  <span onClick={() => handleSelect("amount", [])}>
+                    <RxCrossCircled className="bg-red-600 text-white rounded-full" />
+                  </span>
+                )}
+              </p>
+            </div>
+            <PrimaryButton
+              disabled={formData.amount.length === 0}
+              type="button"
+              onClick={handleWithdraw}
+            >
+              উইথড্র
+            </PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 };

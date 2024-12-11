@@ -52,6 +52,15 @@ const withdrawsApi = (withdrawsCollection) => {
     }
   });
 
+  router.patch("/status/:id", async (req, res) => {
+    const { id } = req.params;
+    const query = { _id: new ObjectId(id) };
+    // const { status } = req.body;
+    const updatedDoc = { $set: { status: "completed" } };
+    const result = await withdrawsCollection.updateOne(query, updatedDoc);
+    res.send(result);
+  });
+
   return router;
 };
 module.exports = withdrawsApi;

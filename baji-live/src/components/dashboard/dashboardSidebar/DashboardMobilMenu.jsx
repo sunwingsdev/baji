@@ -4,13 +4,17 @@ import {
   IoIosArrowDown,
   IoIosArrowForward,
 } from "react-icons/io";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5"; // Close icon
 import Modal from "@/components/shared/Modal";
+import { useDispatch } from "react-redux";
+import { useToasts } from "react-toast-notifications";
+import { logout } from "@/redux/slices/authSlice";
 
 const DashboardMobilMenu = ({ open }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState({
     Deposit: false,
@@ -22,7 +26,9 @@ const DashboardMobilMenu = ({ open }) => {
     Pages: false,
     Settings: false,
   });
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { addToast } = useToasts();
   const location = useLocation();
 
   useEffect(() => {
@@ -60,11 +66,21 @@ const DashboardMobilMenu = ({ open }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("token");
+    addToast("Logout successful", {
+      appearance: "success",
+      autoDismiss: true,
+    });
+    navigate("/");
+  };
+
   return (
     <>
       <div>
         <div
-          className={`bg-[#14815f] p-4 fixed left-0 right-0 z-20 duration-300 ${
+          className={`bg-[#14815f] p-4 fixed left-0 flex items-center justify-between right-0 z-20 duration-300 ${
             !open ? "md:ml-16" : "md:ml-64"
           }`}
         >
@@ -89,19 +105,23 @@ const DashboardMobilMenu = ({ open }) => {
               </div>
             </div>
             {isDropdownOpen && (
-              <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-sm">
-                <ul className="py-2">
+              <div className="absolute top-full right-0 bg-white shadow-lg rounded-sm">
+                <ul className="">
                   <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
-                    <Link to="/admin">Admin</Link>
+                    <Link>Admin</Link>
                   </li>
                   <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
                     <Link to="/profile">Profile</Link>
                   </li>
                   <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
-                    <Link to="/settings">Settings</Link>
+                    <Link>Settings</Link>
                   </li>
-                  <li className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer">
-                    <Link to="/logout">Logout</Link>
+
+                  <li
+                    onClick={handleLogout}
+                    className="px-4 py-2 hover:bg-[#14815f] hover:text-yellow-400 cursor-pointer"
+                  >
+                    Logout
                   </li>
                 </ul>
               </div>
