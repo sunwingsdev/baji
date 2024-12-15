@@ -28,9 +28,10 @@ const Card = ({ contents, heading, handleModalOpen, setDrawerOpen }) => {
             : "justify-center gap-24"
         }`}
       >
-        {contents?.map(({ icon: Icon, title, route }) =>
+        {contents?.map(({ icon: Icon, title, route, state }) =>
           route ? (
             <Link
+              state={{ state: state }}
               to={route}
               onClick={() => setDrawerOpen(false)}
               key={title}
@@ -93,8 +94,18 @@ const AccountDetailsMobile = ({ setDrawerOpen }) => {
   };
 
   const tohobilContents = [
-    { icon: PiWallet, title: "ডিপোজিট", route: "/profile/deposit" },
-    { icon: PiHandWithdraw, title: "উইথড্র", route: "/profile/deposit" },
+    {
+      icon: PiWallet,
+      title: "ডিপোজিট",
+      route: "/profile/deposit",
+      state: "deposit",
+    },
+    {
+      icon: PiHandWithdraw,
+      title: "উইথড্র",
+      route: "/profile/deposit",
+      state: "withdraw",
+    },
   ];
   const historyContents = [
     { icon: VscNotebook, title: "বাজি রেকর্ডস", route: "" },

@@ -14,7 +14,7 @@ const FooterTop = () => {
   return (
     <div className="text-[#999] py-6">
       <h2 className="text-[#dedede] text-xl md:text-2xl py-2">
-        1xKhela - বাংলাদেশের শীর্ষস্থানীয় অনলাইন গেমিং এবং বেটিং প্ল্যাটফর্ম
+        1xKhelo - বাংলাদেশের শীর্ষস্থানীয় অনলাইন গেমিং এবং বেটিং প্ল্যাটফর্ম
         আমাদের সাথে যোগাযোগ করুন:{" "}
         {/* <Link target="_blank" to="http://wa.me/+918250285848"> */}
         {/* <span className="text-green-600 inline-flex items-center gap-2">

@@ -2,16 +2,19 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 require("dotenv").config();
-const port = process.env.PORT || 5000;
 const path = require("path");
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const { upload, deleteFile } = require("./utils"); // Import from utils.js
 
-// import api modules
-
+// import API modules
 const usersApi = require("./apis/usersApi/usersApi");
 const depositsApi = require("./apis/depositsApi/depositsApi");
 const withdrawsApi = require("./apis/withdrawsApi/withdrawsApi");
+const homeControlApi = require("./apis/homeControlApi/homeControlApi");
 
+const port = process.env.PORT || 5000;
+
+// CORS configuration
 const corsConfig = {
   origin: [
     "http://localhost:5173",
@@ -43,9 +46,8 @@ app.use(cors(corsConfig));
 app.options("", cors(corsConfig));
 app.use(express.json());
 
+// MongoDB URI and client setup
 const uri = process.env.DB_URI;
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -54,33 +56,59 @@ const client = new MongoClient(uri, {
   },
 });
 
+// Routes for image upload and delete
+app.post("/upload", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No file uploaded" });
+  }
+  res.status(200).json({
+    message: "File uploaded successfully",
+    filePath: `/uploads/images/${req.file.filename}`,
+  });
+});
+
+app.delete("/delete", async (req, res) => {
+  const { filePath } = req.body;
+
+  if (!filePath) {
+    return res.status(400).json({ error: "File path not provided" });
+  }
+
+  try {
+    await deleteFile(filePath);
+    res.status(200).json({ message: "File deleted successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// MongoDB connection and API setup
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-    //  collection starts here-----
+    // Collections
     const usersCollection = client.db("baji").collection("users");
     const depositsCollection = client.db("baji").collection("deposits");
     const withdrawsCollection = client.db("baji").collection("withdraws");
-    // api start here-------
+    const homeControlCollection = client.db("baji").collection("homeControls");
+
+    // API routes
     app.use("/users", usersApi(usersCollection));
     app.use("/deposits", depositsApi(depositsCollection));
     app.use("/withdraws", withdrawsApi(withdrawsCollection));
+    app.use("/home-controls", homeControlApi(homeControlCollection));
 
-    // api ends here--------
-
-    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Connected to MongoDB!!!✅");
   } finally {
-    // Ensures that the client will close when you finish/error
-    // await client.close();
+    // Leave client open for now (close manually if needed)
   }
 }
 run().catch(console.dir);
 
-// basic setup
+// Basic route
 app.get("/", (req, res) => {
   res.send("Server is Running.");
 });

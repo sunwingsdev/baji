@@ -1,12 +1,10 @@
-const ViewModal = ({ isOpen, onClose, modalData }) => {
+const ViewModal = ({ isOpen, onClose, modalData, heading }) => {
   if (!isOpen) return null; // If modal is not open, return null
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg shadow-xl max-w-lg w-full">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Withdraw Details
-        </h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">{heading}</h2>
         <div className="space-y-3">
           <p className="text-sm">
             <span className="font-semibold text-gray-700">Username:</span>{" "}

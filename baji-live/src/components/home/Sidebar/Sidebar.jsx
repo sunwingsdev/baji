@@ -30,6 +30,7 @@ const Sidebar = () => {
         <div className="flex justify-around items-center text-sm py-4">
           <NavLink
             to="/profile/deposit"
+            state={{ method: "deposit" }}
             className={({ isActive }) =>
               isActive ? "text-teal-300" : "text-white hover:text-teal-300"
             }
@@ -42,7 +43,11 @@ const Sidebar = () => {
             </div>
             <p className="mt-1">ডিপোজিট</p>
           </NavLink>
-          <Link className="text-white hover:text-teal-300 text-sm">
+          <Link
+            to="/profile/deposit"
+            state={{ method: "withdraw" }}
+            className="text-white hover:text-teal-300 text-sm"
+          >
             <div className="bg-[#5a5a5a] w-9 h-9 m-auto rounded-full flex justify-center items-center">
               <img
                 src="https://www.baji.live/images/v1/web/img-template/icon-set/player/sidenav/withdrawal.svg"

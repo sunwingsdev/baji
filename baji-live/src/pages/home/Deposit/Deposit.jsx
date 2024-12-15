@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DepositTab from "@/components/home/DepositTab/DepositTab";
 import WithdrawTab from "@/components/home/WithdrawTab/WithdrawTab";
 import WalletSection from "@/components/home/WalletSection/WalletSection";
+import { useLocation } from "react-router-dom";
 
 const Deposit = () => {
   const [activeTab, setActiveTab] = useState("deposit");
+  const location = useLocation();
+  const method = location.state?.method;
+  console.log(method);
+  useEffect(() => {
+    if (method === "withdraw") {
+      setActiveTab("withdraw");
+    }
+    if (method === "deposit") {
+      setActiveTab("deposit");
+    }
+  }, [method]);
 
   return (
     <div className="space-y-3">
