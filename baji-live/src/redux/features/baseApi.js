@@ -12,7 +12,7 @@ const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["users", "deposits", "withdraws"],
+  tagTypes: ["users", "deposits", "withdraws", "uploads", "homeControls"],
   endpoints: () => ({}),
 });
 

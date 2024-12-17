@@ -7,18 +7,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineExitToApp, MdOutlineHelpCenter } from "react-icons/md";
 import LoginForm from "../auth/LoginForm";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
-import logo from "../../../assets/logo.png";
+// import logo from "../../../assets/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/redux/slices/authSlice";
 import { useToasts } from "react-toast-notifications";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const NavMiddle = ({ navItems }) => {
+  const { data: homeControls } = useGetHomeControlsQuery();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const { token, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { addToast } = useToasts();
+
+  const logoHomeControl = homeControls?.find(
+    (control) => control.category === "logo" && control.isSelected === true
+  );
+
 
   const sponsors = [
     {
@@ -83,7 +90,13 @@ const NavMiddle = ({ navItems }) => {
                 <div className="">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <Link to="/">
-                      <img className="w-28" src={logo} alt="" />
+                      <img
+                        className="w-28"
+                        src={`${import.meta.env.VITE_BASE_API_URL}${
+                          logoHomeControl?.image
+                        }`}
+                        alt=""
+                      />
                     </Link>
                     <h2 className=""> ফ্রন্ট অফ শার্ট পার্টনার </h2>
                     <img
@@ -130,7 +143,13 @@ const NavMiddle = ({ navItems }) => {
           {/* Logo and sponsors */}
           <div className="flex items-center gap-5">
             <Link to="/">
-              <img className="w-20 md:w-28" src={logo} alt="Logo" />
+              <img
+                className="w-20 md:w-28"
+                src={`${import.meta.env.VITE_BASE_API_URL}${
+                  logoHomeControl?.image
+                }`}
+                alt="Logo"
+              />
             </Link>
             <div className="flex gap-1 md:gap-2">
               {sponsors.map((sponsor) => (

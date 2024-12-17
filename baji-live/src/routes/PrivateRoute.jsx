@@ -11,8 +11,7 @@ const PrivateRoute = ({ children }) => {
       autoDismiss: true,
     });
     return <Navigate to="/" />;
-  }
-  return children;
+  } else return children;
 };
 
 export default PrivateRoute;
