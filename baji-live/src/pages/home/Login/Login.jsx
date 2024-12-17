@@ -46,7 +46,6 @@ const Login = () => {
           autoDismiss: true,
         });
 
-        console.log(userData);
         if (userData?.user?.role !== "admin") {
           navigate("/profile");
         } else {

@@ -18,6 +18,7 @@ import WithdrawsHistory from "@/pages/dashboard/WithdrawsHistory/WithdrawsHistor
 import AdminRoute from "./AdminRoute";
 import DashboardHome from "@/components/dashboard/DashboardHome";
 import HomeControl from "@/pages/dashboard/HomeControl/HomeControl";
+import AdminLogin from "@/pages/home/AdminLogin/AdminLogin";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/admin-login",
+    element: <AdminLogin />,
   },
 ]);
 
