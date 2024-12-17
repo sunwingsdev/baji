@@ -102,7 +102,6 @@ const WithdrawsHistory = () => {
   ];
 
   const handleStatusChange = async (id) => {
-
     try {
       const result = await updateStatus(id);
       if (result.data.modifiedCount > 0) {
