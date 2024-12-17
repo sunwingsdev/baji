@@ -7,15 +7,13 @@ const AdminRoute = ({ children }) => {
   const navigate = useNavigate();
   const { addToast } = useToasts();
 
-  if (!token || !user || user?.user.role !== "admin") {
-    addToast("Please login as a admin", {
+  if (!token || !user || user?.user?.role !== "admin") {
+    addToast("Please first login as a admin", {
       appearance: "error",
       autoDismiss: true,
     });
-    navigate("/");
-  }
-
-  return children;
+    navigate("/login");
+  } else return children;
 };
 
 export default AdminRoute;

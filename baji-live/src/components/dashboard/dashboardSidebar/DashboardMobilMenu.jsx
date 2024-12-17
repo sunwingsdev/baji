@@ -85,18 +85,16 @@ const DashboardMobilMenu = ({ open }) => {
           }`}
         >
           <div className="flex items-center justify-between">
-            <div className="">
-              <div
-                className="md:hidden text-yellow-300"
-                onClick={toggleSidebar}
-              >
-                <IoMdMenu className="text-3xl sm:text-3xl" />
-              </div>
+            <div className="md:hidden text-yellow-300" onClick={toggleSidebar}>
+              <IoMdMenu className="text-3xl sm:text-3xl" />
             </div>
           </div>
           {/* DropdownMenu */}
           <div className="relative">
-            <div className="flex items-center">
+            <div className="flex items-center gap-3">
+              <Link to="/" className="text-white underline hover:text-blue-400">
+                Main website
+              </Link>
               <div
                 className="w-6 md:w-7 text-white hover:text-yellow-200 duration-300 cursor-pointer"
                 onClick={toggleDropdown}
