@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 
-const Card = ({ contents, heading, handleModalOpen, setDrawerOpen }) => {
+const Card = ({ contents, heading, handleModalOpen, closeModal }) => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#333333] rounded-md py-2 space-y-2">
       <h2 className="border-s-8 border-[#14805e] px-2 ms-2">{heading}</h2>
@@ -31,14 +32,17 @@ const Card = ({ contents, heading, handleModalOpen, setDrawerOpen }) => {
         {contents?.map(({ icon: Icon, title, route, state }) =>
           route ? (
             <Link
-              state={{ state: state }}
+              // state={{ method: state }}
               to={route}
-              onClick={() => setDrawerOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                closeModal();
+                navigate(route, { state: { method: state } });
+              }}
               key={title}
               className="flex flex-col items-center justify-center gap-1.5"
             >
               <div className="rounded-full bg-[#4a4a4a] p-1.5">
-                {" "}
                 <Icon className="text-xl" />
               </div>
               <p className="font-light text-xs sm:text-sm text-center">
@@ -188,20 +192,27 @@ const AccountDetailsMobile = ({ setDrawerOpen }) => {
                 handleModalOpen={handleModalOpen}
                 contents={tohobilContents}
                 heading="তহবিল"
+                closeModal={() => setDrawerOpen(false)}
               />
               <Card
                 inMaintainance={true}
                 handleModalOpen={handleModalOpen}
                 contents={historyContents}
                 heading="হিস্ট্রি"
+                closeModal={() => setDrawerOpen(false)}
               />
               <Card
                 inMaintainance={true}
                 handleModalOpen={handleModalOpen}
                 contents={profileContents}
                 heading="প্রোফাইল"
+                closeModal={() => setDrawerOpen(false)}
               />
-              <Card contents={contactContents} heading="যোগাযোগ করুন" />
+              <Card
+                contents={contactContents}
+                heading="যোগাযোগ করুন"
+                closeModal={() => setDrawerOpen(false)}
+              />
               <div className="bg-[#333333] py-3 rounded-md flex items-center justify-center">
                 <p
                   onClick={handleLogout}

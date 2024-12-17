@@ -8,7 +8,6 @@ const Deposit = () => {
   const [activeTab, setActiveTab] = useState("deposit");
   const location = useLocation();
   const method = location.state?.method;
-  console.log(method);
   useEffect(() => {
     if (method === "withdraw") {
       setActiveTab("withdraw");
