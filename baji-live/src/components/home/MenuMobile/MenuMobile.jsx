@@ -25,7 +25,12 @@ const MenuMobile = () => {
   const authenticatedRoutes = [
     { icon: IoMdHome, title: "হোম", route: "/" },
     { icon: RiIdCardLine, title: "প্রমোশন", route: "" },
-    { icon: PiWallet, title: "ডিপোজিট", route: "/profile/deposit" },
+    {
+      icon: PiWallet,
+      title: "ডিপোজিট",
+      route: "/profile/deposit",
+      state: { method: "deposit" },
+    },
     {
       icon: LuUser,
       title: "মাই একাউন্ট",
@@ -54,17 +59,33 @@ const MenuMobile = () => {
         </>
       ) : (
         <>
-          {authenticatedRoutes.map(({ icon: Icon, title, route, onClick }) => (
-            <Link
-              to={route ? route : ""}
-              key={title}
-              className="flex flex-col items-center justify-center gap-1"
-              onClick={onClick}
-            >
-              <Icon className="text-2xl" />
-              <p className="text-sm">{title}</p>
-            </Link>
-          ))}
+          {authenticatedRoutes.map(
+            ({ icon: Icon, title, route, onClick, state }) =>
+              route ? (
+                <Link
+                  state={state}
+                  to={route}
+                  key={title}
+                  className="flex flex-col items-center justify-center gap-1"
+                  onClick={onClick}
+                >
+                  <Icon className="text-2xl" />
+                  <p className="text-sm">{title}</p>
+                </Link>
+              ) : (
+                <>
+                  <div
+                    to={route ? route : ""}
+                    key={title}
+                    className="flex flex-col items-center justify-center gap-1"
+                    onClick={onClick}
+                  >
+                    <Icon className="text-2xl" />
+                    <p className="text-sm">{title}</p>
+                  </div>
+                </>
+              )
+          )}
         </>
       )}
 

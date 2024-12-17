@@ -1,7 +1,11 @@
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 import { Link } from "react-router-dom";
-import logo from "../../../assets/logo.png";
 
 const FooterBottom = () => {
+  const { data: homeControls } = useGetHomeControlsQuery();
+  const logoHomeControl = homeControls?.find(
+    (control) => control.category === "logo" && control.isSelected === true
+  );
   const routes = [
     {
       id: 1,
@@ -23,7 +27,11 @@ const FooterBottom = () => {
     <div className="py-4 text-[#dedede]">
       <hr />
       <div className="flex flex-col md:flex-row items-center justify-between py-4">
-        <img className="w-20 md:w-28" src={logo} alt="" />
+        <img
+          className="w-20 md:w-28"
+          src={`${import.meta.env.VITE_BASE_API_URL}${logoHomeControl?.image}`}
+          alt=""
+        />
         <div className="flex flex-col items-end justify-center">
           <div className="flex items-center ">
             {routes.map(({ title, route }, i) => (
@@ -39,7 +47,7 @@ const FooterBottom = () => {
             ))}
           </div>
           <p className="text-xs text-[#999]">
-            © 2024 1xkhela কপিরাইট। সমস্ত অধিকার সংরক্ষিত
+            © 2024 1xKhelo কপিরাইট। সমস্ত অধিকার সংরক্ষিত
           </p>
         </div>
       </div>
