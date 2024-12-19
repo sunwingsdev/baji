@@ -21,24 +21,26 @@ const DepositTab = () => {
       title: "bKash",
       paymentMethod: "bkash",
       image: "https://www.baji.live/images/web/thirdparty/bkash.png",
+      number: "+8801900000000",
       channels: [{ title: "CashOut", value: "cashout" }],
     },
     {
       title: "Rocket",
       paymentMethod: "rocket",
       image: "https://www.baji.live/images/web/thirdparty/rocket.png",
+      number: "+8801755555555",
       channels: [{ title: "CashOut", value: "cashout" }],
     },
     {
       title: "Nagad",
       paymentMethod: "nagad",
       image: "https://www.baji.live/images/web/thirdparty/nagad.png",
+      number: "+8801511111111",
       channels: [{ title: "CashOut", value: "cashout" }],
     },
   ];
 
   useEffect(() => {
-    // Auto-select the first payment method and channel
     const initialPaymentMethod = depositMethods[0]?.paymentMethod;
     const initialDepositChannel =
       depositMethods[0]?.channels?.[0]?.value || null;
@@ -179,6 +181,14 @@ const DepositTab = () => {
           </div>
         </div>
       )}
+
+      <div className="px-3 py-2 inline-flex items-center gap-2 bg-gradient-to-br from-[#f269b0] to-[#5d1b90] rounded-lg">
+        <p>
+          {depositMethods.find(
+            (method) => method.paymentMethod === formData.paymentMethod
+          )?.number || "No number available"}
+        </p>
+      </div>
 
       {/* Amount */}
       <div className="space-y-2">

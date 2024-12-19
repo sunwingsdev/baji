@@ -1,12 +1,20 @@
-import StatsCard from "./StatsCard";
-import { FaUser, FaUsers, FaLock, FaGamepad } from "react-icons/fa";
-import { BsDiagram3Fill } from "react-icons/bs";
-import { FaChartArea } from "react-icons/fa6";
-import CustomTable from "./CustomTable";
+import { useGetDepositsQuery } from "@/redux/features/allApis/depositsApi/depositsApi";
 import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
+import { BsDiagram3Fill } from "react-icons/bs";
+import {
+  FaChartArea,
+  FaGamepad,
+  FaLock,
+  FaUser,
+  FaUsers,
+} from "react-icons/fa";
+import StatsCard from "./StatsCard";
+import CustomTable from "./CustomTable";
 
 const DashboardHome = () => {
   const { data: users } = useGetUsersQuery();
+  const { data: deposits } = useGetDepositsQuery();
+  // const
   const stats = [
     {
       title: "Total Users",
@@ -48,15 +56,20 @@ const DashboardHome = () => {
     },
   ];
 
-  const userPaymentsHeaders = ["Cashier", "Money In", "Money Out", "Date"];
-  const userPaymentsData = [
-    {
-      cashier: "TestCash",
-      moneyIn: "10.000",
-      moneyOut: "0.000",
-      date: "07:39:59",
-    },
-  ];
+  const userPaymentsHeaders = ["Username", "Phone", "Amount", "Date"];
+
+  const sortedDeposits =
+    deposits
+      ?.slice()
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, 5) || [];
+
+  const userPaymentsData = sortedDeposits.map((deposit) => ({
+    username: deposit.userInfo.username,
+    phone: deposit.userInfo.phone,
+    amount: deposit.amount,
+    createdAt: new Date(deposit.createdAt).toLocaleString(),
+  }));
 
   const userGamesHeaders = ["Game", "User", "Balance", "Bet", "Win", "Date"];
   const userGamesData = [
@@ -76,7 +89,6 @@ const DashboardHome = () => {
       win: "0.0000",
       date: "23:31:20",
     },
-    // Add more rows as needed
   ];
 
   const latestShopsHeaders = [
@@ -96,8 +108,6 @@ const DashboardHome = () => {
       Currency: "USD",
       Status: "Active",
     },
-
-    // Add more rows as needed
   ];
 
   const latestShiftStatsHeader = [
@@ -133,8 +143,6 @@ const DashboardHome = () => {
       Transfers: "1",
       Pay_Out: "000",
     },
-
-    // Add more rows as needed
   ];
 
   return (

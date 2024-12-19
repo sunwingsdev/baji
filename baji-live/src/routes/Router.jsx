@@ -21,6 +21,8 @@ import AgentTree from "@/pages/dashboard/AgentTree/AgentTree";
 import Affilitors from "@/pages/dashboard/Affilitor/Affilitors";
 import Games from "./../pages/dashboard/Games/Games";
 import GamesApi from "@/pages/dashboard/GamesApi/GamesApi";
+import HomeControl from "@/pages/dashboard/HomeControl/HomeControl";
+import AdminLogin from "@/pages/home/AdminLogin/AdminLogin";
 
 const router = createBrowserRouter([
   {
@@ -109,11 +111,19 @@ const router = createBrowserRouter([
         path: "withdraws",
         element: <WithdrawsHistory />,
       },
+      {
+        path: "home-controls",
+        element: <HomeControl />,
+      },
     ],
   },
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/admin-login",
+    element: <AdminLogin />,
   },
 ]);
 

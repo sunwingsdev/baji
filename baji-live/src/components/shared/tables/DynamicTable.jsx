@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
-import ViewModal from "../sharedModal/ViewModal"; // নতুন মডাল কম্পোনেন্ট ইমপোর্ট করা
+import ViewModal from "../sharedModal/ViewModal"; 
 import DeleteConfirmationModal from "../sharedModal/DeleteConfirmationModal";
 
 // Helper function to access nested properties

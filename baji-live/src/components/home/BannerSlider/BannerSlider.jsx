@@ -5,22 +5,16 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
-import image1 from "@/assets/banner/1.jpg";
-import image2 from "@/assets/banner/2.jpg";
-import image3 from "@/assets/banner/3.jpg";
-import image4 from "@/assets/banner/4.jpg";
-import image5 from "@/assets/banner/5.jpg";
 import Container from "@/components/shared/Container";
 import Marquee from "react-fast-marquee";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 export function BannerSlider() {
-  const bannerImages = [
-    { id: 1, image: image1 },
-    { id: 2, image: image2 },
-    { id: 3, image: image3 },
-    { id: 4, image: image4 },
-    { id: 5, image: image5 },
-  ];
+  const { data: homeControls } = useGetHomeControlsQuery();
+
+  const bannerImages = homeControls?.filter(
+    (control) => control.category === "slider" && control.isSelected === true
+  );
 
   const [api, setApi] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -44,13 +38,13 @@ export function BannerSlider() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (api) {
-        const nextIndex = (selectedIndex + 1) % bannerImages.length;
+        const nextIndex = (selectedIndex + 1) % bannerImages?.length;
         api.scrollTo(nextIndex);
       }
     }, 3000); // 2 seconds
 
     return () => clearInterval(interval);
-  }, [api, selectedIndex, bannerImages.length]);
+  }, [api, selectedIndex, bannerImages?.length]);
 
   const scrollTo = (index) => {
     api?.scrollTo(index);
@@ -59,10 +53,13 @@ export function BannerSlider() {
   return (
     <Carousel className="w-full" setApi={setApi}>
       <CarouselContent>
-        {bannerImages.map((image, index) => (
+        {bannerImages?.map((image, index) => (
           <CarouselItem key={image.id}>
             <div className="">
-              <img src={image.image} alt={`Slide ${index + 1}`} />
+              <img
+                src={`${import.meta.env.VITE_BASE_API_URL}${image?.image}`}
+                alt={`Slide ${index + 1}`}
+              />
             </div>
           </CarouselItem>
         ))}
@@ -70,7 +67,7 @@ export function BannerSlider() {
 
       {/* Slide Select Buttons */}
       <div className="absolute bottom-8 md:bottom-16 right-4 md:right-[5.5rem] flex space-x-2">
-        {bannerImages.map((_, index) => (
+        {bannerImages?.map((_, index) => (
           <button
             key={index}
             onClick={() => scrollTo(index)}
@@ -86,7 +83,7 @@ export function BannerSlider() {
           <div className="flex items-center gap-4">
             <HiMiniSpeakerWave className="text-xl md:text-3xl" />
             <Marquee className="text-xs md:text-sm">
-              প্রিয় গ্রাহক, আপনার 1xKhela.com এ ভিসিট করতে সমস্যা হলে, অনুগ্রহ
+              প্রিয় গ্রাহক, আপনার 1xkhelo.com এ ভিসিট করতে সমস্যা হলে, অনুগ্রহ
               করে ---- ব্যবহার করুন, এটি আমাদের ব্যাকআপ ওয়েবসাইট লিংক।
             </Marquee>
           </div>

@@ -32,8 +32,10 @@ import {
   IoSettingsSharp,
 } from "react-icons/io5";
 import Modal from "@/components/shared/Modal";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const DashboardSidebar = ({ open, setOpen }) => {
+  const { data: homeControls } = useGetHomeControlsQuery();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState({
     Deposit: false,
@@ -49,6 +51,10 @@ const DashboardSidebar = ({ open, setOpen }) => {
     Pages: false,
     Settings: false,
   });
+
+  const logoHomeControl = homeControls?.find(
+    (control) => control.category === "logo" && control.isSelected === true
+  );
 
   // Toggle submenu visibility
   const toggleSubmenu = (menu) => {
@@ -81,11 +87,17 @@ const DashboardSidebar = ({ open, setOpen }) => {
                 to={"/"}
                 className="flex items-center gap-1 px-2 py-0.5 rounded-lg"
               >
-                <img
-                  className="w-40"
-                  src="http://localhost:5173/src/assets/logo.png"
-                  alt=""
-                />
+                {logoHomeControl?.image ? (
+                  <img
+                    className="w-40"
+                    src={`${import.meta.env.VITE_BASE_API_URL}${
+                      logoHomeControl?.image
+                    }`}
+                    alt=""
+                  />
+                ) : (
+                  <div className="h-10"></div>
+                )}
               </Link>
             </div>
             <div>
@@ -113,7 +125,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
             }`}
           >
             <IoMdHome size={22} className="text-yellow-300" />
-            <p className={`${!open && "hidden"}`}>Dashboard Home</p>
+            <p className={`${!open && "hidden"}`}>Dashboard</p>
           </div>
         </Link>
         <Link to="/dashboard/users">
@@ -226,7 +238,11 @@ const DashboardSidebar = ({ open, setOpen }) => {
               <IoDiamondOutline size={22} className="text-yellow-300" />
               <p className={`${!open && "hidden"}`}> Bonuses </p>
             </div>
-            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <FaAngleDown
+              className={`text-white duration-300 ${!open && "hidden"} ${
+                submenuOpen.Bonuses ? "" : "-rotate-90"
+              }`}
+            />
           </div>
           {submenuOpen.Bonuses && open && (
             <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
@@ -268,7 +284,11 @@ const DashboardSidebar = ({ open, setOpen }) => {
               <IoDiamondOutline size={22} className="text-yellow-300" />
               <p className={`${!open && "hidden"}`}> Games History</p>
             </div>
-            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <FaAngleDown
+              className={`text-white duration-300 ${!open && "hidden"} ${
+                !submenuOpen.Stats && "-rotate-90"
+              }`}
+            />
           </div>
           {submenuOpen.GamesHistory && open && (
             <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
@@ -311,7 +331,6 @@ const DashboardSidebar = ({ open, setOpen }) => {
         {/* Stats Menu */}
 
         {/* Pages Menu */}
-
         {/* </Link> */}
         {/* Deposit Menu */}
         <div
@@ -327,7 +346,11 @@ const DashboardSidebar = ({ open, setOpen }) => {
               <PiHandDepositDuotone size={22} className="text-yellow-300" />
               <p className={`${!open && "hidden"}`}> Deposit </p>
             </div>
-            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <FaAngleDown
+              className={`text-white duration-300 ${!open && "hidden"} ${
+                !submenuOpen.Deposit && "-rotate-90"
+              }`}
+            />
           </div>
           {submenuOpen.Deposit && open && (
             <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
@@ -357,7 +380,11 @@ const DashboardSidebar = ({ open, setOpen }) => {
               <PiHandWithdrawDuotone size={22} className="text-yellow-300" />
               <p className={`${!open && "hidden"}`}> Withdraw </p>
             </div>
-            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <FaAngleDown
+              className={`text-white duration-300 ${!open && "hidden"} ${
+                !submenuOpen.withdraw && "-rotate-90"
+              }`}
+            />
           </div>
           {submenuOpen.withdraw && open && (
             <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
@@ -386,17 +413,21 @@ const DashboardSidebar = ({ open, setOpen }) => {
               <FaAffiliatetheme size={22} className="text-yellow-300" />
               <p className={`${!open && "hidden"}`}> fontend </p>
             </div>
-            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <FaAngleDown
+              className={`text-white duration-300 ${!open && "hidden"} ${
+                !submenuOpen.HomePage && "-rotate-90"
+              }`}
+            />
           </div>
           {submenuOpen.HomePage && open && (
             <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
-              <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
+              <Link to="/dashboard/home-controls" className="py-2.5 flex gap-2">
                 <PiFlagBannerFoldDuotone
                   size={20}
                   className="text-yellow-300"
                 />
-                Banner
-              </div>
+                Home Controls
+              </Link>
               <div onClick={handleModalOpen} className="py-2.5 flex gap-2">
                 <CiSliderHorizontal size={20} className="text-yellow-300" />
                 Slider
@@ -444,7 +475,11 @@ const DashboardSidebar = ({ open, setOpen }) => {
               <IoSettingsSharp size={22} className="text-red-500" />
               <p className={`${!open && "hidden"}`}> Settings </p>
             </div>
-            <FaAngleDown className={`text-white ${!open && "hidden"}`} />
+            <FaAngleDown
+              className={`text-white duration-300 ${!open && "hidden"} ${
+                !submenuOpen.Settings && "-rotate-90"
+              }`}
+            />
           </div>
           {submenuOpen.Settings && open && (
             <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
