@@ -48,7 +48,7 @@ const DynamicTable = ({ columns, data }) => {
             {columns.map((col, index) => (
               <th
                 key={index}
-                className="border border-gray-300  px-2 md:px-4 py-1 md:py-2 text-left"
+                className="border-2 border-black  px-2 md:px-4 py-1 md:py-2 text-left"
               >
                 {col.headerName}
               </th>
@@ -59,10 +59,10 @@ const DynamicTable = ({ columns, data }) => {
           {tableData?.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              className={rowIndex % 2 === 0 ? "bg-gray-100" : ""}
+              className={rowIndex % 2 === 0 ? "bg-blue-200" : ""}
             >
               {columns.map((col, colIndex) => (
-                <td key={colIndex} className="border border-gray-300 px-4 py-2">
+                <td key={colIndex} className="border-2 border-black px-4 py-2">
                   {col.customRender ? (
                     col.customRender(row)
                   ) : col.buttonConfig ? (
