@@ -17,6 +17,10 @@ import DashboardDeposits from "@/pages/dashboard/DashboardDeposits/DashboardDepo
 import WithdrawsHistory from "@/pages/dashboard/WithdrawsHistory/WithdrawsHistory";
 import AdminRoute from "./AdminRoute";
 import DashboardHome from "@/components/dashboard/DashboardHome";
+import AgentTree from "@/pages/dashboard/AgentTree/AgentTree";
+import Affilitors from "@/pages/dashboard/Affilitor/Affilitors";
+import Games from "./../pages/dashboard/Games/Games";
+import GamesApi from "@/pages/dashboard/GamesApi/GamesApi";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +84,22 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "agent",
+        element: <AgentTree />,
+      },
+      {
+        path: "affilitors",
+        element: <Affilitors />,
+      },
+      {
+        path: "games",
+        element: <Games />,
+      },
+      {
+        path: "gamesApi",
+        element: <GamesApi />,
       },
       {
         path: "deposits",
