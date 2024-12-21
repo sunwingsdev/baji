@@ -23,6 +23,7 @@ import Games from "./../pages/dashboard/Games/Games";
 import GamesApi from "@/pages/dashboard/GamesApi/GamesApi";
 import HomeControl from "@/pages/dashboard/HomeControl/HomeControl";
 import AdminLogin from "@/pages/home/AdminLogin/AdminLogin";
+import Checkout from "@/pages/home/Checkout/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
         element: <HomeControl />,
       },
     ],
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />,
   },
   {
     path: "/login",
