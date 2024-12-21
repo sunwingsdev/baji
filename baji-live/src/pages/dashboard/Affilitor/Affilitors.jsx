@@ -3,7 +3,6 @@ import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
 
 const Affilitors = () => {
   const { data } = useGetUsersQuery();
-  console.log(data);
   const columns = [
     { headerName: "Agent name", field: "username" },
     { headerName: "Login", field: "fullName" },
@@ -20,7 +19,11 @@ const Affilitors = () => {
         Affilitor
       </h1>
       <div className="flex justify-between p-2">
-        <input className="border-2 rounded-md" type="text" />
+        <input
+          className="border-2 border-zinc-500 rounded-md w-4/6"
+          placeholder="search here"
+          type="text"
+        />
         <p className="text-2xl font-bold bg-yellow-400 px-6">+Add</p>
       </div>
       <DynamicTable columns={columns} data={data} />
