@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
-import ViewModal from "../sharedModal/ViewModal"; 
+import ViewModal from "../sharedModal/ViewModal";
 import DeleteConfirmationModal from "../sharedModal/DeleteConfirmationModal";
 
 // Helper function to access nested properties
@@ -43,26 +43,26 @@ const DynamicTable = ({ columns, data }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table-auto border-collapse border border-gray-300 w-full text-nowrap">
-        <thead className="text-sm md:text-base bg-[#14815f]">
+        <thead className=" sm:text-xs md:text-base bg-[#14815f]">
           <tr className=" text-white">
             {columns.map((col, index) => (
               <th
                 key={index}
-                className="border-2 border-black  px-2 md:px-4 py-1 md:py-2 text-left"
+                className="border-2 border-black  sm:px-0 md:px-2 py-1 md:py-2 text-center text-xs md:text-sm lg:text-lg"
               >
                 {col.headerName}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="text-sm md:text-base">
+        <tbody className="text-[12px] md:text-base lg:text-[15px] text-center">
           {tableData?.map((row, rowIndex) => (
-            <tr
-              key={rowIndex}
-              className={rowIndex % 2 === 0 ? "bg-blue-200" : ""}
-            >
+            <tr key={rowIndex}>
               {columns.map((col, colIndex) => (
-                <td key={colIndex} className="border-2 border-black px-4 py-2">
+                <td
+                  key={colIndex}
+                  className="border-2 border-black md:px-2 lg:px-2 py-2 sm:text-[10px] lg:text-[15px]"
+                >
                   {col.customRender ? (
                     col.customRender(row)
                   ) : col.buttonConfig ? (
@@ -73,7 +73,7 @@ const DynamicTable = ({ columns, data }) => {
                           : handleDeleteClick(row)
                       } // Open modal on "View" button click
                       className={clsx(
-                        "px-4 py-1 rounded text-white",
+                        "px-2 py-1 rounded text-white",
                         col.buttonConfig.bgColor || "bg-blue-500",
                         col.buttonConfig.hoverColor || "hover:bg-blue-600"
                       )}

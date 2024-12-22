@@ -90,7 +90,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
   const menuItems = [
     { label: "Dashboard", icon: <IoMdHome />, to: "/dashboard" },
     { label: "Users", icon: <FaUsers />, to: "/dashboard/users" },
-    { label: "Cash Agent", icon: <PiCashRegister />, to: "/dashboard/users" },
+    { label: "Cash Agent", icon: <PiCashRegister />, to: "/dashboard/agent" },
     {
       label: "Affiliators",
       icon: <FaAffiliatetheme />,
@@ -110,12 +110,12 @@ const DashboardSidebar = ({ open, setOpen }) => {
       icon: <GiGamepadCross />,
       submenu: [
         { label: "Sprots Live TV", to: "/dashboard/gamesApi" },
-        { label: "BetFair API", to: "/dashboard" },
+        { label: "BetFair API", to: "/dashboard/agentprofile" },
         { label: "Sports Radar API", to: "/dashboard/userProfile" },
-        { label: "Odds Jam API", to: "/dashboard/userProfile" },
-        { label: "Bet Construct API", to: "/dashboard/userProfile" },
-        { label: "Kambi API", to: "/dashboard/userProfile" },
-        { label: "Pinnacle API", to: "/dashboard/userProfile" },
+        { label: "Odds Jam API", to: "/dashboard/allusers" },
+        { label: "Bet Construct API", to: "/dashboard/agent" },
+        { label: "Kambi API", to: "/dashboard/gamesApi" },
+        { label: "Pinnacle API", to: "/dashboard" },
         { label: "SoftSwiss API", to: "/dashboard" },
         { label: "Betradar API", to: "/dashboard" },
         { label: "Evolution API", to: "/dashboard" },
@@ -165,7 +165,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
       icon: <BsPiggyBank />,
       submenu: [
         { label: "Deposit Methord", to: "/dashboard" },
-        { label: "Deposit History", to: "/dashboard" },
+        { label: "Deposit History", to: "/dashboard/deposits" },
       ],
     },
     {
