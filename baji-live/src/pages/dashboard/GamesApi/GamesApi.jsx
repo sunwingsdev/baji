@@ -5,7 +5,7 @@ const GamesApi = () => {
 
   return (
     <div className="bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-500 p-2 rounded-md shadow-lg  mx-auto">
-      <h1 className="text-center text-3xl font-semibold text-white mb-8">
+      <h1 className="text-center text-lg lg:text-3xl font-semibold  mb-4">
         Games API Key
       </h1>
 
@@ -14,10 +14,10 @@ const GamesApi = () => {
           Sports Live TV
         </h2>
 
-        <div className="flex justify-center gap-6 mb-6 flex-wrap">
+        <div className="flex justify-center gap-6 mb-4 flex-wrap">
           <button
             onClick={() => setSelectedButton("apiSetup")}
-            className={`px-6 py-3 rounded-full text-xl font-semibold transition duration-300 ease-in-out ${
+            className={`px-6 py-2 rounded-full text-lg lg:text-xl font-semibold transition duration-300 ease-in-out ${
               selectedButton === "apiSetup"
                 ? "bg-[#59be7b] text-white shadow-lg transform scale-105"
                 : "bg-white text-[#14815f] border border-[#14815f] hover:bg-[#14815f] hover:text-white"
@@ -27,7 +27,7 @@ const GamesApi = () => {
           </button>
           <button
             onClick={() => setSelectedButton("generateGame")}
-            className={`px-6 py-3 rounded-full text-xl font-semibold transition duration-300 ease-in-out ${
+            className={`px-2 py-2 rounded-full text-lg lg:text-xl font-semibold transition duration-300 ease-in-out ${
               selectedButton === "generateGame"
                 ? "bg-[#59be7b] text-white shadow-lg transform scale-105"
                 : "bg-white text-[#14815f] border border-[#14815f] hover:bg-[#14815f] hover:text-white"
@@ -37,10 +37,13 @@ const GamesApi = () => {
           </button>
         </div>
 
-        <form className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <form className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-4">
-              <label htmlFor="apiKey" className="text-gray-700 font-semibold">
+              <label
+                htmlFor="apiKey"
+                className="text-gray-700 font-semibold p-2"
+              >
                 API Key
               </label>
               <input

@@ -140,16 +140,16 @@ const AgentTree = () => {
   ];
   return (
     <div className="p-2 ">
-      <h1 className="text-center text-xl lg:text-2xl  bg-[#59be7b] text-white p-2 lg:font-semibold rounded-md">
+      <h1 className="text-center md:text-xl lg:text-2xl  bg-[#59be7b] text-white p-2 lg:font-semibold rounded-md">
         Agent Tree
       </h1>
       <div className="flex justify-between p-2">
         <input
-          className="border-2 border-zinc-500 rounded-md w-4/6 bg-slate-200"
+          className="border-2 border-zinc-500 rounded-md w-4/6 bg-slate-200 p-1"
           placeholder="search here"
           type="text"
         />
-        <button className="text-xl lg:font-bold bg-yellow-400 p-2  rounded-md">
+        <button className="text-base lg:text-xl lg:font-bold bg-yellow-400 p-1 lg:p-2  rounded-md">
           +Add
         </button>
       </div>

@@ -10,7 +10,7 @@ const AgentProfile = () => {
   ];
   return (
     <div className="bg-gray-100 min-h-screen p-2">
-      <h1 className="text-center bg-gradient-to-r from-green-300 to-green-600 text-3xl font-bold text-white p-4 rounded-md shadow-md mb-6">
+      <h1 className="text-center bg-gradient-to-r from-green-300 to-green-600 text-lg lg:text-xl font-bold text-white p-4 rounded-md shadow-md mb-6">
         Agent Profile
       </h1>
 

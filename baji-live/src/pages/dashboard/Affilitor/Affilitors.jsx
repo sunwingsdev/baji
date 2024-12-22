@@ -111,7 +111,7 @@ const Affilitors = () => {
     {
       headerName: "Login",
       customRender: (row) => (
-        <span className="px-4 py-1 rounded text-white bg-green-500">
+        <span className="p-1 lg:p-2  rounded text-white bg-green-500">
           {row.login}
         </span>
       ),
@@ -145,11 +145,13 @@ const Affilitors = () => {
       </h1>
       <div className="flex justify-between p-2">
         <input
-          className="border-2 border-zinc-500 rounded-md w-4/6"
+          className="border-2 border-zinc-500 rounded-md w-4/6 p-1 lg:p-2"
           placeholder="search here"
           type="text"
         />
-        <p className="text-xl font-bold bg-yellow-400 px-6 rounded-md">+Add</p>
+        <p className=" text-base lg:text-xl font-bold bg-yellow-400 p-1 lg:p-2 rounded-md">
+          +Add
+        </p>
       </div>
       <DynamicTable columns={columns} data={data} />
     </div>

@@ -144,11 +144,11 @@ const AllUsers = () => {
       </h1>
       <div className="flex justify-between p-2">
         <input
-          className="border-2 border-zinc-500 rounded-md w-4/6"
+          className="border-2 border-zinc-500 rounded-md w-4/6 p-1 lg:p-2"
           placeholder="search here"
           type="text"
         />
-        <button className="text-2xl font-bold bg-yellow-400 px-2 rounded-md">
+        <button className="text-base lg:text-2xl font-bold bg-yellow-400 px-2 rounded-md">
           +Add
         </button>
       </div>

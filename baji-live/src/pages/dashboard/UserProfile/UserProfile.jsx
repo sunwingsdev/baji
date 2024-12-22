@@ -5,7 +5,7 @@ const UserProfile = () => {
 
   return (
     <div className=" min-h-screen  text-sm text-nowrap">
-      <h1 className="text-center bg-[#59be7b] text-xl font-bold  p-2 rounded-md mb-6">
+      <h1 className="text-center bg-[#59be7b] text-lg lg:text-xl font-bold  p-2 rounded-md mb-6">
         User Profile
       </h1>
       <div className="w-full  mx-auto flex flex-col lg:flex-row gap-4 bg-slate-200 p-2">
@@ -91,7 +91,7 @@ const UserProfile = () => {
               ].map((field, index) => (
                 <div key={index} className="flex flex-col gap-2">
                   <label
-                    className="text-gray-700 font-semibold"
+                    className="text-gray-700 font-semibold p-2"
                     htmlFor={field.replace(/\s+/g, "").toLowerCase()}
                   >
                     {field}
