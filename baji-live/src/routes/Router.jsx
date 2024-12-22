@@ -24,6 +24,10 @@ import GamesApi from "@/pages/dashboard/GamesApi/GamesApi";
 import HomeControl from "@/pages/dashboard/HomeControl/HomeControl";
 import AdminLogin from "@/pages/home/AdminLogin/AdminLogin";
 import Checkout from "@/pages/home/Checkout/Checkout";
+import AllUsers from "@/pages/dashboard/users/AllUsers";
+import UserProfile from "@/pages/dashboard/UserProfile/UserProfile";
+import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
+import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +91,22 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "userProfile",
+        element: <UserProfile />,
+      },
+      {
+        path: "agentProfile",
+        element: <AgentProfile />,
+      },
+      {
+        path: "allusers",
+        element: <AllUsers />,
+      },
+      {
+        path: "gameCategories",
+        element: <GameCategories />,
       },
       {
         path: "agent",

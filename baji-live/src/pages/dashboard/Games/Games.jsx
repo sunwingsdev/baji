@@ -1,5 +1,6 @@
 import DynamicTable from "@/components/shared/tables/DynamicTable";
 import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
+import { Link } from "react-router-dom";
 
 const Games = () => {
   const { data } = useGetUsersQuery();
@@ -18,8 +19,16 @@ const Games = () => {
         All Games Catagories
       </h1>
       <div className="flex justify-between p-2">
-        <input className="border-2 rounded-md" type="text" />
-        <p className="text-2xl font-bold bg-yellow-400 px-6">+Add</p>
+        <input
+          className="border-2 border-zinc-500 rounded-md w-4/6"
+          placeholder="search here"
+          type="text"
+        />
+        <Link to="/dashboard/gameCategories">
+          <button className="text-2xl font-bold bg-yellow-400 px-6">
+            +Add
+          </button>
+        </Link>
       </div>
       <DynamicTable columns={columns} data={data} />
     </div>
