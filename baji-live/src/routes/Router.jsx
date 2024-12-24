@@ -28,6 +28,7 @@ import UserProfile from "@/pages/dashboard/UserProfile/UserProfile";
 import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
 import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
+import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
 
 const router = createBrowserRouter([
   {
@@ -135,6 +136,10 @@ const router = createBrowserRouter([
       {
         path: "fontendslider",
         element: <FontendSlider />,
+      },
+      {
+        path: "promotionsoffer",
+        element: <PromotionsOffer />,
       },
       {
         path: "home-controls",
