@@ -57,6 +57,7 @@ export function BannerSlider() {
           <CarouselItem key={image.id}>
             <div className="">
               <img
+                className="w-full h-[600px]"
                 src={`${import.meta.env.VITE_BASE_API_URL}${image?.image}`}
                 alt={`Slide ${index + 1}`}
               />
@@ -83,8 +84,9 @@ export function BannerSlider() {
           <div className="flex items-center gap-4">
             <HiMiniSpeakerWave className="text-xl md:text-3xl" />
             <Marquee className="text-xs md:text-sm">
-              প্রিয় গ্রাহক, আপনার 1xkhelo.com এ ভিসিট করতে সমস্যা হলে, অনুগ্রহ
-              করে ---- ব্যবহার করুন, এটি আমাদের ব্যাকআপ ওয়েবসাইট লিংক।
+              প্রিয় গ্রাহক, আপনার {import.meta.env.VITE_SITE_NAME}.com এ ভিসিট
+              করতে সমস্যা হলে, অনুগ্রহ করে ---- ব্যবহার করুন, এটি আমাদের ব্যাকআপ
+              ওয়েবসাইট লিংক।
             </Marquee>
           </div>
         </Container>

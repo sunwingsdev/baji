@@ -61,9 +61,10 @@ const DepositTab = () => {
   };
 
   const handleReset = () => {
-    setFormData({
+    setFormData((prev) => ({
+      ...prev,
       amount: [],
-    });
+    }));
   };
 
   const handleAmountClick = (amount) => {

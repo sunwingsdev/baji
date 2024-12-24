@@ -38,6 +38,11 @@ const usersApi = baseApi.injectEndpoints({
       query: () => "/users",
       providesTags: ["users"],
     }),
+
+    getUserById: builder.query({
+      query: (id) => `/users/single-user/${id}`,
+      providesTags: ["users"],
+    }),
   }),
 });
 
@@ -46,4 +51,5 @@ export const {
   useLoginUserMutation,
   useLazyGetAuthenticatedUserQuery,
   useGetUsersQuery,
+  useLazyGetUserByIdQuery,
 } = usersApi;
