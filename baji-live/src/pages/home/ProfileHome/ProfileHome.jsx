@@ -7,7 +7,8 @@ import { MdCake } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 const ProfileHome = () => {
-  const { user } = useSelector((state) => state.auth);
+  const {  user } = useSelector((state) => state.auth);
+
 
   return (
     <div className="space-y-3">

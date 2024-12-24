@@ -1,53 +1,58 @@
 import { useState } from "react";
 
 const GamesApi = () => {
-  const [selectedButton, setSelectedButton] = useState(true); // Track selected button but does not conditionally render
+  const [selectedButton, setSelectedButton] = useState(true);
 
   return (
-    <div className="bg-gray-400 p-6 rounded-md">
-      <h1 className="text-center bg-[#14815f] text-2xl font-bold text-white p-4 rounded-md mb-6">
+    <div className="bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-500 p-2 rounded-md shadow-lg  mx-auto">
+      <h1 className="text-center text-lg lg:text-3xl font-semibold  mb-4">
         Games API Key
       </h1>
-      <div className="w-full lg:w-2/3 mx-auto">
-        <div className="bg-[#14815f] rounded-md mb-6 p-4">
-          <h2 className="text-center text-xl text-white font-semibold mb-4">
-            Sports Live TV
-          </h2>
-          <div className="flex justify-center gap-4">
-            <button
-              onClick={() => setSelectedButton("apiSetup")}
-              className={`px-4 py-2 rounded-md hover:bg-gray-700 ${
-                selectedButton === "apiSetup"
-                  ? " text-white bg-[#146148]"
-                  : "bg-white text-[#14815f]"
-              }`}
-            >
-              API Setup
-            </button>
-            <button
-              onClick={() => setSelectedButton("generateGame")}
-              className={`px-4 py-2 rounded-md hover:bg-gray-700 ${
-                selectedButton === "generateGame"
-                  ? " text-white bg-[#146148]"
-                  : "bg-white text-[#14815f]"
-              }`}
-            >
-              Generate Game
-            </button>
-          </div>
+
+      <div className="bg-white rounded-lg p-6 shadow-xl">
+        <h2 className="text-center text-2xl font-semibold text-[#14815f] mb-6">
+          Sports Live TV
+        </h2>
+
+        <div className="flex justify-center gap-6 mb-4 flex-wrap">
+          <button
+            onClick={() => setSelectedButton("apiSetup")}
+            className={`px-6 py-2 rounded-full text-lg lg:text-xl font-semibold transition duration-300 ease-in-out ${
+              selectedButton === "apiSetup"
+                ? "bg-[#59be7b] text-white shadow-lg transform scale-105"
+                : "bg-white text-[#14815f] border border-[#14815f] hover:bg-[#14815f] hover:text-white"
+            }`}
+          >
+            API Setup
+          </button>
+          <button
+            onClick={() => setSelectedButton("generateGame")}
+            className={`px-2 py-2 rounded-full text-lg lg:text-xl font-semibold transition duration-300 ease-in-out ${
+              selectedButton === "generateGame"
+                ? "bg-[#59be7b] text-white shadow-lg transform scale-105"
+                : "bg-white text-[#14815f] border border-[#14815f] hover:bg-[#14815f] hover:text-white"
+            }`}
+          >
+            Generate Game
+          </button>
         </div>
-        <form className="bg-white p-4 rounded-md shadow-md">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="flex flex-col gap-2">
-              <label htmlFor="apiKey" className="text-gray-700 font-semibold">
+
+        <form className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-4">
+              <label
+                htmlFor="apiKey"
+                className="text-gray-700 font-semibold p-2"
+              >
                 API Key
               </label>
               <input
                 type="text"
                 id="apiKey"
                 placeholder="Enter API Key"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#14815f]"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
               />
+
               <label
                 htmlFor="licenseKey"
                 className="text-gray-700 font-semibold"
@@ -58,8 +63,9 @@ const GamesApi = () => {
                 type="text"
                 id="licenseKey"
                 placeholder="Enter License Key"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#14815f]"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
               />
+
               <label
                 htmlFor="gameProviderKey"
                 className="text-gray-700 font-semibold"
@@ -70,10 +76,11 @@ const GamesApi = () => {
                 type="text"
                 id="gameProviderKey"
                 placeholder="Enter Game Provider Key"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#14815f]"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
               />
             </div>
-            <div className="flex flex-col gap-2">
+
+            <div className="space-y-4">
               <label
                 htmlFor="providerIp"
                 className="text-gray-700 font-semibold"
@@ -84,17 +91,19 @@ const GamesApi = () => {
                 type="text"
                 id="providerIp"
                 placeholder="Enter Provider IP"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#14815f]"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
               />
+
               <label htmlFor="download" className="text-gray-700 font-semibold">
-                Download
+                Game file
               </label>
               <button
                 type="button"
-                className="bg-[#14815f] text-white px-4 py-2 rounded-md hover:bg-green-700"
+                className="w-full bg-[#59be7b] text-white px-6 py-3 rounded-md hover:bg-[#146148] transition duration-300"
               >
-                Download
+                Game file upload
               </button>
+
               <label
                 htmlFor="secretPin"
                 className="text-gray-700 font-semibold"
@@ -105,13 +114,14 @@ const GamesApi = () => {
                 type="text"
                 id="secretPin"
                 placeholder="Enter Secret Pin"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#14815f]"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
               />
             </div>
           </div>
+
           <button
             type="submit"
-            className="p-4 bg-[#e95f35] text-white py-2 rounded-md hover:bg-green-700"
+            className="w-full bg-[#59be7b] text-white py-3 rounded-md hover:bg-[#d3562a] transition duration-300"
           >
             Save API
           </button>

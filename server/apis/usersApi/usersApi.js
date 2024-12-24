@@ -116,6 +116,18 @@ const usersApi = (usersCollection) => {
     }
   });
 
+  router.get("/single-user/:id", async (req, res) => {
+    const { id } = req?.params;
+    if (!id) {
+      return;
+    }
+    const result = await usersCollection.findOne(
+      { _id: new ObjectId(id) },
+      { projection: { password: 0 } }
+    );
+    res.send(result);
+  });
+
   return router;
 };
 

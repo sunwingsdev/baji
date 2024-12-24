@@ -3,6 +3,7 @@ import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
 
 const Users = () => {
   const { data } = useGetUsersQuery();
+  console.log(data);
   const columns = [
     { headerName: "Username", field: "username" },
     { headerName: "Name", field: "fullName" },
@@ -30,8 +31,10 @@ const Users = () => {
   ];
 
   return (
-    <div className="">
-      <h1 className="text-lg md:text-2xl font-bold mb-4">All users</h1>
+    <div className="p-2">
+      <h1 className="text-lg md:text-xl font-bold mb-4 text-center">
+        All users
+      </h1>
       <DynamicTable columns={columns} data={data} />
     </div>
   );

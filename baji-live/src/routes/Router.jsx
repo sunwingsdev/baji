@@ -147,7 +147,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/admin-login",
+    path: "/admin",
     element: <AdminLogin />,
   },
 ]);

@@ -90,7 +90,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
   const menuItems = [
     { label: "Dashboard", icon: <IoMdHome />, to: "/dashboard" },
     { label: "Users", icon: <FaUsers />, to: "/dashboard/users" },
-    { label: "Cash Agent", icon: <PiCashRegister />, to: "/dashboard/users" },
+    { label: "Cash Agent", icon: <PiCashRegister />, to: "/dashboard/agent" },
     {
       label: "Affiliators",
       icon: <FaAffiliatetheme />,
@@ -100,9 +100,9 @@ const DashboardSidebar = ({ open, setOpen }) => {
       label: "Games Control",
       icon: <IoGameController />,
       submenu: [
-        { label: "Categories", to: "/dashboard/games" },
-        { label: "Active Games", to: "/dashboard/allusers" },
-        { label: "Inactive Games", to: "/dashboard/userProfile" },
+        { label: "Categories", to: "/dashboard/gameCategories" },
+        { label: "Active Games", to: "/dashboard" },
+        { label: "Inactive Games", to: "/dashboard" },
       ],
     },
     {
@@ -110,26 +110,26 @@ const DashboardSidebar = ({ open, setOpen }) => {
       icon: <GiGamepadCross />,
       submenu: [
         { label: "Sprots Live TV", to: "/dashboard/gamesApi" },
-        { label: "BetFair API", to: "/dashboard" },
-        { label: "Sports Radar API", to: "/dashboard/userProfile" },
-        { label: "Odds Jam API", to: "/dashboard/userProfile" },
-        { label: "Bet Construct API", to: "/dashboard/userProfile" },
-        { label: "Kambi API", to: "/dashboard/userProfile" },
-        { label: "Pinnacle API", to: "/dashboard/userProfile" },
-        { label: "SoftSwiss API", to: "/dashboard" },
-        { label: "Betradar API", to: "/dashboard" },
-        { label: "Evolution API", to: "/dashboard" },
-        { label: "Pragmatic Play API", to: "/dashboard" },
-        { label: "Playtech API", to: "/dashboard" },
-        { label: "NetEnt API", to: "/dashboard" },
-        { label: "Betsoft Gaming API", to: "/dashboard" },
+        { label: "BetFair API", to: "/dashboard/gamesApi" },
+        { label: "Sports Radar API", to: "/dashboard/gamesApi" },
+        { label: "Odds Jam API", to: "/dashboard/gamesApi" },
+        { label: "Bet Construct API", to: "/dashboard/gamesApi" },
+        { label: "Kambi API", to: "/dashboard/gamesApi" },
+        { label: "Pinnacle API", to: "/dashboard/gamesApi" },
+        { label: "SoftSwiss API", to: "/dashboard/gamesApi" },
+        { label: "Betradar API", to: "/dashboard/gamesApi" },
+        { label: "Evolution API", to: "/dashboard/gamesApi" },
+        { label: "Pragmatic Play API", to: "/dashboard/gamesApi" },
+        { label: "Playtech API", to: "/dashboard/gamesApi" },
+        { label: "NetEnt API", to: "/dashboard/gamesApi" },
+        { label: "Betsoft Gaming API", to: "/dashboard/gamesApi" },
       ],
     },
     {
       label: "Bonuses",
       icon: <GiRibbonMedal />,
       submenu: [
-        { label: "Happy Hours", to: "/dashboard/games" },
+        { label: "Happy Hours", to: "/dashboard" },
         { label: "Deposit Bonuses", to: "/dashboard" },
         { label: "Reffer Bonuses", to: "/dashboard" },
         { label: "WellCome Bonuses Bonuses", to: "/dashboard" },
@@ -150,7 +150,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
       label: "Fontend",
       icon: <BsFront />,
       submenu: [
-        { label: "Slaider", to: "/dashboard" },
+        { label: "Home control", to: "/dashboard/home-controls" },
         { label: "Promotions", to: "/dashboard" },
         { label: "Pages", to: "/dashboard" },
         { label: "Notice", to: "/dashboard" },
@@ -165,7 +165,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
       icon: <BsPiggyBank />,
       submenu: [
         { label: "Deposit Methord", to: "/dashboard" },
-        { label: "Deposit History", to: "/dashboard" },
+        { label: "Deposit History", to: "/dashboard/deposits" },
       ],
     },
     {
@@ -173,7 +173,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
       icon: <BsBank />,
       submenu: [
         { label: "Withdrow Methord", to: "/dashboard" },
-        { label: "withdrow History", to: "/dashboard" },
+        { label: "withdrow History", to: "/dashboard/withdraws" },
       ],
     },
     {

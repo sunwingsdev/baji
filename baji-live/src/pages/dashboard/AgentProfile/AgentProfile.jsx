@@ -2,16 +2,21 @@ import { useState } from "react";
 
 const AgentProfile = () => {
   const [selectedSection, setSelectedSection] = useState("userInfo"); // Track selected section
-
+  const balances = [
+    { label: "Main Balance", value: "500 BDT" },
+    { label: "Deposit Balance", value: "800 BDT" },
+    { label: "Withdraw Balance", value: "1000 BDT" },
+    { label: "Support Pin", value: "123456" },
+  ];
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <h1 className="text-center bg-gradient-to-r from-green-300 to-green-600 text-3xl font-bold text-white p-4 rounded-md shadow-md mb-6">
+    <div className="bg-gray-100 min-h-screen p-2">
+      <h1 className="text-center bg-gradient-to-r from-green-300 to-green-600 text-lg lg:text-xl font-bold text-white p-4 rounded-md shadow-md mb-6">
         Agent Profile
       </h1>
 
-      <div className="flex flex-col lg:flex-row gap-6">
+      <div className="flex flex-col lg:flex-row gap-6 ">
         {/* Left Section */}
-        <div className="bg-white w-full lg:w-1/3 rounded-lg shadow-lg p-6 text-center">
+        <div className="bg-white w-full lg:w-2/3 rounded-lg shadow-lg p-2 text-nowrap text-center">
           <div className="mb-6">
             <h1 className="text-gray-800 font-bold text-xl mb-2">
               Agent Name: Ariz
@@ -32,22 +37,15 @@ const AgentProfile = () => {
 
           {/* Balance Section */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
-              <p className="text-gray-600 font-semibold">Main Balance</p>
-              <p className="text-green-600 font-bold">500 BDT</p>
-            </div>
-            <div className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
-              <p className="text-gray-600 font-semibold">Deposit Balance</p>
-              <p className="text-green-600 font-bold">500 BDT</p>
-            </div>
-            <div className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
-              <p className="text-gray-600 font-semibold">Withdraw Balance</p>
-              <p className="text-green-600 font-bold">500 BDT</p>
-            </div>
-            <div className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
-              <p className="text-gray-600 font-semibold">Support Pin</p>
-              <p className="text-green-600 font-bold">123456</p>
-            </div>
+            {balances.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between bg-gray-100 p-2 rounded-md"
+              >
+                <p className="text-gray-600 font-semibold">{item.label}</p>
+                <p className="text-green-600 font-bold ml-2">{item.value}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -57,7 +55,7 @@ const AgentProfile = () => {
             Edit Agent Profile
           </h2>
 
-          <div className="flex justify-center gap-4 mb-6">
+          <div className="flex sm:flex-row flex-col justify-center gap-2 mb-6 text-nowrap">
             <button
               onClick={() => setSelectedSection("userInfo")}
               className={`p-2 rounded-md transition-all ${

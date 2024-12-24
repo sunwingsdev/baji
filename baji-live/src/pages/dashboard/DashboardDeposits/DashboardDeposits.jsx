@@ -9,7 +9,7 @@ import ViewModal from "@/components/shared/sharedModal/ViewModal";
 
 const DashboardDeposits = () => {
   const [updateStatus] = useUpdateDepositStatusMutation();
-  const { data, isLoading } = useGetDepositsQuery();
+  const { data, isLoading, refetch } = useGetDepositsQuery();
   const [statusFilter, setStatusFilter] = useState(""); // Selected status
   const [searchTerm, setSearchTerm] = useState(""); // Search term
   const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
@@ -117,6 +117,7 @@ const DashboardDeposits = () => {
     try {
       const result = await updateStatus(id);
       if (result.data.modifiedCount > 0) {
+        refetch();
         addToast("Updated status successfully", {
           appearance: "success",
           autoDismiss: true,
