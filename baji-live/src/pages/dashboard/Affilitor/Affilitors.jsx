@@ -1,5 +1,5 @@
 import DynamicTable from "@/components/shared/tables/DynamicTable";
-import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
+// import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
 
 const Affilitors = () => {
   // const { data } = useGetUsersQuery();
