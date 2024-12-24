@@ -1,9 +1,25 @@
-import DynamicTable from "@/components/shared/tables/DynamicTable";
+import UserModal from "@/components/shared/sharedModal/UserModal";
+import UserDynamicTable from "@/components/shared/tables/UserTabledata";
 import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
+import { useState } from "react";
 
 const Users = () => {
   const { data } = useGetUsersQuery();
-  console.log(data);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  // Open modal and set user data
+  const handleViewClick = (row) => {
+    setSelectedUser(row);
+    setIsModalOpen(true);
+  };
+
+  // Close modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedUser(null);
+  };
+
   const columns = [
     { headerName: "Username", field: "username" },
     { headerName: "Name", field: "fullName" },
@@ -16,7 +32,7 @@ const Users = () => {
         label: "View",
         bgColor: "bg-green-500",
         hoverColor: "hover:bg-green-600",
-        onClick: (row) => alert(`Viewing details for ${row.username}`),
+        onClick: handleViewClick,
       },
     },
     {
@@ -25,7 +41,7 @@ const Users = () => {
         label: "Delete",
         bgColor: "bg-red-500",
         hoverColor: "hover:bg-red-600",
-        onClick: (row) => alert(`Deleting ${row.username}`),
+        onClick: (row) => alert(`Deleting ${row.username}`), // Replace with modal logic later
       },
     },
   ];
@@ -35,7 +51,13 @@ const Users = () => {
       <h1 className="text-lg md:text-xl font-bold mb-4 text-center">
         All users
       </h1>
-      <DynamicTable columns={columns} data={data} />
+      <UserDynamicTable columns={columns} data={data} />
+      {/* Modal renders only when isModalOpen is true */}
+      <UserModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        user={selectedUser}
+      />
     </div>
   );
 };
