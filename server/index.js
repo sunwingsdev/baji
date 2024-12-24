@@ -31,6 +31,10 @@ const corsConfig = {
     "http://1xkhela.com",
     "www.1xkhela.com",
     "1xkhela.com",
+    "https://trickbaz.com",
+    "http://trickbaz.com",
+    "www.trickbaz.com",
+    "trickbaz.com",
     "https://baji.oracletechnology.net",
     "http://baji.oracletechnology.net",
     "www.baji.oracletechnology.net",
@@ -100,7 +104,7 @@ async function run() {
 
     // API routes
     app.use("/users", usersApi(usersCollection));
-    app.use("/deposits", depositsApi(depositsCollection));
+    app.use("/deposits", depositsApi(depositsCollection, usersCollection));
     app.use("/withdraws", withdrawsApi(withdrawsCollection));
     app.use("/home-controls", homeControlApi(homeControlCollection));
 
