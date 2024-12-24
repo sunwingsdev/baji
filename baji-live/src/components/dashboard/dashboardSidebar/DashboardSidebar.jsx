@@ -101,8 +101,8 @@ const DashboardSidebar = ({ open, setOpen }) => {
       icon: <IoGameController />,
       submenu: [
         { label: "Categories", to: "/dashboard/gameCategories" },
-        { label: "Active Games", to: "/dashboard" },
-        { label: "Inactive Games", to: "/dashboard" },
+        { label: "Active Games" },
+        { label: "Inactive Games" },
       ],
     },
     {
@@ -129,42 +129,42 @@ const DashboardSidebar = ({ open, setOpen }) => {
       label: "Bonuses",
       icon: <GiRibbonMedal />,
       submenu: [
-        { label: "Happy Hours", to: "/dashboard" },
-        { label: "Deposit Bonuses", to: "/dashboard" },
-        { label: "Reffer Bonuses", to: "/dashboard" },
-        { label: "WellCome Bonuses Bonuses", to: "/dashboard" },
+        { label: "Happy Hours" },
+        { label: "Deposit Bonuses" },
+        { label: "Reffer Bonuses" },
+        { label: "WellCome Bonuses Bonuses" },
       ],
     },
     {
       label: "game History",
       icon: <SlGameController />,
       submenu: [
-        { label: "Play Stats", to: "/dashboard" },
-        { label: "Win Game Stats", to: "/dashboard" },
-        { label: "Loss Game Stats", to: "/dashboard" },
+        { label: "Play Stats" },
+        { label: "Win Game Stats" },
+        { label: "Loss Game Stats" },
       ],
     },
-    { label: "Tournament", icon: <BsShop />, to: "/dashboard" },
-    { label: "Jack Pot", icon: <BsShop />, to: "/dashboard" },
+    { label: "Tournament", icon: <BsShop /> },
+    { label: "Jack Pot", icon: <BsShop /> },
     {
       label: "Fontend",
       icon: <BsFront />,
       submenu: [
         { label: "Home control", to: "/dashboard/home-controls" },
-        { label: "Promotions", to: "/dashboard" },
-        { label: "Pages", to: "/dashboard" },
-        { label: "Notice", to: "/dashboard" },
-        { label: "About Us", to: "/dashboard" },
-        { label: "FQA", to: "/dashboard" },
-        { label: "Sponsorship", to: "/dashboard" },
-        { label: "Brand Abmassador", to: "/dashboard" },
+        { label: "Promotions" },
+        { label: "Pages" },
+        { label: "Notice" },
+        { label: "About Us" },
+        { label: "FQA" },
+        { label: "Sponsorship" },
+        { label: "Brand Abmassador" },
       ],
     },
     {
       label: "Banking Deposit",
       icon: <BsPiggyBank />,
       submenu: [
-        { label: "Deposit Methord", to: "/dashboard" },
+        { label: "Deposit Methord" },
         { label: "Deposit History", to: "/dashboard/deposits" },
       ],
     },
@@ -172,7 +172,7 @@ const DashboardSidebar = ({ open, setOpen }) => {
       label: "Banking Withdrow",
       icon: <BsBank />,
       submenu: [
-        { label: "Withdrow Methord", to: "/dashboard" },
+        { label: "Withdrow Methord" },
         { label: "withdrow History", to: "/dashboard/withdraws" },
       ],
     },
@@ -180,26 +180,26 @@ const DashboardSidebar = ({ open, setOpen }) => {
       label: "Settings",
       icon: <IoSettingsSharp />,
       submenu: [
-        { label: "Pincodes", to: "/dashboard" },
-        { label: "Activety Log", to: "/dashboard" },
-        { label: "Permissions", to: "/dashboard" },
-        { label: "Getway Api keys", to: "/dashboard" },
-        { label: "SMS", to: "/dashboard" },
-        { label: "Mailings", to: "/dashboard" },
-        { label: "Support", to: "/dashboard" },
-        { label: "Security", to: "/dashboard" },
+        { label: "Pincodes" },
+        { label: "Activety Log" },
+        { label: "Permissions" },
+        { label: "Getway Api keys" },
+        { label: "SMS" },
+        { label: "Mailings" },
+        { label: "Support" },
+        { label: "Security" },
       ],
     },
     {
       label: "Oracle Technology",
       icon: <IoLogoWechat />,
       submenu: [
-        { label: "Instant Support", to: "/dashboard" },
-        { label: "Normal Support", to: "/dashboard" },
-        { label: "Permissions", to: "/dashboard" },
-        { label: "Notice", to: "/dashboard" },
-        { label: "About Us", to: "/dashboard" },
-        { label: "Contact Us", to: "/dashboard" },
+        { label: "Instant Support" },
+        { label: "Normal Support" },
+        { label: "Permissions" },
+        { label: "Notice" },
+        { label: "About Us" },
+        { label: "Contact Us" },
       ],
     },
   ];
@@ -254,7 +254,10 @@ const DashboardSidebar = ({ open, setOpen }) => {
         {/* Dynamic Menu Rendering */}
         {menuItems.map((item, index) => (
           <div key={index}>
-            <Link to={item.to || "#"}>
+            <Link
+              onClick={!item.to && !item.submenu && handleModalOpen}
+              to={item.to || "#"}
+            >
               <div
                 className={`px-4 py-3 flex items-center gap-2 border-b border-gray-700 duration-300 hover:bg-[#114d3a] hover:border-l-4 hover:border-l-slate-400 ${
                   !open && "justify-center"
@@ -276,8 +279,9 @@ const DashboardSidebar = ({ open, setOpen }) => {
               <div className="pl-8 text-white text-sm font-semibold bg-[#114d3a] duration-300">
                 {item.submenu.map((subItem, subIndex) => (
                   <Link
+                    onClick={!subItem.to && !subItem.submenu && handleModalOpen}
                     key={subIndex}
-                    to={subItem.to}
+                    to={subItem.to || "#"}
                     className="py-2.5 flex gap-2"
                   >
                     <FaRegCircle size={22} className="text-yellow-300" />
@@ -291,11 +295,12 @@ const DashboardSidebar = ({ open, setOpen }) => {
       </div>
 
       {/* Modal */}
-      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
-        <h2>Dynamic Modal Content</h2>
-        <p>
-          Here you can show dynamic content based on the selected menu item.
-        </p>
+      <Modal
+        title={"Oops!!!"}
+        isOpen={isModalOpen}
+        onOpenChange={handleModalClose}
+      >
+        <p>Please contact your developer team to connect API!!!</p>
       </Modal>
     </div>
   );
