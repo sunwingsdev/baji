@@ -23,6 +23,13 @@ import Games from "./../pages/dashboard/Games/Games";
 import GamesApi from "@/pages/dashboard/GamesApi/GamesApi";
 import HomeControl from "@/pages/dashboard/HomeControl/HomeControl";
 import AdminLogin from "@/pages/home/AdminLogin/AdminLogin";
+import Checkout from "@/pages/home/Checkout/Checkout";
+import AllUsers from "@/pages/dashboard/users/AllUsers";
+import UserProfile from "@/pages/dashboard/UserProfile/UserProfile";
+import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
+import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
+import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
+import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +95,22 @@ const router = createBrowserRouter([
         element: <Users />,
       },
       {
+        path: "userProfile",
+        element: <UserProfile />,
+      },
+      {
+        path: "agentProfile",
+        element: <AgentProfile />,
+      },
+      {
+        path: "allusers",
+        element: <AllUsers />,
+      },
+      {
+        path: "gameCategories",
+        element: <GameCategories />,
+      },
+      {
         path: "agent",
         element: <AgentTree />,
       },
@@ -112,17 +135,29 @@ const router = createBrowserRouter([
         element: <WithdrawsHistory />,
       },
       {
+        path: "fontendslider",
+        element: <FontendSlider />,
+      },
+      {
+        path: "promotionsoffer",
+        element: <PromotionsOffer />,
+      },
+      {
         path: "home-controls",
         element: <HomeControl />,
       },
     ],
   },
   {
+    path: "/checkout",
+    element: <Checkout />,
+  },
+  {
     path: "/login",
     element: <Login />,
   },
   {
-    path: "/admin-login",
+    path: "/admin",
     element: <AdminLogin />,
   },
 ]);

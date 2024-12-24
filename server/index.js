@@ -19,22 +19,26 @@ const corsConfig = {
   origin: [
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://comokbaji.com",
-    "http://comokbaji.com",
-    "www.comokbaji.com",
-    "comokbaji.com",
-    "https://moneyeran365.com",
-    "http://moneyeran365.com",
-    "www.moneyeran365.com",
-    "moneyeran365.com",
-    "https://1xkhela.com",
-    "http://1xkhela.com",
-    "www.1xkhela.com",
-    "1xkhela.com",
-    "https://baji.oracletechnology.net",
-    "http://baji.oracletechnology.net",
-    "www.baji.oracletechnology.net",
-    "baji.oracletechnology.net",
+    // "https://comokbaji.com",
+    // "http://comokbaji.com",
+    // "www.comokbaji.com",
+    // "comokbaji.com",
+    // "https://moneyeran365.com",
+    // "http://moneyeran365.com",
+    // "www.moneyeran365.com",
+    // "moneyeran365.com",
+    // "https://1xkhela.com",
+    // "http://1xkhela.com",
+    // "www.1xkhela.com",
+    // "1xkhela.com",
+    "https://trickbaz.com",
+    "http://trickbaz.com",
+    "www.trickbaz.com",
+    "trickbaz.com",
+    // "https://baji.oracletechnology.net",
+    // "http://baji.oracletechnology.net",
+    // "www.baji.oracletechnology.net",
+    // "baji.oracletechnology.net",
     "*",
   ],
   credentials: true,
@@ -100,8 +104,8 @@ async function run() {
 
     // API routes
     app.use("/users", usersApi(usersCollection));
-    app.use("/deposits", depositsApi(depositsCollection));
-    app.use("/withdraws", withdrawsApi(withdrawsCollection));
+    app.use("/deposits", depositsApi(depositsCollection, usersCollection));
+    app.use("/withdraws", withdrawsApi(withdrawsCollection, usersCollection));
     app.use("/home-controls", homeControlApi(homeControlCollection));
 
     await client.db("admin").command({ ping: 1 });
