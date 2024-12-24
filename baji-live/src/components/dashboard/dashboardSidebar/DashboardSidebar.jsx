@@ -150,13 +150,8 @@ const DashboardSidebar = ({ open, setOpen }) => {
       label: "Fontend",
       icon: <BsFront />,
       submenu: [
-<<<<<<< HEAD
-        { label: "Slaider", to: "/dashboard/fontendslider" },
-        { label: "Promotions", to: "/dashboard/promotionsoffer" },
-=======
         { label: "Home control", to: "/dashboard/home-controls" },
         { label: "Promotions", to: "/dashboard" },
->>>>>>> 463f220a30c1f914391d49b521081af9b46d8637
         { label: "Pages", to: "/dashboard" },
         { label: "Notice", to: "/dashboard" },
         { label: "About Us", to: "/dashboard" },
