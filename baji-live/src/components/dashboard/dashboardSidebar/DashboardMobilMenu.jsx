@@ -73,7 +73,7 @@ const DashboardMobilMenu = ({ open }) => {
       appearance: "success",
       autoDismiss: true,
     });
-    navigate("/admin-login");
+    navigate("/admin");
   };
 
   return (
