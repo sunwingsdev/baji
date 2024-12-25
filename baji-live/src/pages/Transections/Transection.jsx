@@ -1,3 +1,4 @@
+import WalletSection from "@/components/home/WalletSection/WalletSection";
 import DynamicTable from "@/components/shared/tables/DynamicTable";
 import { useState } from "react";
 
@@ -32,6 +33,7 @@ const Transection = () => {
 
   return (
     <div>
+      <WalletSection></WalletSection>
       <div className="bg-[#363838] p-2 text-white rounded-md">
         <div className="border-b-2 border-green-300">
           <h1 className="p-2 text-green-300 ">ট্রানজেকশন</h1>
