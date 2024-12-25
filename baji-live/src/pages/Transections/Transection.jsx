@@ -32,8 +32,8 @@ const Transection = () => {
   ];
 
   return (
-    <div>
-      <WalletSection></WalletSection>
+    <div className="space-y-2">
+      <WalletSection />
       <div className="bg-[#363838] p-2 text-white rounded-md">
         <div className="border-b-2 border-green-300">
           <h1 className="p-2 text-green-300 ">ট্রানজেকশন</h1>
@@ -58,7 +58,7 @@ const Transection = () => {
           </div>
 
           {/* Status Section */}
-          <div className="mt-2 p-2">
+          <div className="p-2">
             <h1 className="p-2">স্ট্যাটাস</h1>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
               {["প্রসেসিং", "সাকসেস", "ফেইল", "অল"].map((status) => (
@@ -76,7 +76,7 @@ const Transection = () => {
           </div>
 
           {/* Date Section */}
-          <div className="mt-2 p-2">
+          <div className="p-2">
             <h1 className="p-2">তারিখ</h1>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
               {["আজ", "গতকাল", "শেষ 7 দিন"].map((date) => (
