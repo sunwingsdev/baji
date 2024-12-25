@@ -8,8 +8,7 @@ const getNestedValue = (obj, path) => {
   return path.split(".").reduce((acc, key) => acc && acc[key], obj);
 };
 
-const DynamicTable = ({ columns, data }) => {
-  const [tableData, setTableData] = useState(data); // Manage table data state
+const DynamicTable = ({ columns, data, loading }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -19,6 +18,7 @@ const DynamicTable = ({ columns, data }) => {
     setModalData(row); // Set the selected row data to show in the modal
     setIsModalOpen(true); // Open the modal
   };
+
   const closeModal = () => {
     setIsModalOpen(false); // Close the modal
     setModalData(null); // Reset modal data
@@ -35,20 +35,70 @@ const DynamicTable = ({ columns, data }) => {
     setSelectedRow(null);
   };
 
-  const handleConfirmDelete = () => {
-    setTableData((prevData) => prevData.filter((item) => item !== selectedRow)); // Remove selected row from table data
-    closeDeleteModal(); // Close the delete modal
+  // Conditional rendering for table content
+  const renderTableContent = () => {
+    if (loading) {
+      return (
+        <tr>
+          <td colSpan={columns.length} className="text-center py-4 text-lg">
+            Data is Loading...
+          </td>
+        </tr>
+      );
+    }
+
+    if (!data || data.length === 0) {
+      return (
+        <tr>
+          <td colSpan={columns.length} className="text-center py-4 text-lg">
+            No Data Available
+          </td>
+        </tr>
+      );
+    }
+
+    return data?.map((row, rowIndex) => (
+      <tr key={rowIndex}>
+        {columns.map((col, colIndex) => (
+          <td
+            key={colIndex}
+            className="border-2 border-black md:px-2 lg:px-2 py-2 sm:text-[10px] lg:text-[15px]"
+          >
+            {col.customRender ? (
+              col.customRender(row)
+            ) : col.buttonConfig ? (
+              <button
+                onClick={() =>
+                  col.buttonConfig.label === "View"
+                    ? handleViewClick(row)
+                    : handleDeleteClick(row)
+                }
+                className={clsx(
+                  "px-2 py-1 rounded text-white",
+                  col.buttonConfig.bgColor || "bg-blue-500",
+                  col.buttonConfig.hoverColor || "hover:bg-blue-600"
+                )}
+              >
+                {col.buttonConfig.label}
+              </button>
+            ) : (
+              getNestedValue(row, col.field) || "N/A"
+            )}
+          </td>
+        ))}
+      </tr>
+    ));
   };
 
   return (
     <div className="overflow-x-auto">
       <table className="table-auto border-collapse border border-gray-300 w-full text-nowrap">
-        <thead className=" sm:text-xs md:text-base bg-[#14815f]">
-          <tr className=" text-white">
+        <thead className="sm:text-xs md:text-base bg-[#14815f]">
+          <tr className="text-white">
             {columns.map((col, index) => (
               <th
                 key={index}
-                className="border-2 border-black  sm:px-0 md:px-2 py-1 md:py-2 text-center text-xs md:text-sm lg:text-lg"
+                className="border-2 border-black sm:px-0 md:px-2 py-1 md:py-2 text-center text-xs md:text-sm lg:text-lg"
               >
                 {col.headerName}
               </th>
@@ -56,37 +106,7 @@ const DynamicTable = ({ columns, data }) => {
           </tr>
         </thead>
         <tbody className="text-[12px] md:text-base lg:text-[15px] text-center">
-          {tableData?.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {columns.map((col, colIndex) => (
-                <td
-                  key={colIndex}
-                  className="border-2 border-black md:px-2 lg:px-2 py-2 sm:text-[10px] lg:text-[15px]"
-                >
-                  {col.customRender ? (
-                    col.customRender(row)
-                  ) : col.buttonConfig ? (
-                    <button
-                      onClick={() =>
-                        col.buttonConfig.label === "View"
-                          ? handleViewClick(row)
-                          : handleDeleteClick(row)
-                      } // Open modal on "View" button click
-                      className={clsx(
-                        "px-2 py-1 rounded text-white",
-                        col.buttonConfig.bgColor || "bg-blue-500",
-                        col.buttonConfig.hoverColor || "hover:bg-blue-600"
-                      )}
-                    >
-                      {col.buttonConfig.label}
-                    </button>
-                  ) : (
-                    getNestedValue(row, col.field) || "N/A"
-                  )}
-                </td>
-              ))}
-            </tr>
-          ))}
+          {renderTableContent()}
         </tbody>
       </table>
 
@@ -102,7 +122,6 @@ const DynamicTable = ({ columns, data }) => {
         <DeleteConfirmationModal
           isOpen={isDeleteModalOpen}
           onClose={closeDeleteModal}
-          onDelete={handleConfirmDelete}
           modalData={selectedRow}
         />
       )}
