@@ -30,6 +30,8 @@ import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
 import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
+import Transection from "@/pages/Transections/Transection";
+import DemoGame from "@/pages/home/DemoGame/DemoGame";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/category/:category",
         element: <CategoryPage />,
+      },
+      {
+        path: "/category/demo/:id",
+        element: <DemoGame />,
       },
       {
         path: "/promotional-offer",
@@ -73,6 +79,10 @@ const router = createBrowserRouter([
             path: "deposit",
             element: <Deposit />,
           },
+          {
+            path: "transaction",
+            element: <Transection />,
+          },
         ],
       },
     ],
@@ -92,7 +102,7 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />,
+        element: <AllUsers />,
       },
       {
         path: "userProfile",
@@ -102,10 +112,10 @@ const router = createBrowserRouter([
         path: "agentProfile",
         element: <AgentProfile />,
       },
-      {
-        path: "allusers",
-        element: <AllUsers />,
-      },
+      // {
+      //   path: "allusers",
+      //   element: <AllUsers />,
+      // },
       {
         path: "gameCategories",
         element: <GameCategories />,

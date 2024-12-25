@@ -1,9 +1,12 @@
 import { FaStar } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import Modal from "@/components/shared/Modal";
 
 const Sidebar = () => {
-  const { user } = useSelector((state) => state.auth);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { singleUser } = useSelector((state) => state.auth);
 
   return (
     <div className="">
@@ -15,7 +18,7 @@ const Sidebar = () => {
             alt=""
           />
           <h2 className="text-sm font-semibold text-white text-center">
-            {user?.user.fullName}
+            {singleUser?.fullName}
           </h2>
           <p className="flex justify-center items-center gap-1 text-white">
             <FaStar className="text-teal-300" size={12} />0
@@ -62,7 +65,7 @@ const Sidebar = () => {
           <h2 className="text-base font-semibold text-white px-3 py-2">
             ফান্ডস
           </h2>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -73,7 +76,7 @@ const Sidebar = () => {
               <p className="text-sm">বেটিং রেকর্ডস</p>
             </div>
           </Link>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -84,7 +87,7 @@ const Sidebar = () => {
               <p className="text-sm">মাই ওয়ালেট</p>
             </div>
           </Link>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -95,7 +98,7 @@ const Sidebar = () => {
               <p className="text-sm">টার্নওভার</p>
             </div>
           </Link>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -106,7 +109,7 @@ const Sidebar = () => {
               <p className="text-sm">ভিআইপি</p>
             </div>
           </Link>
-          <Link>
+          <Link to="/profile/transaction">
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -121,7 +124,7 @@ const Sidebar = () => {
           <h2 className="text-base font-semibold text-white px-3 py-2">
             প্রোফাইল
           </h2>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -132,7 +135,7 @@ const Sidebar = () => {
               <p className="text-sm">ব্যাক্তিগত তথ্য</p>
             </div>
           </Link>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -143,7 +146,7 @@ const Sidebar = () => {
               <p className="text-sm">পাসওয়ার্ড রিসেট করুন</p>
             </div>
           </Link>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -154,7 +157,7 @@ const Sidebar = () => {
               <p className="text-sm"> ইনবক্স </p>
             </div>
           </Link>
-          <Link>
+          <Link onClick={() => setIsModalOpen(true)}>
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img
@@ -274,6 +277,14 @@ const Sidebar = () => {
           </div>
         </Link>
       </div>
+      {/* Modal */}
+      <Modal
+        title={"Oops!!!"}
+        isOpen={isModalOpen}
+        onOpenChange={() => setIsModalOpen(false)}
+      >
+        <p>Please contact your developer team to connect API!!!</p>
+      </Modal>
     </div>
   );
 };
