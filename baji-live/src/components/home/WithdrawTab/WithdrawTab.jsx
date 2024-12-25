@@ -1,15 +1,19 @@
 import PrimaryButton from "@/components/shared/Buttons/PrimaryButton";
+import { useLazyGetUserByIdQuery } from "@/redux/features/allApis/usersApi/usersApi";
 import { useAddWithdrawMutation } from "@/redux/features/allApis/withdrawsApi/withdrawsApi";
+import { setSingleUser } from "@/redux/slices/authSlice";
 import { useEffect, useState } from "react";
 import { FcOk } from "react-icons/fc";
 import { RxCrossCircled } from "react-icons/rx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 
 const WithdrawTab = () => {
   const [addWithdraw] = useAddWithdrawMutation();
   const [isAmountDeatilsOpen, setIsAmountDeatilsOpen] = useState(false);
   const { user, singleUser } = useSelector((state) => state.auth);
+  const [getSingleUser] = useLazyGetUserByIdQuery();
+  const dispatch = useDispatch();
   const { addToast } = useToasts();
 
   const [formData, setFormData] = useState({
@@ -61,9 +65,19 @@ const WithdrawTab = () => {
 
   const handleReset = () => {
     setFormData({
-      paymentMethod: null,
+      paymentMethod: withdrawMethods[0]?.paymentMethod,
       amount: [],
     });
+  };
+
+  const reloadBalance = () => {
+    if (!user) return;
+
+    getSingleUser(user?.user?._id)
+      .then(({ data }) => {
+        dispatch(setSingleUser(data));
+      })
+      .finally(() => {});
   };
 
   const handleWithdraw = async () => {
@@ -95,6 +109,7 @@ const WithdrawTab = () => {
           autoDismiss: true,
         });
         handleReset();
+        reloadBalance();
       }
       // eslint-disable-next-line no-unused-vars
     } catch (error) {
