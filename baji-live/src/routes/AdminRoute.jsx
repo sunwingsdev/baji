@@ -12,7 +12,7 @@ const AdminRoute = ({ children }) => {
       appearance: "error",
       autoDismiss: true,
     });
-    navigate("/admin-login");
+    navigate("/admin");
   } else return children;
 };
 

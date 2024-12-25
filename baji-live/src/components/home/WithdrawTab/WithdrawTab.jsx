@@ -9,7 +9,7 @@ import { useToasts } from "react-toast-notifications";
 const WithdrawTab = () => {
   const [addWithdraw] = useAddWithdrawMutation();
   const [isAmountDeatilsOpen, setIsAmountDeatilsOpen] = useState(false);
-  const { user } = useSelector((state) => state.auth);
+  const { user, singleUser } = useSelector((state) => state.auth);
   const { addToast } = useToasts();
 
   const [formData, setFormData] = useState({
@@ -78,6 +78,14 @@ const WithdrawTab = () => {
       amount: totalAmount,
       userId: user?.user._id,
     };
+
+    if (singleUser?.balance <= totalAmount) {
+      addToast("Amount can not be exceed from your balance", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      return;
+    }
 
     try {
       const result = await addWithdraw(withdrawData);

@@ -1,7 +1,7 @@
 const express = require("express");
 const { ObjectId } = require("mongodb");
 
-const withdrawsApi = (withdrawsCollection) => {
+const withdrawsApi = (withdrawsCollection, usersCollection) => {
   const router = express.Router();
 
   // Add a withdraw request
@@ -54,11 +54,43 @@ const withdrawsApi = (withdrawsCollection) => {
 
   router.patch("/status/:id", async (req, res) => {
     const { id } = req.params;
-    const query = { _id: new ObjectId(id) };
-    // const { status } = req.body;
-    const updatedDoc = { $set: { status: "completed" } };
-    const result = await withdrawsCollection.updateOne(query, updatedDoc);
-    res.send(result);
+
+    try {
+      // Find the withdraw request by its ID
+      const withdraw = await withdrawsCollection.findOne({
+        _id: new ObjectId(id),
+      });
+      console.log(withdraw);
+
+      if (!withdraw) {
+        return res.status(404).send({ error: "Withdraw request not found" });
+      }
+
+      // Ensure the withdraw is in a pending state
+      if (withdraw.status !== "pending") {
+        return res
+          .status(400)
+          .send({ error: "Withdraw request is not in a pending state" });
+      }
+
+      // Update withdraw status to "completed"
+      await withdrawsCollection.updateOne(
+        { _id: new ObjectId(id) },
+        { $set: { status: "completed" } }
+      );
+
+      // Decrement the user's balance
+      const result = await usersCollection.updateOne(
+        { _id: new ObjectId(withdraw.userId) },
+        { $inc: { balance: -withdraw.amount } }
+      );
+      console.log(result);
+
+      res.send(result);
+    } catch (error) {
+      console.error("Error updating withdraw status:", error);
+      res.status(500).send({ error: "Failed to update withdraw status" });
+    }
   });
 
   return router;
