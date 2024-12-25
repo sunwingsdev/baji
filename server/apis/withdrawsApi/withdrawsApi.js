@@ -9,6 +9,11 @@ const withdrawsApi = (withdrawsCollection, usersCollection) => {
     const withdrawInfo = req.body;
     withdrawInfo.status = "pending";
     withdrawInfo.createdAt = new Date();
+    // Decrement the user's balance
+    await usersCollection.updateOne(
+      { _id: new ObjectId(withdrawInfo.userId) },
+      { $inc: { balance: -withdrawInfo.amount } }
+    );
     const result = await withdrawsCollection.insertOne(withdrawInfo);
     res.send(result);
   });
@@ -60,7 +65,6 @@ const withdrawsApi = (withdrawsCollection, usersCollection) => {
       const withdraw = await withdrawsCollection.findOne({
         _id: new ObjectId(id),
       });
-      console.log(withdraw);
 
       if (!withdraw) {
         return res.status(404).send({ error: "Withdraw request not found" });
@@ -74,18 +78,10 @@ const withdrawsApi = (withdrawsCollection, usersCollection) => {
       }
 
       // Update withdraw status to "completed"
-      await withdrawsCollection.updateOne(
+      const result = await withdrawsCollection.updateOne(
         { _id: new ObjectId(id) },
         { $set: { status: "completed" } }
       );
-
-      // Decrement the user's balance
-      const result = await usersCollection.updateOne(
-        { _id: new ObjectId(withdraw.userId) },
-        { $inc: { balance: -withdraw.amount } }
-      );
-      console.log(result);
-
       res.send(result);
     } catch (error) {
       console.error("Error updating withdraw status:", error);

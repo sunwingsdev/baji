@@ -2,6 +2,7 @@ import { useState } from "react";
 import Container from "@/components/shared/Container";
 import { IoSearch } from "react-icons/io5";
 import GameCard from "./GameCard";
+import aviatorImage from "@/assets/games/aviator.png";
 
 const GamesSection = () => {
   // State to manage checked status
@@ -10,17 +11,18 @@ const GamesSection = () => {
   const games = [
     {
       id: 1,
-      image:
-        "https://img.b112j.com/upload/game/EVO/crazytime@CrazyTime0000001.png?v=1717402263065",
-      title: "Evolution Crazy Time",
+      image: aviatorImage,
+      title: "Aviator",
       subtitle: "Crazy",
+      demo: "https://demo.spribe.io/launch/aviator?currency=BDT&lang=EN",
     },
     {
       id: 2,
       image:
-        "https://img.b112j.com/upload/game/EVO/sicbo@SuperSicBo000001.png?v=1717463157508",
-      title: "Evolution Super Sic Bo",
+        "https://upload.4rabetsite25.com/storage/235913/Super-Burning-Wins_Playson.jpg",
+      title: "Super Burning Wins",
       subtitle: "Crazy",
+      demo: "https://www.jopi.com/gam/summer-maze/",
     },
     {
       id: 3,
@@ -28,6 +30,7 @@ const GamesSection = () => {
         "https://img.b112j.com/upload/game/AWCMSEXY/MX-LIVE-001_SEXY_1.png?v=1725529632354",
       title: "Sexy Baccarat Classic-SEXY hall-Table1",
       subtitle: "Crazy",
+      demo: "https://www.jopi.com/gam/pixel-mini-golf/",
     },
     {
       id: 4,
@@ -35,6 +38,7 @@ const GamesSection = () => {
         "https://img.b112j.com/upload/game/EVO/monopoly@Monopoly00000001.png?v=1717404282418",
       title: "Evolution Monopoly Live",
       subtitle: "Crazy",
+      demo: "https://www.jopi.com/gam/neon-bricks/",
     },
     {
       id: 5,
@@ -350,7 +354,7 @@ const GamesSection = () => {
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3  py-6 ">
             {games.map((game) => (
-              <GameCard key={game.id} title={game.title} image={game.image} />
+              <GameCard key={game.id} game={game} />
             ))}
           </div>
         </Container>
