@@ -2,41 +2,13 @@ import { useState } from "react";
 import { SlGameController } from "react-icons/sl";
 import { GiGamepadCross, GiRibbonMedal } from "react-icons/gi";
 import { BsFront } from "react-icons/bs";
-import {
-  FaAffiliatetheme,
-  FaAngleDown,
-  FaChartLine,
-  FaGamepad,
-  FaKey,
-  FaRegBellSlash,
-  FaRegCircle,
-  FaTree,
-  FaTrophy,
-} from "react-icons/fa";
-import { IoIosArrowBack, IoMdHome, IoMdMenu } from "react-icons/io";
-import { PiFlagBannerFoldDuotone, PiCashRegister } from "react-icons/pi";
+import { FaAffiliatetheme, FaAngleDown, FaRegCircle } from "react-icons/fa";
+import { IoIosArrowBack, IoMdHome } from "react-icons/io";
+import { PiCashRegister } from "react-icons/pi";
 import { Link } from "react-router-dom";
-import { TbAffiliate } from "react-icons/tb";
 import { FaUsers } from "react-icons/fa";
-import { PiHandWithdrawDuotone, PiHandDepositDuotone } from "react-icons/pi";
+import { BsPiggyBank, BsShop, BsBank } from "react-icons/bs";
 import {
-  MdConnectWithoutContact,
-  MdHistory,
-  MdOutlineRemoveFromQueue,
-  MdOutlineSecurity,
-  MdSupport,
-} from "react-icons/md";
-import { VscSymbolMethod } from "react-icons/vsc";
-import { CiSliderHorizontal } from "react-icons/ci";
-import {
-  BsChatText,
-  BsPiggyBank,
-  BsQrCode,
-  BsShop,
-  BsBank,
-} from "react-icons/bs";
-import {
-  IoDiamondOutline,
   IoLogoWechat,
   IoSettingsSharp,
   IoGameController,

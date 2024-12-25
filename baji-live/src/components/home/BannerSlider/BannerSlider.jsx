@@ -57,7 +57,7 @@ export function BannerSlider() {
           <CarouselItem key={image.id}>
             <div className="">
               <img
-                className="w-full h-[600px]"
+                className="w-full max-h-[600px]"
                 src={`${import.meta.env.VITE_BASE_API_URL}${image?.image}`}
                 alt={`Slide ${index + 1}`}
               />

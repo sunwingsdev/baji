@@ -92,7 +92,7 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />,
+        element: <AllUsers />,
       },
       {
         path: "userProfile",
@@ -102,10 +102,10 @@ const router = createBrowserRouter([
         path: "agentProfile",
         element: <AgentProfile />,
       },
-      {
-        path: "allusers",
-        element: <AllUsers />,
-      },
+      // {
+      //   path: "allusers",
+      //   element: <AllUsers />,
+      // },
       {
         path: "gameCategories",
         element: <GameCategories />,
