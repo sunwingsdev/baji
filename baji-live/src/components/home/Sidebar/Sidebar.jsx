@@ -109,7 +109,7 @@ const Sidebar = () => {
               <p className="text-sm">ভিআইপি</p>
             </div>
           </Link>
-          <Link>
+          <Link to="/profile/transaction">
             <div className="flex items-center gap-2 text-white hover:text-teal-300 hover:bg-[#272727] py-1.5 mt-1 px-4 border-l-4 border-[#313131] hover:border-l-4 hover:border-teal-300 duration-300">
               <div className="bg-[#5a5a5a] w-6 h-6 rounded-full flex justify-center items-center">
                 <img

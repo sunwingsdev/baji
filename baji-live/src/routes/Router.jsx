@@ -30,6 +30,7 @@ import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
 import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
+import Transection from "@/pages/Transections/Transection";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
           {
             path: "deposit",
             element: <Deposit />,
+          },
+          {
+            path: "transaction",
+            element: <Transection />,
           },
         ],
       },
