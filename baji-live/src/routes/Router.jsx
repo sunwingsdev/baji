@@ -29,11 +29,13 @@ import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
 import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
-import ExchangePage from "@/pages/home/ExchangePage/ExchangePage";
+// import ExchangePage from "@/pages/home/ExchangePage/ExchangePage";
 import Transection from "@/pages/Transections/Transection";
 import DemoGame from "@/pages/home/DemoGame/DemoGame";
 import Notice from "@/pages/dashboard/Fontend/Notice";
 import Sponshorship from "@/pages/dashboard/Fontend/Sponshorship";
+import ExchangeLayout from "@/layouts/ExchangeLayout";
+import ExchangeMiddleContent from "@/components/exchange-page/ExchangeMiddleContent";
 
 const router = createBrowserRouter([
   {
@@ -67,7 +69,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/exchangePage",
-        element: <ExchangePage />,
+        element: <ExchangeLayout />,
+        children: [
+          { path: "", element: <ExchangeMiddleContent /> },
+          { path: "sample", element: <div>Hello Next</div> },
+        ],
       },
       {
         path: "/profile",
