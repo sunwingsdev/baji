@@ -14,52 +14,62 @@ const Navbar = () => {
     // },
     {
       title: "ক্যাসিনো",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/category/casino",
     },
     {
       title: "স্লট",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/category/slot",
     },
     {
       title: "টেবিল",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/category/table",
     },
     {
       title: "ফিশিং",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/category/fishing",
     },
     {
       title: "ক্রাশ",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/category/crush",
     },
     {
       title: "আর্কেড",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/category/arcade",
     },
     {
       title: "লটারি",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/category/lottery",
     },
     {
       title: "প্রমোশনাল অফার",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/promotional-offer",
     },
     {
       title: "ভিআইপি",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/vip",
     },
     {
       title: "রেফারেল",
-      image: "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
+      image:
+        "https://img.b112j.com/bj/h5/assets/images/icon-set/theme-icon/icon-home.png?v=1726575604702",
       route: "/referral",
     },
   ];
