@@ -73,17 +73,15 @@ const MenuMobile = () => {
                   <p className="text-sm">{title}</p>
                 </Link>
               ) : (
-                <>
-                  <div
-                    to={route ? route : ""}
-                    key={title}
-                    className="flex flex-col items-center justify-center gap-1"
-                    onClick={onClick}
-                  >
-                    <Icon className="text-2xl" />
-                    <p className="text-sm">{title}</p>
-                  </div>
-                </>
+                <div
+                  to={route ? route : ""}
+                  key={title}
+                  className="flex flex-col items-center justify-center gap-1"
+                  onClick={onClick}
+                >
+                  <Icon className="text-2xl" />
+                  <p className="text-sm">{title}</p>
+                </div>
               )
           )}
         </>

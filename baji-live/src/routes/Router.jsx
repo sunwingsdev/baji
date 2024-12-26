@@ -139,7 +139,7 @@ const router = createBrowserRouter([
         element: <Games />,
       },
       {
-        path: "gamesApi",
+        path: "gamesApi/:id",
         element: <GamesApi />,
       },
       {
