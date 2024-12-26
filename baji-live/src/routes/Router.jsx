@@ -12,7 +12,6 @@ import Deposit from "@/pages/home/Deposit/Deposit";
 import ProfileHome from "@/pages/home/ProfileHome/ProfileHome";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "@/layouts/DashboardLayout";
-import Users from "@/pages/dashboard/users/Users";
 import DashboardDeposits from "@/pages/dashboard/DashboardDeposits/DashboardDeposits";
 import WithdrawsHistory from "@/pages/dashboard/WithdrawsHistory/WithdrawsHistory";
 import AdminRoute from "./AdminRoute";
@@ -31,6 +30,10 @@ import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
 import ExchangePage from "@/pages/home/ExchangePage/ExchangePage";
+import Transection from "@/pages/Transections/Transection";
+import DemoGame from "@/pages/home/DemoGame/DemoGame";
+import Notice from "@/pages/dashboard/Fontend/Notice";
+import Sponshorship from "@/pages/dashboard/Fontend/Sponshorship";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/category/:category",
         element: <CategoryPage />,
+      },
+      {
+        path: "/category/demo/:id",
+        element: <DemoGame />,
       },
       {
         path: "/promotional-offer",
@@ -78,6 +85,10 @@ const router = createBrowserRouter([
             path: "deposit",
             element: <Deposit />,
           },
+          {
+            path: "transaction",
+            element: <Transection />,
+          },
         ],
       },
     ],
@@ -97,7 +108,7 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />,
+        element: <AllUsers />,
       },
       {
         path: "userProfile",
@@ -107,10 +118,10 @@ const router = createBrowserRouter([
         path: "agentProfile",
         element: <AgentProfile />,
       },
-      {
-        path: "allusers",
-        element: <AllUsers />,
-      },
+      // {
+      //   path: "allusers",
+      //   element: <AllUsers />,
+      // },
       {
         path: "gameCategories",
         element: <GameCategories />,
@@ -146,6 +157,14 @@ const router = createBrowserRouter([
       {
         path: "promotionsoffer",
         element: <PromotionsOffer />,
+      },
+      {
+        path: "notice",
+        element: <Notice />,
+      },
+      {
+        path: "sponsorship",
+        element: <Sponshorship />,
       },
       {
         path: "home-controls",
