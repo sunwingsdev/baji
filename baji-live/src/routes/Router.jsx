@@ -30,6 +30,7 @@ import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
 import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
+import ExchangePage from "@/pages/home/ExchangePage/ExchangePage";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/referral",
         element: <Referral />,
+      },
+      {
+        path: "/exchangePage",
+        element: <ExchangePage />,
       },
       {
         path: "/profile",
