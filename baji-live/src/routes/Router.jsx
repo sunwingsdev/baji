@@ -12,7 +12,6 @@ import Deposit from "@/pages/home/Deposit/Deposit";
 import ProfileHome from "@/pages/home/ProfileHome/ProfileHome";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "@/layouts/DashboardLayout";
-import Users from "@/pages/dashboard/users/Users";
 import DashboardDeposits from "@/pages/dashboard/DashboardDeposits/DashboardDeposits";
 import WithdrawsHistory from "@/pages/dashboard/WithdrawsHistory/WithdrawsHistory";
 import AdminRoute from "./AdminRoute";
@@ -32,6 +31,8 @@ import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
 import Transection from "@/pages/Transections/Transection";
 import DemoGame from "@/pages/home/DemoGame/DemoGame";
+import Notice from "@/pages/dashboard/Fontend/Notice";
+import Sponshorship from "@/pages/dashboard/Fontend/Sponshorship";
 
 const router = createBrowserRouter([
   {
@@ -151,6 +152,14 @@ const router = createBrowserRouter([
       {
         path: "promotionsoffer",
         element: <PromotionsOffer />,
+      },
+      {
+        path: "notice",
+        element: <Notice />,
+      },
+      {
+        path: "sponsorship",
+        element: <Sponshorship />,
       },
       {
         path: "home-controls",

@@ -95,12 +95,12 @@ const menuItems = [
     icon: <BsFront />,
     submenu: [
       { name: "Slider", path: "/dashboard/fontendslider" },
-      { name: "Promotions", path: "/dashboard/promotionoffer" },
+      { name: "Promotions", path: "/dashboard/promotionsoffer" },
       { name: "Pages", path: "/dashboard" },
-      { name: "Notice", path: "/dashboard" },
+      { name: "Notice", path: "/dashboard/notice" },
       { name: "About Us", path: "/dashboard" },
       { name: "FAQ", path: "/dashboard" },
-      { name: "Sponsorship", path: "/dashboard" },
+      { name: "Sponsorship", path: "/dashboard/sponsorship" },
       { name: "Brand Ambassador", path: "/dashboard" },
     ],
   },
@@ -175,7 +175,7 @@ const DashboardMobilMenu = ({ open }) => {
   return (
     <div>
       <div
-        className={`bg-[#172437] p-4 fixed left-0 right-0 z-20 duration-300 ${
+        className={`bg-[#172437] p-4 fixed left-0 right-0 z-20 duration-300  ${
           !open ? "md:ml-16" : "md:ml-64"
         }`}
       >
@@ -224,7 +224,7 @@ const DashboardMobilMenu = ({ open }) => {
           {menuItems.map((item) => (
             <div key={item.name}>
               <div
-                className={`py-2.5 px-4 flex items-center justify-between ${
+                className={`py-2.5 px-4 flex items-center justify-between border-b border-gray-400 ${
                   item.submenu.length > 0 ? "cursor-pointer" : ""
                 }`}
                 onClick={() =>
