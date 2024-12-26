@@ -1,6 +1,6 @@
 import ExchangeLeftSideMenu from "@/components/exchange-page/ExchangeLeftSideMenu";
 import ExchangeRightSideContent from "@/components/exchange-page/ExchangeRightSideContent";
-import ExchangeTopMenu from "@/pages/home/ExchangePage/ExchangeTopMenu";
+import ExchangeTopMenu from "@/components/exchange-page/ExchangeTopMenu";
 import { Outlet } from "react-router-dom";
 
 const ExchangeLayout = () => {
