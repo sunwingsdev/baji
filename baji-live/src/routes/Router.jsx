@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <ExchangeLayout />,
         children: [
           { path: "", element: <ExchangeMiddleContent /> },
-          { path: "sample", element: <div>Hello Next</div> },
+          { path: "sample", element: <div>Hello Next v2</div> },
         ],
       },
       {
