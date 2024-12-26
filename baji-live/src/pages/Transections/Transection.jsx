@@ -32,23 +32,23 @@ const Transection = () => {
   ];
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 text-nowrap">
       <WalletSection />
       <div className="bg-[#363838] p-2 text-white rounded-md">
-        <div className="border-b-2 border-green-300">
+        <div className="border-b-2 border-green-300 border-dotted">
           <h1 className="p-2 text-green-300 ">ট্রানজেকশন</h1>
         </div>
         <div>
           {/* Type Section */}
           <div className="p-2">
             <h1 className="p-2">টাইপ</h1>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:w-5/6 text-sm">
               {["ডিপোজিট", "উইথড্র", "অ্যাডজাস্টমেন্ট", "অল"].map((type) => (
                 <button
                   key={type}
                   onClick={() => handleTypeClick(type)}
-                  className={`p-2 border border-lime-200 rounded  ${
-                    selectedType === type ? "bg-blue-500 text-white" : ""
+                  className={` py-2 lg:p-4 lg:py-6 border  rounded  ${
+                    selectedType === type ? " text-white border-[#26ffbc]" : ""
                   }`}
                 >
                   {type} {selectedType === type && "✔️"}
@@ -60,13 +60,15 @@ const Transection = () => {
           {/* Status Section */}
           <div className="p-2">
             <h1 className="p-2">স্ট্যাটাস</h1>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:w-5/6 text-sm">
               {["প্রসেসিং", "সাকসেস", "ফেইল", "অল"].map((status) => (
                 <button
                   key={status}
                   onClick={() => handleStatusClick(status)}
-                  className={`p-2 border border-lime-200 rounded ${
-                    selectedStatus === status ? "bg-green-500 text-white" : ""
+                  className={` py-2 lg:p-4 lg:py-6 border  rounded  ${
+                    selectedStatus === status
+                      ? "text-white border-[#26ffbc]"
+                      : ""
                   }`}
                 >
                   {status} {selectedStatus === status && "✔️"}
@@ -78,13 +80,13 @@ const Transection = () => {
           {/* Date Section */}
           <div className="p-2">
             <h1 className="p-2">তারিখ</h1>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:w-5/6 text-sm">
               {["আজ", "গতকাল", "শেষ 7 দিন"].map((date) => (
                 <button
                   key={date}
                   onClick={() => handleDateClick(date)}
-                  className={`p-2 border border-lime-200 rounded ${
-                    selectedDate === date ? "bg-purple-500 text-white" : ""
+                  className={`py-2 lg:p-4 lg:py-6 border  rounded  ${
+                    selectedDate === date ? "text-white border-[#26ffbc]" : ""
                   }`}
                 >
                   {date} {selectedDate === date && "✔️"}
@@ -92,7 +94,7 @@ const Transection = () => {
               ))}
             </div>
             <div className="flex justify-center">
-              <button className="bg-zinc-400 hover:bg-zinc-600 text-white p-2 m-4 rounded-md px-4 transition duration-300">
+              <button className="bg-zinc-400 hover:bg-green-700 text-white p-2 m-4 rounded-md px-4 transition duration-300">
                 সাবমিট করুন
               </button>
             </div>
