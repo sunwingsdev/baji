@@ -5,16 +5,16 @@ import { IoSearch, IoArrowBack } from "react-icons/io5";
 
 const ExchangeTopMenu = () => {
   const menuItems = [
-    { id: "home", label: "Home" },
-    { id: "In-Play", label: "In-Play" },
-    { id: "Multi Markets", label: "Multi Markets" },
-    { id: "Cricket", label: "Cricket", badge: 2 },
-    { id: "Soccer", label: "Soccer", badge: 6 },
-    { id: "Tennis", label: "Tennis", badge: 22 },
-    { id: "E-Soccer", label: "E-Soccer", badge: 2 },
-    { id: "BBL Winner", label: "BBL Winner" },
-    { id: "Kabaddi", label: "Kabaddi", badge: 1 },
-    { id: "Result", label: "Result" },
+    { id: "1", label: "Home", link: "" },
+    { id: "2", label: "In-Play", link: "/in-play" },
+    { id: "3", label: "Multi Markets", link: "/multi-markets" },
+    { id: "4", label: "Cricket", badge: 2, link: "/cricket" },
+    { id: "5", label: "Soccer", badge: 6, link: "/soccer" },
+    { id: "6", label: "Tennis", badge: 22, link: "/tennis" },
+    { id: "7", label: "E-Soccer", badge: 2, link: "/e-soccer" },
+    { id: "8", label: "BBL Winner", link: "/bbl-winner" },
+    { id: "9", label: "Kabaddi", badge: 1, link: "/kabaddi" },
+    { id: "10", label: "Result", link: "/result" },
   ];
 
   const [isChecked, setIsChecked] = useState(false);
