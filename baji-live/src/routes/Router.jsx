@@ -29,7 +29,6 @@ import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
 import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
-// import ExchangePage from "@/pages/home/ExchangePage/ExchangePage";
 import Transection from "@/pages/Transections/Transection";
 import DemoGame from "@/pages/home/DemoGame/DemoGame";
 import Notice from "@/pages/dashboard/Fontend/Notice";
@@ -68,7 +67,7 @@ const router = createBrowserRouter([
         element: <Referral />,
       },
       {
-        path: "/exchangePage",
+        path: "/exchange-page",
         element: <ExchangeLayout />,
         children: [
           { path: "", element: <ExchangeMiddleContent /> },
