@@ -94,3 +94,13 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/* reat tab classes */
+.selectedTabClass {
+  background-color: #dddcd6;
+  color: black;
+}
+
+.selectedTabClass:hover {
+  text-decoration: none;
+}

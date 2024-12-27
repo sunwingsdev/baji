@@ -26,37 +26,37 @@ const ExchangeMiddleContent = () => {
           <TabList className="flex flex-row flex-wrap gap-2 px-2">
             <Tab
               className="bg-[#333333] text-white hover:underline cursor-pointer px-10 rounded-t-md outline-none"
-              selectedClassName="bg-[#dddcd6] text-[#000000] hover:no-underline"
+              selectedClassName="selectedTabClass"
             >
               Cricket
             </Tab>
             <Tab
               className="bg-[#333333] text-white hover:underline cursor-pointer px-10 rounded-t-md outline-none"
-              selectedClassName="bg-[#dddcd6] text-[#000000] hover:no-underline"
+              selectedClassName="selectedTabClass"
             >
               Soccer
             </Tab>
             <Tab
               className="bg-[#333333] text-white hover:underline cursor-pointer px-10 rounded-t-md outline-none"
-              selectedClassName="bg-[#dddcd6] text-[#000000] hover:no-underline"
+              selectedClassName="selectedTabClass"
             >
               Tennis
             </Tab>
             <Tab
               className="bg-[#333333] text-white hover:underline cursor-pointer px-10 rounded-t-md outline-none"
-              selectedClassName="bg-[#dddcd6] text-[#000000] hover:no-underline"
+              selectedClassName="selectedTabClass"
             >
               E-Soccer
             </Tab>
             <Tab
               className="bg-[#333333] text-white hover:underline cursor-pointer px-10 rounded-t-md outline-none"
-              selectedClassName="bg-[#dddcd6] text-[#000000] hover:no-underline"
+              selectedClassName="selectedTabClass"
             >
               Kabaddi
             </Tab>
             <Tab
               className="bg-[#333333] text-white hover:underline cursor-pointer px-10 rounded-t-md outline-none"
-              selectedClassName="bg-[#dddcd6] text-[#000000] hover:no-underline"
+              selectedClassName="selectedTabClass"
             >
               Election
             </Tab>
