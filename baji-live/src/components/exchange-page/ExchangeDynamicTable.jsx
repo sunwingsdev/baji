@@ -4,6 +4,13 @@ import { MdPushPin } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const ExchangeDynamicTable = ({ tableData }) => {
+  if (!tableData || tableData.length === 0) {
+    return (
+      <p className="py-2 ps-2 text-black border-b border-b-black border-opacity-45">
+        There is no events to be displayed.
+      </p>
+    );
+  }
   return (
     <table className="min-w-full table-auto border-collapse border border-gray-300">
       <tbody>
