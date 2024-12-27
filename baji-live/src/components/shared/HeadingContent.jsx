@@ -17,7 +17,6 @@ const HeadingContent = ({ heading, contents, contentWidth, wrap }) => {
                   style={{
                     width: `${contentWidth}px`,
                   }}
-                  key={content.id}
                   src={content.image}
                   className="h-9 filter grayscale transition-all duration-300 hover:filter-none"
                   alt={content.id} // Always include alt text for accessibility

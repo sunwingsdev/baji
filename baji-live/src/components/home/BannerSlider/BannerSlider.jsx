@@ -54,7 +54,7 @@ export function BannerSlider() {
     <Carousel className="w-full" setApi={setApi}>
       <CarouselContent>
         {bannerImages?.map((image, index) => (
-          <CarouselItem key={image.id}>
+          <CarouselItem key={image._id}>
             <div className="">
               <img
                 className="w-full max-h-[600px]"

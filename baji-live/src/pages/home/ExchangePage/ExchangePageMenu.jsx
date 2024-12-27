@@ -20,7 +20,7 @@ const ExchangePageMenu = ({ menuItems }) => {
         {menuItems.map((item) => (
           <div key={item.id} className="relative">
             <button
-              className={`px-3 py-1 text-xs font-semibold text-white w-full border-r border-[#696969] ${
+              className={`px-3 py-3 lg:py-2 text-xs font-semibold text-white w-full border-r border-[#696969] whitespace-nowrap ${
                 selected === item.id ? "bg-[#696969]" : "bg-[#434343]"
               }`}
               onClick={() => setSelected(item.id)}
