@@ -28,7 +28,7 @@ const ExchangePageMenu = ({ menuItems }) => {
               {item.label}
               {/* Badge (with Live Icon) */}
               {item.badge && (
-                <div className="absolute bg-white -top-2 right-1 flex items-center">
+                <div className="absolute bg-white -top-2 right-1 flex items-center z-50">
                   {/* Live Icon */}
                   <div
                     className={`bg-white text-red-600 w-4 h-3 px-0.5 flex items-center justify-center ${
