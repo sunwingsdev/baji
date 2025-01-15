@@ -69,7 +69,7 @@ const GamesApi = () => {
       </h1>
 
       <div className="bg-white rounded-lg p-6 shadow-xl">
-        <h2 className="text-center text-2xl font-semibold text-[#14815f] mb-6">
+        <h2 className="text-center text-2xl font-semibold text-white mb-6">
           {selectedApi?.label}
         </h2>
 
@@ -88,7 +88,7 @@ const GamesApi = () => {
                 placeholder="Enter API Key"
                 value={formData.apiKey}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
 
               <label
@@ -103,7 +103,7 @@ const GamesApi = () => {
                 placeholder="Enter License Key"
                 value={formData.licenseKey}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
 
               <label
@@ -118,7 +118,7 @@ const GamesApi = () => {
                 placeholder="Enter Game Provider Key"
                 value={formData.gameProviderKey}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
             </div>
 
@@ -135,7 +135,7 @@ const GamesApi = () => {
                 placeholder="Enter Provider IP"
                 value={formData.providerIp}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
 
               <label htmlFor="gameFile" className="text-gray-700 font-semibold">
@@ -160,7 +160,7 @@ const GamesApi = () => {
                 placeholder="Enter Secret Pin"
                 value={formData.secretPin}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
             </div>
           </div>

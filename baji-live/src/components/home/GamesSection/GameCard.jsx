@@ -21,11 +21,14 @@ const GameCard = ({ game }) => {
           />
 
           {/* Black overlay that appears on hover */}
-          <div className="absolute w-full h-full top-0 left-0 bg-black opacity-0 z-20 transition-opacity duration-300 group-hover:opacity-70 rounded-[20px] lg:rounded-xl"></div>
+          <div className="absolute w-full h-full top-0 left-0 bg-[#041d3c] opacity-0 z-20 transition-opacity duration-300 group-hover:opacity-70 rounded-[20px] lg:rounded-xl"></div>
 
           {/* Play button */}
           <div className="absolute flex flex-col items-center justify-center gap-2 whitespace-nowrap text-xs top-1/4 left-1/2 transform -translate-x-1/2 translate-y-16 opacity-0 transition-transform duration-300 group-hover:translate-y-0 group-hover:opacity-100 z-30">
-            <Link onClick={()=>setIsModalOpen(true)} className="hidden sm:block">
+            <Link
+              onClick={() => setIsModalOpen(true)}
+              className="hidden sm:block"
+            >
               <PrimaryButton>প্লে গেম</PrimaryButton>
             </Link>
             {game?.demo && (

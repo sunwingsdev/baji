@@ -13,7 +13,7 @@ const LogoUploadSection = () => {
         <div className="flex items-center justify-between border-2 bg-gray-400 rounded-lg">
           <p className="text-lg md:text-xl font-semibold px-3">Upload Logo</p>
           <Button
-            className="bg-[#14805e] text-[#fde047]"
+            className="bg-[#041d3c] text-[#fde047]"
             onClick={() => setIsModalOpen(true)}
           >
             <IoAdd /> Add

@@ -15,7 +15,7 @@ const SliderUploadSection = () => {
             Upload Home Slider Image
           </p>
           <Button
-            className="bg-[#14805e] text-[#fde047]"
+            className="bg-[#041d3c] text-[#fde047]"
             onClick={() => setIsModalOpen(true)}
           >
             <IoAdd /> Add

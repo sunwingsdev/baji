@@ -12,7 +12,7 @@ const Home = () => {
     { id: 2, image: cardImage2 },
   ];
   return (
-    <div className="md:bg-[#4e4e4e] bg-black">
+    <div className="md:bg-[#4e4e4e] bg-[#041d3c]">
       <BannerSlider />
 
       <Container>

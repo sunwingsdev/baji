@@ -34,7 +34,7 @@ const Vip = () => {
           "https://www.vipdetailspage.com/wp-content/themes/vip/bjvip/images/joinbtn-bn.png"
         }
       />
-      <div className="bg-black text-white">
+      <div className="bg-[#041d3c] text-white">
         <Container>
           <div>
             <h2 className="text-center text-3xl font-black custom-gradient-text">

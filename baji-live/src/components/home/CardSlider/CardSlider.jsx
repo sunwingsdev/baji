@@ -14,7 +14,7 @@ export function CardSlider({ cards }) {
 
   return (
     <div className="rounded-lg">
-      <div className="bg-[#14805E] text-white p-3 flex justify-between items-center rounded-t-lg">
+      <div className="bg-[#041d3c] text-white p-3 flex justify-between items-center rounded-t-lg">
         <h2>প্রিয়</h2>
         {/* Functional custom buttons for carousel control */}
         <div className="hidden md:flex space-x-4 text-yellow-500">

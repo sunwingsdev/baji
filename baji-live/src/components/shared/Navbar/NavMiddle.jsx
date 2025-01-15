@@ -14,24 +14,27 @@ import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi
 import { useLazyGetUserByIdQuery } from "@/redux/features/allApis/usersApi/usersApi";
 import { IoReload } from "react-icons/io5";
 import SpinLoader from "../loaders/Spinloader";
+import image1 from "@/assets/images/deccan-gladiators.png";
+import image2 from "@/assets/images/sunrisers-eastern-cape.png";
+import image3 from "@/assets/images/quetta-gladiators.png";
+import image4 from "@/assets/images/bologna-fc-1909.png";
 
 const sponsors = [
   {
     id: 1,
-    image: "https://www.baji.live/images/web/sponsor/deccan-gladiators.png",
+    image: image1,
   },
   {
     id: 2,
-    image:
-      "https://www.baji.live/images/web/sponsor/sunrisers-eastern-cape.png",
+    image: image2,
   },
   {
     id: 3,
-    image: "https://www.baji.live/images/web/sponsor/quetta-gladiators.png",
+    image: image3,
   },
   {
     id: 4,
-    image: "https://www.baji.live/images/web/sponsor/bologna-fc-1909.png",
+    image: image4,
   },
 ];
 
@@ -47,29 +50,27 @@ const NavMiddle = ({ navItems }) => {
   const logoHomeControl = homeControls?.find(
     (control) => control.category === "logo" && control.isSelected === true
   );
-
-  // Loading state
   const [loading, setLoading] = useState(false);
 
-  // Fetch user balance on component mount
   useEffect(() => {
     if (!user) return;
     getSingleUser(user?.user?._id).then(({ data }) => {
-      dispatch(setSingleUser(data)); // Save singleUser to Redux
+      dispatch(setSingleUser(data));
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const reloadBalance = () => {
     if (!user) return;
 
-    setLoading(true); // Set loading state to true
+    setLoading(true);
 
     getSingleUser(user?.user?._id)
       .then(({ data }) => {
-        dispatch(setSingleUser(data)); // Update Redux store with the latest balance
+        dispatch(setSingleUser(data));
       })
       .finally(() => {
-        setLoading(false); // Set loading state to false after data is fetched
+        setLoading(false);
       });
   };
   const handleModalOpen = () => {
@@ -99,9 +100,9 @@ const NavMiddle = ({ navItems }) => {
   };
 
   return (
-    <div className="bg-black md:bg-gradient-to-b from-[#1aaa7c] to-[#14815f] py-3">
+    <div className="bg-[#041d3c] md:bg-gradient-to-b from-[#041d3c] to-[#041d3c] py-3">
       <Container>
-        <div className="flex items-center justify-between text-[#14815f]">
+        <div className="flex items-center justify-between text-white">
           {/* Menu for mobile */}
           <div className="md:hidden z-40">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
