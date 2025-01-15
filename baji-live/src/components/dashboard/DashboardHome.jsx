@@ -65,8 +65,8 @@ const DashboardHome = () => {
       .slice(0, 5) || [];
 
   const userPaymentsData = sortedDeposits.map((deposit) => ({
-    username: deposit.userInfo.username,
-    phone: deposit.userInfo.phone,
+    username: deposit?.userInfo?.username,
+    phone: deposit?.userInfo?.phone,
     amount: deposit.amount,
     createdAt: new Date(deposit.createdAt).toLocaleString(),
   }));

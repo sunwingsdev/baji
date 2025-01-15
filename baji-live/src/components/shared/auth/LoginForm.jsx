@@ -95,7 +95,7 @@ const LoginForm = ({ closeModal }) => {
           </button>
         </div>
       </div>
-      <p className="text-right underline text-[#474747] hover:text-[#14815f]">
+      <p className="text-right underline text-[#474747] hover:text-white">
         পাসওয়ার্ড ভুলে গেছেন?
       </p>
       <PrimaryButton widthFull={true} type="submit">
@@ -103,7 +103,7 @@ const LoginForm = ({ closeModal }) => {
       </PrimaryButton>
       <p className="text-sm">
         একাউন্ট নেই?{" "}
-        <span className="underline text-[#474747] hover:text-[#14815f]">
+        <span className="underline text-[#474747] hover:text-white">
           এখন সাইন আপ করুন!
         </span>
       </p>

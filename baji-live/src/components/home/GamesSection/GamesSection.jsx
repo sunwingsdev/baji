@@ -252,7 +252,7 @@ const GamesSection = () => {
               type="text"
               id="text"
               placeholder="গেমস অনুসন্ধান করুন"
-              className="px-4 py-2 rounded border-none focus:outline-none text-[#14805e] bg-[#f2f2f2]"
+              className="px-4 py-2 rounded border-none focus:outline-none text-white bg-[#f2f2f2]"
             />
           </div>
           <div className="flex items-center gap-2 text-[#666666] text-sm">
@@ -269,7 +269,7 @@ const GamesSection = () => {
           </div>
         </div>
       </Container>
-      <div className="bg-black md:bg-[#137556]">
+      <div className="bg-[#041d3c] md:bg-[#137556]">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex md:flex-wrap md:flex-row items-center gap-2 py-2 text-white overflow-x-auto w-full">
@@ -350,7 +350,7 @@ const GamesSection = () => {
           </div>
         </Container>
       </div>
-      <div className="bg-black md:bg-[#4e4e4e]">
+      <div className="bg-[#041d3c] md:bg-[#4e4e4e]">
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3  py-6 ">
             {games.map((game) => (

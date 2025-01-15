@@ -165,7 +165,7 @@ const Register = () => {
               অনলাইন কাস্টমার সার্ভিস
             </span>
           </p>
-          <div className="flex items-center justify-center gap-4 p-8 border-4 border-[#14815f]">
+          <div className="flex items-center justify-center gap-4 p-8 border-4 border-[#041d3c]">
             <div className="w-[40%] text-white">
               <h3 className="text-xl text-center text-[#ffdf18]">
                 {"সাইন আপ"}
@@ -255,7 +255,7 @@ const Register = () => {
                     <div className="flex items-center justify-end">
                       <Button
                         onClick={handleNext}
-                        className="rounded-full size-12 bg-[#14815f] hover:bg-[#14815f] p-0"
+                        className="rounded-full size-12 bg-[#041d3c] hover:bg-[#041d3c] p-0"
                       >
                         <FaArrowRight className="text-3xl font-bold" />
                       </Button>
@@ -338,7 +338,7 @@ const Register = () => {
                         placeholder="কোড লিখুন"
                         className="p-4 rounded border-[#adacb1] focus:outline-none text-white bg-[#454545]"
                       />
-                      <div className="flex gap-3 items-center px-4 bg-black rounded-md">
+                      <div className="flex gap-3 items-center px-4 bg-[#041d3c] rounded-md">
                         <div className="text-white rounded text-2xl font-bold">
                           {generatedCode}
                         </div>
@@ -355,13 +355,13 @@ const Register = () => {
                   <div className="flex items-center justify-between">
                     <Button
                       onClick={handleBack}
-                      className="rounded-full size-12 bg-[#14815f] hover:bg-[#14815f] p-0"
+                      className="rounded-full size-12 bg-[#041d3c] hover:bg-[#041d3c] p-0"
                     >
                       <FaArrowLeft className="text-3xl font-bold" />
                     </Button>
                     <Button
                       type="submit"
-                      className="rounded-full size-12 bg-[#14815f] hover:bg-[#14815f] p-0"
+                      className="rounded-full size-12 bg-[#041d3c] hover:bg-[#041d3c] p-0"
                     >
                       {loading ? (
                         <SpinLoader />
@@ -385,7 +385,7 @@ const Register = () => {
       </div>
 
       {/* for mobile */}
-      <div className="bg-black h-full md:hidden">
+      <div className="bg-[#041d3c] h-full md:hidden">
         <div className="relative bg-slate-600 px-3 py-3 text-white text-center">
           <FaChevronLeft
             className="absolute left-0 top-1/2 transform -translate-y-1/2 ml-2 cursor-pointer"
@@ -411,12 +411,12 @@ const Register = () => {
                   value={formData.username}
                   onChange={handleChange} // Update the state when input changes
                   placeholder="ব্যবহারকারীর নাম"
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {formData.username && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setFormData({ ...formData, username: "" })}
                   >
                     <FaTimes />
@@ -437,12 +437,12 @@ const Register = () => {
                   value={formData.password}
                   onChange={handleChange} // Update the state when input changes
                   placeholder="পাসওয়ার্ড"
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {formData.password && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-12 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-12 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setFormData({ ...formData, password: "" })}
                   >
                     <FaTimes />
@@ -469,12 +469,12 @@ const Register = () => {
                   value={formData.confirmPassword}
                   onChange={handleChange} // Update the state when input changes
                   placeholder="পাসওয়ার্ড নিশ্চিত করুন"
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {formData.confirmPassword && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-12 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-12 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() =>
                       setFormData({ ...formData, confirmPassword: "" })
                     }
@@ -497,7 +497,7 @@ const Register = () => {
               <Label className="text-sm w-1/3" htmlFor="currency">
                 কারেন্সি
               </Label>
-              <div className="w-2/3 h-full relative text-[#14805e] ">
+              <div className="w-2/3 h-full relative text-white ">
                 <Select
                   onValueChange={handleCurrencyChange}
                   value={formData.currency}
@@ -528,12 +528,12 @@ const Register = () => {
                   value={formData.fullName}
                   onChange={handleChange} // Update the state when input changes
                   placeholder="সম্পূর্ণ নাম "
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {formData.fullName && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setFormData({ ...formData, fullName: "" })}
                   >
                     <FaTimes />
@@ -549,12 +549,12 @@ const Register = () => {
               <div className="w-1/4">
                 <Select
                   value={formData.countryCode}
-                  className="text-[#14805e] bg-[#292929]"
+                  className="text-white bg-[#292929]"
                 >
-                  <SelectTrigger className="bg-[#292929] border-none ring-0 text-[#14805e]">
+                  <SelectTrigger className="bg-[#292929] border-none ring-0 text-white">
                     <SelectValue placeholder="Country Code" />
                   </SelectTrigger>
-                  <SelectContent className="text-[#14805e]">
+                  <SelectContent className="text-white">
                     <SelectGroup>
                       <SelectItem value="+880">BD (+880)</SelectItem>
                       <SelectItem value="+91">IN (+91)</SelectItem>
@@ -571,12 +571,12 @@ const Register = () => {
                   value={formData.phone}
                   onChange={handleChange} // Update the state when input changes
                   placeholder="ফোন নাম্বার"
-                  className="pl-5 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {formData.phone && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setFormData({ ...formData, phone: "" })}
                   >
                     <FaTimes />
@@ -596,12 +596,12 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleChange} // Update the state when input changes
                   placeholder="ই-মেইল"
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {formData.email && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setFormData({ ...formData, email: "" })}
                   >
                     <FaTimes />
@@ -621,11 +621,11 @@ const Register = () => {
                   value={formData.refer}
                   onChange={handleChange}
                   placeholder="রেফার কোড"
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {formData.refer && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setFormData({ ...formData, refer: "" })}
                   >
                     <FaTimes />
@@ -646,7 +646,7 @@ const Register = () => {
                     value={formData.verificationCode}
                     onChange={handleChange}
                     placeholder="কোড লিখুন"
-                    className="pl-5 focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                    className="pl-5 focus:outline-none text-white border-none bg-transparent w-full"
                   />
                   <div className="flex gap-2 justify-between items-center bg-white">
                     <div className="text-black rounded text-2xl px-2 font-bold">
@@ -666,7 +666,7 @@ const Register = () => {
 
             <Button
               type="submit"
-              className="bg-[#14805e] w-full text-base py-6 mt-3"
+              className="bg-[#041d3c] w-full text-base py-6 mt-3"
             >
               {loading ? <SpinLoader /> : "নিশ্চিত করুন"}
             </Button>

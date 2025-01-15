@@ -107,7 +107,7 @@ const LogoUploadForm = ({ closeModal }) => {
           <Button
             disabled={loading || !logoFile}
             type="submit"
-            className="bg-[#14805e] hover:bg-[#19614a] flex items-center gap-2 disabled:bg-slate-600 disabled:cursor-not-allowed"
+            className="bg-[#041d3c] hover:bg-[#19614a] flex items-center gap-2 disabled:bg-slate-600 disabled:cursor-not-allowed"
           >
             {loading ? (
               <SpinLoader />

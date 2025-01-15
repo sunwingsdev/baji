@@ -69,7 +69,7 @@ const AdminLogin = () => {
   );
 
   return (
-    <div className="flex flex-col md:flex-row md:h-screen bg-black">
+    <div className="flex flex-col md:flex-row md:h-screen bg-[#041d3c]">
       {/* Left Side Image */}
       <div className="relative w-full md:w-1/2 ">
         <img
@@ -77,7 +77,7 @@ const AdminLogin = () => {
           alt="Login Background"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-black opacity-30"></div>
+        <div className="absolute inset-0 bg-[#041d3c] opacity-30"></div>
       </div>
 
       {/* Right Side Login */}

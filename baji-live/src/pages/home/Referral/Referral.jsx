@@ -70,7 +70,7 @@ const Referral = () => {
     },
   ];
   return (
-    <div className="bg-black">
+    <div className="bg-[#041d3c]">
       <SecondaryBanner
         image={
           "https://www.baji.live/images/v1/web/bj/referral-program/referral-program-bg.png"

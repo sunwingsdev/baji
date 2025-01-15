@@ -9,7 +9,7 @@ const Modal = ({ isOpen, onOpenChange, title, children }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="">
-        <DialogHeader className={"bg-[#14805e] text-white rounded-t-lg"}>
+        <DialogHeader className={"bg-[#041d3c] text-white rounded-t-lg"}>
           <DialogTitle className="text-xl px-6 py-4">{title}</DialogTitle>
         </DialogHeader>
         <div className="p-8">{children}</div>

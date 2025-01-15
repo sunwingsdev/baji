@@ -41,14 +41,14 @@ const MenuMobile = () => {
 
   return (
     <div
-      className={`sticky bottom-0 z-50 flex flex-row items-center justify-center bg-black text-white font-bold md:hidden ${
+      className={`sticky bottom-0 z-50 flex flex-row items-center justify-center bg-[#041d3c] text-white font-bold md:hidden ${
         user && token ? "justify-between px-3 py-2" : ""
       }`}
     >
       {!user && !token ? (
         <>
           <Link
-            className="w-1/2 bg-[#14805e] py-4 text-center text-white"
+            className="w-1/2 bg-[#041d3c] py-4 text-center text-white"
             to="/login"
           >
             লগ ইন

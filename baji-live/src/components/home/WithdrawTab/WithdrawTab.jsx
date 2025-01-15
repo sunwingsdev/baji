@@ -7,6 +7,9 @@ import { FcOk } from "react-icons/fc";
 import { RxCrossCircled } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
+import bkash from "@/assets/payments/bkash1.png";
+import rocket from "@/assets/payments/rocket1.png";
+import nagad from "@/assets/payments/nagad1.png";
 
 const WithdrawTab = () => {
   const [addWithdraw] = useAddWithdrawMutation();
@@ -25,17 +28,17 @@ const WithdrawTab = () => {
     {
       title: "bKash",
       paymentMethod: "bkash",
-      image: "https://www.baji.live/images/web/thirdparty/bkash.png",
+      image: bkash,
     },
     {
       title: "Rocket",
       paymentMethod: "rocket",
-      image: "https://www.baji.live/images/web/thirdparty/rocket.png",
+      image: rocket,
     },
     {
       title: "Nagad",
       paymentMethod: "nagad",
-      image: "https://www.baji.live/images/web/thirdparty/nagad.png",
+      image: nagad,
     },
   ];
 

@@ -59,7 +59,6 @@ const depositsApi = (depositsCollection, usersCollection) => {
       const deposit = await depositsCollection.findOne({
         _id: new ObjectId(id),
       });
-      console.log(deposit);
       if (!deposit) {
         return res.status(404).send({ error: "Deposit not found" });
       }
@@ -82,7 +81,6 @@ const depositsApi = (depositsCollection, usersCollection) => {
         { _id: new ObjectId(deposit.userId) },
         { $inc: { balance: deposit.amount } }
       );
-      console.log(result);
       res.send(result);
     } catch (error) {
       console.error("Error updating deposit status:", error);

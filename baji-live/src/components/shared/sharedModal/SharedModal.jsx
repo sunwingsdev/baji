@@ -16,7 +16,7 @@ const SharedModal = ({ triggerText, title, description, children }) => {
       </DialogTrigger>
       <DialogContent
         className="sm:max-w-md"
-        style={{ backgroundColor: "#14815f" }}
+        style={{ backgroundColor: "#041d3c" }}
       >
         <DialogHeader style={{ padding: "10px" }}>
           <DialogTitle style={{ color: "#fde047", fontSize: "20px" }}>

@@ -18,7 +18,7 @@ const Card = ({ contents, heading, handleModalOpen, closeModal }) => {
   const navigate = useNavigate();
   return (
     <div className="bg-[#333333] rounded-md py-2 space-y-2">
-      <h2 className="border-s-8 border-[#14805e] px-2 ms-2">{heading}</h2>
+      <h2 className="border-s-8 border-[#041d3c] px-2 ms-2">{heading}</h2>
       <div className="w-full border-t border-gray-600"></div>
       <div
         className={`flex items-center px-2 ${
@@ -130,12 +130,12 @@ const AccountDetailsMobile = ({ setDrawerOpen }) => {
 
   return (
     <>
-      <div className="fixed inset-0 flex items-center bg-black justify-center z-50 font-normal overflow-y-auto">
+      <div className="fixed inset-0 flex items-center bg-[#041d3c] justify-center z-50 font-normal overflow-y-auto">
         {/* Drawer Content */}
         <div className="w-full h-full rounded-t-2xl shadow-lg flex flex-col">
           <button
             onClick={() => setDrawerOpen(false)}
-            className="self-end text-white bg-black absolute ps-10 pe-2 pb-8 rounded-bl-full text-2xl z-50"
+            className="self-end text-white bg-[#041d3c] absolute ps-10 pe-2 pb-8 rounded-bl-full text-2xl z-50"
           >
             ✕
           </button>
