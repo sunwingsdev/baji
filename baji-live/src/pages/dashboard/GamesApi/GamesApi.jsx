@@ -1,7 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 
+const submenus = [
+  { label: "Sprots Live TV", to: "/dashboard/gamesApi/sports-live-tv" },
+  { label: "BetFair API", to: "/dashboard/gamesApi/betfair-api" },
+  { label: "Sports Radar API", to: "/dashboard/gamesApi/sports-radar-api" },
+  { label: "Odds Jam API", to: "/dashboard/gamesApi/odds-jam-api" },
+  { label: "Bet Construct API", to: "/dashboard/gamesApi/bet-construct-api" },
+  { label: "Kambi API", to: "/dashboard/gamesApi/kambi-api" },
+  { label: "Pinnacle API", to: "/dashboard/gamesApi/pinnacle-api" },
+  { label: "SoftSwiss API", to: "/dashboard/gamesApi/softswiss-api" },
+  { label: "Betradar API", to: "/dashboard/gamesApi/betradar-api" },
+  { label: "Evolution API", to: "/dashboard/gamesApi/evolution-api" },
+  { label: "Pragmatic Play API", to: "/dashboard/gamesApi/pragmatic-play-api" },
+  { label: "Playtech API", to: "/dashboard/gamesApi/playtech-api" },
+  { label: "NetEnt API", to: "/dashboard/gamesApi/netent-api" },
+  { label: "Betsoft Gaming API", to: "/dashboard/gamesApi/betsoft-gaming-api" },
+];
+
 const GamesApi = () => {
+  const [selectedApi, setSelectedApi] = useState(null);
+  const location = useLocation();
   const [formData, setFormData] = useState({
     apiKey: "",
     licenseKey: "",
@@ -11,6 +31,11 @@ const GamesApi = () => {
     gameFile: null,
   });
   const { addToast } = useToasts();
+
+  useEffect(() => {
+    const selected = submenus.find((menu) => menu.to === location.pathname);
+    setSelectedApi(selected);
+  }, [location.pathname]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -28,10 +53,9 @@ const GamesApi = () => {
     // Prepare data for console log
     const dataToLog = { ...formData };
     if (formData.gameFile) {
-      dataToLog.gameFile = formData.gameFile.name; // Log file name for simplicity
+      dataToLog.gameFile = formData.gameFile.name;
     }
 
-    // console.log("Form Data:", dataToLog);
     addToast("Invalid api key", {
       appearance: "error",
       autoDismiss: true,
@@ -45,8 +69,8 @@ const GamesApi = () => {
       </h1>
 
       <div className="bg-white rounded-lg p-6 shadow-xl">
-        <h2 className="text-center text-2xl font-semibold text-[#14815f] mb-6">
-          Sports Live TV
+        <h2 className="text-center text-2xl font-semibold text-white mb-6">
+          {selectedApi?.label}
         </h2>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -64,7 +88,7 @@ const GamesApi = () => {
                 placeholder="Enter API Key"
                 value={formData.apiKey}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
 
               <label
@@ -79,7 +103,7 @@ const GamesApi = () => {
                 placeholder="Enter License Key"
                 value={formData.licenseKey}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
 
               <label
@@ -94,7 +118,7 @@ const GamesApi = () => {
                 placeholder="Enter Game Provider Key"
                 value={formData.gameProviderKey}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
             </div>
 
@@ -111,7 +135,7 @@ const GamesApi = () => {
                 placeholder="Enter Provider IP"
                 value={formData.providerIp}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
 
               <label htmlFor="gameFile" className="text-gray-700 font-semibold">
@@ -136,7 +160,7 @@ const GamesApi = () => {
                 placeholder="Enter Secret Pin"
                 value={formData.secretPin}
                 onChange={handleChange}
-                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+                className="w-full border-2 border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
               />
             </div>
           </div>

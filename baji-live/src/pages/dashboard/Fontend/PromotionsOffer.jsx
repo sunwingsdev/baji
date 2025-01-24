@@ -107,7 +107,7 @@ const PromotionsOffer = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-[#041d3c] bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-4 rounded-lg shadow-lg w-1/3">
             <h2 className="text-xl font-bold mb-4">Add Category</h2>
             <input

@@ -1,20 +1,50 @@
 import { Link } from "react-router-dom";
 import HeadingContent from "../HeadingContent";
 import HeadingImageContent from "../HeadingImageContent";
+import image1 from "@/assets/images/deccan-gladiators.png";
+import image2 from "@/assets/images/sunrisers-eastern-cape.png";
+import image3 from "@/assets/images/quetta-gladiators.png";
+import image4 from "@/assets/images/bologna-fc-1909.png";
+import service1 from "@/assets/images/icon-24hr.png";
+import service2 from "@/assets/images/icon-book.png";
+import service3 from "@/assets/images/icon-ambassador.png";
+import service4 from "@/assets/images/android-bn.png";
+import safe1 from "@/assets/images/safe1.png";
+import safe2 from "@/assets/images/safe2.png";
+import safe3 from "@/assets/images/safe3.png";
+import method1 from "@/assets/images/pay16.png";
+import method2 from "@/assets/images/pay22.png";
+import method3 from "@/assets/images/pay33.png";
+import method4 from "@/assets/images/pay34.png";
+import method5 from "@/assets/images/pay45.png";
+import method6 from "@/assets/images/pay59.png";
+import method7 from "@/assets/images/pay60.png";
+import method8 from "@/assets/images/pay61.png";
+import method9 from "@/assets/images/pay47.png";
+import method10 from "@/assets/images/pay91.png";
+import community1 from "@/assets/images/FaceBook.png";
+import community2 from "@/assets/images/Instagram.png";
+import community3 from "@/assets/images/Pinterest.png";
+import community4 from "@/assets/images/Youtube.png";
+import community5 from "@/assets/images/Telegram.png";
+import community6 from "@/assets/images/Twitter.png";
+import brand1 from "@/assets/images/mia-k.png";
+import brand2 from "@/assets/images/kevin-pietersen-signature.png";
+import brand3 from "@/assets/images/amy-jacson.png";
+import brand4 from "@/assets/images/hansika-signature.png";
+import license from "@/assets/images/gaming_license.png";
 
 const FooterMiddle = () => {
   const services = [
     {
       id: 1,
-      image:
-        "https://www.baji.live/images/v1/web/bj/icon-set/footer/icon-24hr.png",
+      image: service1,
       title: "কাস্টমার সাপোর্ট",
       subtitle: "২৪/৭ আপনাদের সেবায় নিয়োজিত",
     },
     {
       id: 2,
-      image:
-        "https://www.baji.live/images/v1/web/bj/icon-set/footer/icon-book.png",
+      image: service2,
       title: "নতুন সদস্যদের জন্যে গাইড",
       subtitle: "বহুল আলোচিত প্রশ্ন সমুহ এবং সাহায্যকারী গাইড",
       button: "এখনই এক্সপ্লোর করুণ",
@@ -22,8 +52,7 @@ const FooterMiddle = () => {
     },
     {
       id: 3,
-      image:
-        "https://www.baji.live/images/v1/web/bj/icon-set/footer/icon-ambassador.png",
+      image: service3,
       title: "ব্র্যান্ড অ্যাম্বাসেডর",
       subtitle: "সেলিব্রিটির সাথে খেলুন",
       button: "এখনই মজা করুন",
@@ -31,8 +60,7 @@ const FooterMiddle = () => {
     },
     {
       id: 4,
-      image: "https://www.baji.live/images/web/footer/android-bn.png",
-
+      image: service4,
       imageRoute: "/download-app",
     },
   ];
@@ -40,67 +68,67 @@ const FooterMiddle = () => {
   const gamingContents = [
     {
       id: 1,
-      image: "https://www.baji.live/images/web/footer/color-white/safe1.png",
+      image: safe1,
     },
     {
       id: 2,
-      image: "https://www.baji.live/images/web/footer/color-white/safe2.png",
+      image: safe2,
     },
     {
       id: 3,
-      image: "https://www.baji.live/images/web/footer/color-white/safe3.png",
+      image: safe3,
     },
   ];
 
   const paymentMethods = [
     {
       id: 1,
-      image: "https://www.baji.live/images/web/footer/color-white/pay16.png",
+      image: method1,
       route: "/",
     },
     {
       id: 2,
-      image: "https://www.baji.live/images/web/footer/color-white/pay22.png",
+      image: method2,
       route: "/",
     },
     {
       id: 3,
-      image: "https://www.baji.live/images/web/footer/color-white/pay33.png",
+      image: method3,
       route: "/",
     },
     {
       id: 4,
-      image: "https://www.baji.live/images/web/footer/color-white/pay34.png",
+      image: method4,
       route: "/",
     },
     {
       id: 5,
-      image: "https://www.baji.live/images/web/footer/color-white/pay45.png",
+      image: method5,
       route: "/",
     },
     {
       id: 6,
-      image: "https://www.baji.live/images/web/footer/color-white/pay59.png",
+      image: method6,
       route: "/",
     },
     {
       id: 7,
-      image: "https://www.baji.live/images/web/footer/color-white/pay60.png",
+      image: method7,
       route: "/",
     },
     {
       id: 8,
-      image: "https://www.baji.live/images/web/footer/color-white/pay61.png",
+      image: method8,
       route: "/",
     },
     {
       id: 9,
-      image: "https://www.baji.live/images/web/footer/color-white/pay47.png",
+      image: method9,
       route: "/",
     },
     {
       id: 10,
-      image: "https://www.baji.live/images/web/footer/color-white/pay91.png",
+      image: method10,
       route: "/",
     },
   ];
@@ -108,34 +136,32 @@ const FooterMiddle = () => {
   const communities = [
     {
       id: 1,
-      image: "https://www.baji.live/images/web/footer/color-white/FaceBook.png",
+      image: community1,
       route: "/",
     },
     {
       id: 2,
-      image:
-        "https://www.baji.live/images/web/footer/color-white/Instagram.png",
+      image: community2,
       route: "/",
     },
     {
       id: 3,
-      image: "https://www.baji.live/images/web/footer/color-white/Twitter.png",
+      image: community3,
       route: "/",
     },
     {
       id: 4,
-      image:
-        "https://www.baji.live/images/web/footer/color-white/Pinterest.png",
+      image: community4,
       route: "/",
     },
     {
       id: 5,
-      image: "https://www.baji.live/images/web/footer/color-white/Youtube.png",
+      image: community5,
       route: "/",
     },
     {
       id: 6,
-      image: "https://www.baji.live/images/web/footer/color-white/Telegram.png",
+      image: community6,
       route: "/",
     },
   ];
@@ -143,57 +169,44 @@ const FooterMiddle = () => {
   const sponsors = [
     {
       id: 1,
-      image: "https://www.baji.live/images/web/sponsor/deccan-gladiators.png",
-      title: "Bologna FC 1909",
-      subtitle: "বেটিং পার্টনার",
+      image: image1,
     },
     {
       id: 2,
-      image:
-        "https://www.baji.live/images/web/sponsor/sunrisers-eastern-cape.png",
-      title: "Quetta Gladiators",
-      subtitle: "টাইটানিয়াম স্পন্সর",
+      image: image2,
     },
     {
       id: 3,
-      image: "https://www.baji.live/images/web/sponsor/quetta-gladiators.png",
-      title: "Sunrisers Eastern Cape",
-      subtitle: "টাইটেল স্পন্সর",
+      image: image3,
     },
     {
       id: 4,
-      image: "https://www.baji.live/images/web/sponsor/bologna-fc-1909.png",
-      title: "Deccan Gladiators",
-      subtitle: "টাইটেল স্পন্সর",
+      image: image4,
     },
   ];
 
   const brandAmbassadors = [
     {
       id: 1,
-      image:
-        "https://www.baji.live/images/v1/web/bj/ambassador-v2/mia/mia-k.png",
+      image: brand1,
       title: "Mia Khalifa",
       route: "/mia-khalifa",
     },
     {
       id: 2,
-      image:
-        "https://www.baji.live/images/v1/web/bj/ambassador-v2/kevin/kevin-pietersen-signature.png",
+      image: brand2,
       title: "Kevin Pietersen",
       route: "/mia-khalifa",
     },
     {
       id: 3,
-      image:
-        "https://www.baji.live/images/v1/web/bj/ambassador-v2/amy/amy-jacson.png",
+      image: brand3,
       title: "Amy Jackson",
       route: "/mia-khalifa",
     },
     {
       id: 4,
-      image:
-        "https://www.baji.live/images/v1/web/bj/ambassador-v2/hansika/hansika-signature.png",
+      image: brand4,
       title: "Hansika Motwani",
       route: "/mia-khalifa",
     },
@@ -251,11 +264,7 @@ const FooterMiddle = () => {
 
       <div className="absolute right-5 bottom-5 space-y-3 text-sm hidden md:block">
         <h2 className="text-[#dedede] font-semibold">গেইমিংয়ের লাইসেন্স</h2>
-        <img
-          className="w-32"
-          src="https://www.baji.live/images/web/footer/gaming_license.png"
-          alt=""
-        />
+        <img className="w-32" src={license} alt="" />
       </div>
     </div>
   );

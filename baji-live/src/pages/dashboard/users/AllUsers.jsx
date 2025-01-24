@@ -50,7 +50,7 @@ const AllUsers = () => {
   ];
   return (
     <div>
-      <h1 className="text-center text-xl lg:text-2xl  bg-[#14815f] text-white p-2 lg:font-semibold rounded-md">
+      <h1 className="text-center text-xl lg:text-2xl  bg-[#041d3c] text-white p-2 lg:font-semibold rounded-md">
         All Users
       </h1>
       <div className="flex justify-between py-2">

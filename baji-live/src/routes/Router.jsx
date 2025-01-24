@@ -29,13 +29,21 @@ import AgentProfile from "@/pages/dashboard/AgentProfile/AgentProfile";
 import GameCategories from "@/pages/dashboard/GameCategori/GameCategories";
 import FontendSlider from "@/pages/dashboard/Fontend/FontendSlider";
 import PromotionsOffer from "@/pages/dashboard/Fontend/PromotionsOffer";
-// import ExchangePage from "@/pages/home/ExchangePage/ExchangePage";
 import Transection from "@/pages/Transections/Transection";
 import DemoGame from "@/pages/home/DemoGame/DemoGame";
 import Notice from "@/pages/dashboard/Fontend/Notice";
 import Sponshorship from "@/pages/dashboard/Fontend/Sponshorship";
 import ExchangeLayout from "@/layouts/ExchangeLayout";
 import ExchangeMiddleContent from "@/components/exchange-page/ExchangeMiddleContent";
+import InPlay from "@/pages/home/ExchangePage/InPlay";
+import MultiMarkets from "@/pages/home/ExchangePage/MultiMarkets";
+import Cricket from "@/pages/home/ExchangePage/Cricket";
+import Soccer from "@/pages/home/ExchangePage/Soccer";
+import Tennis from "@/pages/home/ExchangePage/Tennis";
+import Esoccer from "@/pages/home/ExchangePage/Esoccer";
+import BblWinner from "@/pages/home/ExchangePage/BblWinner";
+import Kabaddi from "@/pages/home/ExchangePage/Kabaddi";
+import Result from "@/pages/home/ExchangePage/Result";
 
 const router = createBrowserRouter([
   {
@@ -68,11 +76,19 @@ const router = createBrowserRouter([
         element: <Referral />,
       },
       {
-        path: "/exchangePage",
+        path: "/exchange-page",
         element: <ExchangeLayout />,
         children: [
           { path: "", element: <ExchangeMiddleContent /> },
-          { path: "sample", element: <div>Hello Next</div> },
+          { path: "in-play", element: <InPlay /> },
+          { path: "multi-markets", element: <MultiMarkets /> },
+          { path: "cricket", element: <Cricket /> },
+          { path: "soccer", element: <Soccer /> },
+          { path: "tennis", element: <Tennis /> },
+          { path: "e-soccer", element: <Esoccer /> },
+          { path: "bbl-winner", element: <BblWinner /> },
+          { path: "kabaddi", element: <Kabaddi /> },
+          { path: "result", element: <Result /> },
         ],
       },
       {
@@ -145,7 +161,7 @@ const router = createBrowserRouter([
         element: <Games />,
       },
       {
-        path: "gamesApi",
+        path: "gamesApi/:id",
         element: <GamesApi />,
       },
       {

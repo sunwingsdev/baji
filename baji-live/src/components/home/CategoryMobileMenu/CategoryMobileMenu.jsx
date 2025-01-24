@@ -1,4 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import image1 from "@/assets/card-slider/img1.jpg";
+import image2 from "@/assets/card-slider/img2.jpg";
 
 const CategoryMobileMenu = () => {
   const categories = [
@@ -154,7 +156,7 @@ const CategoryMobileMenu = () => {
 
   return (
     <Tabs defaultValue={"exclusive"} className="text-white py-3 md:hidden">
-      <TabsList className="rounded-none flex justify-between overflow-auto bg-black w-full sticky top-4">
+      <TabsList className="rounded-none flex justify-between overflow-auto bg-[#041d3c] w-full sticky top-4">
         <TabsTrigger
           value="exclusive"
           className="flex flex-col rounded-none gap-2"
@@ -189,14 +191,8 @@ const CategoryMobileMenu = () => {
           </h2>
           <div className="">
             <div className="flex flex-col items-center justify-center gap-3">
-              <img
-                src="https://img.b112j.com/bj/h5/assets/images/exclusivegames/default/main/exclusive-money-wheel.jpg?v=1727170388190&source=mcdsrc"
-                className="w-full rounded-md"
-              />
-              <img
-                src="https://img.b112j.com/bj/h5/assets/images/exclusivegames/default/main/exclusive-divas-ace.jpg?v=1727170388190&source=mcdsrc"
-                className="w-full rounded-md"
-              />
+              <img src={image1} className="w-full rounded-md" />
+              <img src={image2} className="w-full rounded-md" />
             </div>
           </div>
         </div>

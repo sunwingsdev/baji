@@ -54,7 +54,7 @@ export function BannerSlider() {
     <Carousel className="w-full" setApi={setApi}>
       <CarouselContent>
         {bannerImages?.map((image, index) => (
-          <CarouselItem key={image.id}>
+          <CarouselItem key={image._id}>
             <div className="">
               <img
                 className="w-full max-h-[600px]"
@@ -79,7 +79,7 @@ export function BannerSlider() {
           />
         ))}
       </div>
-      <div className="bg-[#0D543E] opacity-90 text-white absolute bottom-0 w-full py-1">
+      <div className="bg-[#041d3c] opacity-90 text-white absolute bottom-0 w-full py-1">
         <Container>
           <div className="flex items-center gap-4">
             <HiMiniSpeakerWave className="text-xl md:text-3xl" />

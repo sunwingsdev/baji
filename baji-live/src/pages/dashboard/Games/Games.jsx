@@ -116,7 +116,7 @@ const Games = () => {
       </h1>
       <div className="flex justify-between items-center p-2">
         <input
-          className="border-2 border-gray-300 rounded-md w-4/6 p-1 lg:p-2 focus:ring-2 focus:ring-[#14815f] focus:outline-none"
+          className="border-2 border-gray-300 rounded-md w-4/6 p-1 lg:p-2 focus:ring-2 focus:ring-[#041d3c] focus:outline-none"
           placeholder="Search here"
           type="text"
         />

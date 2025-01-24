@@ -62,7 +62,7 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-[#041d3c] h-screen">
       <div className="relative bg-slate-600 px-3 py-3 text-white text-center md:hidden">
         <FaChevronLeft
           className="absolute left-0 top-1/2 transform -translate-y-1/2 ml-2 cursor-pointer"
@@ -90,12 +90,12 @@ const Login = () => {
                   value={username}
                   onChange={(e) => handleInputChange(e.target.value)}
                   placeholder="ব্যবহারকারীর নাম"
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {username && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-2 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setUsername("")}
                   >
                     <FaTimes />
@@ -116,12 +116,12 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="পাসওয়ার্ড"
-                  className="pl-5 pr-10 rounded focus:outline-none text-[#14805e] border-none bg-transparent w-full"
+                  className="pl-5 pr-10 rounded focus:outline-none text-white border-none bg-transparent w-full"
                 />
                 {/* Cross (clear) button */}
                 {password && (
                   <div
-                    className="bg-[#14805e] p-1 absolute right-12 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
+                    className="bg-[#041d3c] p-1 absolute right-12 top-1/2 transform -translate-y-1/2 text-white cursor-pointer rounded-full"
                     onClick={() => setPassword("")}
                   >
                     <FaTimes />
@@ -138,13 +138,13 @@ const Login = () => {
             </div>
             <div className="flex items-center justify-end my-2">
               {" "}
-              <p className="border inline-block px-3 py-0.5 text-[#14805e] border-[#14805e]">
+              <p className="border inline-block px-3 py-0.5 text-white border-[#041d3c]">
                 পাসওয়ার্ড ভুলে গেছেন?
               </p>
             </div>
             <Button
               type="submit"
-              className="bg-[#14805e] w-full text-base py-6"
+              className="bg-[#ffdf1a] w-full text-black hover:bg-yellow-600 text-base py-6"
             >
               {isLoading ? <SpinLoader /> : "লগ ইন"}
             </Button>

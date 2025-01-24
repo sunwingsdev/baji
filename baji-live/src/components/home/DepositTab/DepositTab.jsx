@@ -5,6 +5,9 @@ import { FcOk } from "react-icons/fc";
 import { RxCrossCircled } from "react-icons/rx";
 import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
+import bkash from "@/assets/payments/bkash1.png";
+import rocket from "@/assets/payments/rocket1.png";
+import nagad from "@/assets/payments/nagad1.png";
 
 const DepositTab = () => {
   const { user } = useSelector((state) => state.auth);
@@ -20,21 +23,21 @@ const DepositTab = () => {
     {
       title: "bKash",
       paymentMethod: "bkash",
-      image: "https://www.baji.live/images/web/thirdparty/bkash.png",
+      image: bkash,
       number: "+8801900000000",
       channels: [{ title: "CashOut", value: "cashout" }],
     },
     {
       title: "Rocket",
       paymentMethod: "rocket",
-      image: "https://www.baji.live/images/web/thirdparty/rocket.png",
+      image: rocket,
       number: "+8801755555555",
       channels: [{ title: "CashOut", value: "cashout" }],
     },
     {
       title: "Nagad",
       paymentMethod: "nagad",
-      image: "https://www.baji.live/images/web/thirdparty/nagad.png",
+      image:nagad,
       number: "+8801511111111",
       channels: [{ title: "CashOut", value: "cashout" }],
     },
